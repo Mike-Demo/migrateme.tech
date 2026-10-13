@@ -13,11 +13,14 @@ import type {
 
 export const FieldMappingSchema: z.ZodType<FieldMapping> = z.object({
   sourceField: z.string().min(1),
-  targetField: z.string().min(1),
+  targetField: z.string(),
   method: z.enum(["deterministic", "ai", "manual"]),
   confidence: z.number().min(0).max(1).optional(),
   rationale: z.string().optional()
-}).strict();
+}).strict().refine(
+  (mapping) => mapping.method === "manual" || mapping.targetField.length > 0,
+  { path: ["targetField"], message: "Target field is required unless mapping is manual." }
+);
 
 export const TaxonomySchema: z.ZodType<Taxonomy> = z.object({
   name: z.string().min(1),
