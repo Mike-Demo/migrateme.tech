@@ -2,6 +2,7 @@ export * from "./checkpoint-store.js";
 export * from "./connector.js";
 export * from "./deterministic-mapper.js";
 export * from "./dry-run.js";
+export * from "./execution.js";
 export * from "./job-state.js";
 export * from "./manifest.js";
 export * from "./manifest.schema.js";
