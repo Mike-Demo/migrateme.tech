@@ -4,7 +4,7 @@ import type { LookupAddress, LookupOptions } from "node:dns";
 import { request as httpRequest } from "node:http";
 import { request as httpsRequest } from "node:https";
 import { isIP } from "node:net";
-import { readFile } from "node:fs/promises";
+import { readFile, realpath } from "node:fs/promises";
 import path from "node:path";
 import type { MigrationManifest, Asset } from "./manifest.js";
 import { outputPath, renderMarkdown } from "./markdown.js";
@@ -183,12 +183,21 @@ export async function validateOutput(
 
     const resolvedRoot = path.resolve(outputRoot);
     const assetPath = path.resolve(resolvedRoot, asset.destination);
-    if (!assetPath.startsWith(`${resolvedRoot}${path.sep}`)) {
+    const relativeAssetPath = path.relative(resolvedRoot, assetPath);
+    if (!relativeAssetPath || relativeAssetPath === ".."
+      || relativeAssetPath.startsWith(`..${path.sep}`) || path.isAbsolute(relativeAssetPath)) {
       exceptionQueue.push(`Asset path escapes output root: ${asset.source}`);
       continue;
     }
     try {
-      const bytes = await readFile(assetPath);
+      const [realRoot, realAssetPath] = await Promise.all([realpath(resolvedRoot), realpath(assetPath)]);
+      const realRelativePath = path.relative(realRoot, realAssetPath);
+      if (!realRelativePath || realRelativePath === ".."
+        || realRelativePath.startsWith(`..${path.sep}`) || path.isAbsolute(realRelativePath)) {
+        exceptionQueue.push(`Asset path escapes output root: ${asset.source}`);
+        continue;
+      }
+      const bytes = await readFile(realAssetPath);
       if (asset.checksum && createHash("sha256").update(bytes).digest("hex") !== asset.checksum) {
         exceptionQueue.push(`Asset checksum mismatch: ${asset.source}`);
       }

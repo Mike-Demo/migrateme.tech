@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { mkdir, mkdtemp, writeFile } from "node:fs/promises";
+import { mkdir, mkdtemp, symlink, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -82,10 +82,34 @@ test("validation reports missing output and field and checksum mismatches", asyn
   assert.ok(report.exceptionQueue.includes("missing: output missing"));
 });
 
+test("validation explicitly queues incomplete assets and rejects paths outside the output root", async () => {
+  const parent = await mkdtemp(path.join(os.tmpdir(), "validator-"));
+  const output = path.join(parent, "content");
+  await mkdir(output);
+  await writeFile(path.join(parent, "outside.png"), "outside");
+  await symlink(path.join(parent, "outside.png"), path.join(output, "linked.png"));
+
+  const report = await validateOutput(manifest([], [
+    { source: "missing.png", status: "missing" },
+    { source: "pending.png", status: "pending" },
+    { source: "skipped.png", status: "skipped" },
+    { source: "traversal.png", destination: "../outside.png", status: "copied" },
+    { source: "symlink.png", destination: "linked.png", status: "copied" }
+  ]), output);
+
+  assert.equal(report.passed, false);
+  assert.ok(report.exceptionQueue.includes("Missing asset: missing.png"));
+  assert.ok(report.exceptionQueue.includes("Asset not copied: pending.png"));
+  assert.ok(report.exceptionQueue.includes("Asset skipped: skipped.png"));
+  assert.ok(report.exceptionQueue.includes("Asset path escapes output root: traversal.png"));
+  assert.ok(report.exceptionQueue.includes("Asset path escapes output root: symlink.png"));
+});
+
 test("network asset checks refuse private and link-local IP addresses", async () => {
   const output = await mkdtemp(path.join(os.tmpdir(), "validator-"));
   const report = await validateOutput(manifest([], [
     { source: "http://127.0.0.1/private", status: "copied" },
+    { source: "http://localhost/private", status: "copied" },
     { source: "http://169.254.169.254/latest/meta-data", status: "copied" },
     { source: "http://[::1]/private", status: "copied" },
     { source: "http://[fe80::1]/link-local", status: "copied" },
@@ -95,6 +119,8 @@ test("network asset checks refuse private and link-local IP addresses", async ()
   assert.equal(report.passed, false);
   assert.ok(report.exceptionQueue.some((exception) =>
     exception.includes("127.0.0.1") && exception.includes("private or link-local")));
+  assert.ok(report.exceptionQueue.some((exception) =>
+    exception.includes("localhost") && exception.includes("private or link-local")));
   assert.ok(report.exceptionQueue.some((exception) =>
     exception.includes("169.254.169.254") && exception.includes("private or link-local")));
   assert.ok(report.exceptionQueue.some((exception) =>
