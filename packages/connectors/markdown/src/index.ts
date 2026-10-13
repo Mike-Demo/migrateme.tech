@@ -4,7 +4,7 @@ import path from "node:path";
 import {
   outputPath,
   renderMarkdown,
-  safeSlug,
+  uniqueSlug,
   UnsupportedCapabilityError
 } from "@migrateme/core";
 import type {
@@ -12,8 +12,6 @@ import type {
   ContentItem,
   MigrationConnector
 } from "@migrateme/core";
-
-const MAX_SLUG_LENGTH = 120;
 
 export class MarkdownConnector implements MigrationConnector {
   capabilities(): ReadonlySet<ConnectorCapability> {
@@ -26,7 +24,7 @@ export class MarkdownConnector implements MigrationConnector {
     const usedSlugs = new Set<string>();
 
     for await (const item of items) {
-      const slug = this.nextSlug(item.slug || item.title, usedSlugs);
+      const slug = uniqueSlug(item.slug || item.title, usedSlugs);
       const markdown = renderMarkdown({ ...item, slug });
       const target = this.containedPath(root, { ...item, slug });
       const temporary = path.join(root, `.${slug}.${randomUUID()}.tmp`);
@@ -125,18 +123,6 @@ export class MarkdownConnector implements MigrationConnector {
 
   async rollback(_jobId: string): Promise<void> {
     throw new UnsupportedCapabilityError("rollback");
-  }
-
-  private nextSlug(value: string, used: Set<string>): string {
-    const base = safeSlug(value);
-    let slug = base;
-    let suffix = 2;
-    while (used.has(slug)) {
-      const ending = `-${suffix++}`;
-      slug = `${base.slice(0, MAX_SLUG_LENGTH - ending.length).replace(/-+$/g, "")}${ending}`;
-    }
-    used.add(slug);
-    return slug;
   }
 
   private containedPath(root: string, item: ContentItem): string {
