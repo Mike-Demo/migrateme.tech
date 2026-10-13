@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>migrateme.tech — AI-assisted CMS migrations, dry-run first</title>
+<meta name="description" content="Open-source, AI-assisted CMS migration toolkit. WordPress WXR to Markdown/MDX, dry-run first, with a shared core engine across CLI, MCP, and web.">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+         background: #0d1117; color: #e6edf3; line-height: 1.6; }
+  main { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 3rem; }
+  .mark { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
+  .mark span { color: #3fb950; }
+  .tag { font-size: 1.2rem; color: #9da7b3; margin: 0.6rem 0 2rem; }
+  h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.08em; color: #3fb950; margin: 2.2rem 0 0.6rem; }
+  p, li { color: #c9d1d9; }
+  ul { padding-left: 1.2rem; }
+  code { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 0.1em 0.4em; font-size: 0.92em; }
+  a { color: #58a6ff; }
+  .card { border: 1px solid #30363d; border-radius: 12px; padding: 1.1rem 1.3rem; background: #161b22; margin-top: 1rem; }
+  footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid #30363d; color: #9da7b3; font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<main>
+  <p class="mark">migrateme<span>.tech</span></p>
+  <p class="tag">Open-source, AI-assisted CMS migrations — dry-run first, so you see exactly what moves before anything does.</p>
+
+  <h2>What it does</h2>
+  <p>Migrating a site between platforms usually means hand-written scripts, silent data loss, and no way to rehearse. migrateme.tech treats a migration as a pipeline you can inspect: extract, map, rehearse with a full dry-run risk report, approve, execute with checkpoints, then validate with a reconciliation report.</p>
+  <ul>
+    <li><strong>MVP path:</strong> WordPress (WXR export) → Markdown / MDX</li>
+    <li><strong>One core engine, three surfaces:</strong> CLI, MCP server, and web</li>
+    <li><strong>AI field mapping</strong> with strict output validation — deterministic rules first, AI only where fields get messy</li>
+    <li><strong>Safe by default:</strong> dry-run before execution, checkpointed runs with resume, idempotent writes</li>
+  </ul>
+
+  <h2>The idea behind the name</h2>
+  <div class="card">
+    <p style="margin-top:0">The address <em>is</em> the migration spec. A route subdomain names the source and destination:</p>
+    <p><code>lovable-to-wordpress.migrateme.tech</code></p>
+    <p style="margin-bottom:0">Read the URL and you already know the migration. Post-MVP vision, tracked in <a href="https://github.com/Mike-Demo/migrateme.tech/issues/17">issue #17</a>.</p>
+  </div>
+
+  <h2>Status</h2>
+  <p>Built in the open for the DEV Hacktoberfest Open-Source AI Challenge, Week 2 ("Side Hustle"), October 12–18, 2026 — planned and built with GitHub Copilot, with the full paper trail in the repository.</p>
+  <p>
+    <a href="https://github.com/Mike-Demo/migrateme.tech">GitHub repository</a> ·
+    <a href="https://github.com/users/Mike-Demo/projects/1">MVP Week 1 board</a> ·
+    <a href="https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/copilot-usage.md">Copilot usage log</a>
+  </p>
+
+  <footer>MIT licensed. Built by <a href="https://mikedemo.dev">Mike "Demo" Demopoulos</a>.</footer>
+</main>
+</body>
+</html>
