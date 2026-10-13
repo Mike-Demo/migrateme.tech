@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+.migrateme/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
