@@ -2,7 +2,7 @@ import { z } from "zod";
 
 export const FieldMappingSchema = z.object({
   sourceField: z.string().min(1),
-  targetField: z.string().min(1),
+  targetField: z.string().min(1).optional(),
   method: z.enum(["deterministic", "ai", "manual"]),
   confidence: z.number().min(0).max(1).optional(),
   rationale: z.string().optional()

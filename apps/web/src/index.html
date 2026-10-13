@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>migrateme.tech</title>
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h1>WordPress migration</h1>
+      <form id="upload-form">
+        <label for="wxr">WordPress WXR export</label>
+        <input id="wxr" name="wxr" type="file" accept=".xml,application/xml,text/xml" required>
+        <button type="submit">Inventory and preview</button>
+      </form>
+      <section aria-live="polite">
+        <h2>Plan and dry-run</h2>
+        <pre id="preview"></pre>
+      </section>
+      <form id="approve-form" hidden>
+        <label><input id="approval" type="checkbox" required> I approve writing these Markdown files.</label>
+        <button type="submit">Execute migration</button>
+      </form>
+      <section aria-live="polite">
+        <h2>Validation report</h2>
+        <pre id="report"></pre>
+      </section>
+    </main>
+  </body>
+</html>

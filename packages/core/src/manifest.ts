@@ -2,7 +2,7 @@ import { MigrationManifestSchema } from "./manifest.schema.js";
 
 export type FieldMapping = {
   sourceField: string;
-  targetField: string;
+  targetField?: string;
   method: "deterministic" | "ai" | "manual";
   confidence?: number;
   rationale?: string;

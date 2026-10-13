@@ -4,6 +4,9 @@ export type JobState = {
   id: string;
   status: "planned" | "running" | "completed" | "failed";
   completedItemIds: string[];
+  manifest?: unknown;
+  outputRoot?: string;
+  sourceFile?: string;
 };
 
 export function createJobState(id: string, store: CheckpointStore): JobState {

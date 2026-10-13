@@ -19,7 +19,6 @@ export function deterministicMappings(item: ContentItem): FieldMapping[] {
       .filter((field) => !KNOWN_FIELDS.has(field))
       .map((sourceField) => ({
         sourceField,
-        targetField: "",
         method: "manual" as const,
         rationale: "Unknown custom fields require review."
       }))

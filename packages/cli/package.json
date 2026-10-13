@@ -1,0 +1,17 @@
+{
+  "name": "@migrateme/cli",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "migrateme": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@migrateme/core": "workspace:*",
+    "@migrateme/markdown": "workspace:*",
+    "@migrateme/wordpress": "workspace:*"
+  }
+}

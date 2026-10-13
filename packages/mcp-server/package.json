@@ -1,0 +1,19 @@
+{
+  "name": "@migrateme/mcp-server",
+  "version": "0.1.0",
+  "type": "module",
+  "bin": {
+    "migrateme-mcp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "@migrateme/ai-mapper": "workspace:*",
+    "@migrateme/core": "workspace:*",
+    "@migrateme/markdown": "workspace:*",
+    "@migrateme/wordpress": "workspace:*",
+    "zod": "4.6.7"
+  }
+}

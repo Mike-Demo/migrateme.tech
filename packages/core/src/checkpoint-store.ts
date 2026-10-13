@@ -1,9 +1,12 @@
 import Database from "better-sqlite3";
+import { mkdirSync } from "node:fs";
+import path from "node:path";
 
 export class CheckpointStore {
   readonly #database: Database.Database;
 
   constructor(filename: string) {
+    if (filename !== ":memory:") mkdirSync(path.dirname(path.resolve(filename)), { recursive: true });
     this.#database = new Database(filename);
     this.#database.pragma("journal_mode = WAL");
     this.#database.exec(`
