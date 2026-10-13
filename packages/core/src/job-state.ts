@@ -1,4 +1,4 @@
-import { CheckpointStore } from "./checkpoint-store.js";
+import type { CheckpointStore } from "./checkpoint-store.js";
 import type { ContentChecksum } from "./manifest.js";
 
 export type CompletedItem = {
@@ -72,12 +72,6 @@ export function markItemFailed(
 
 export function markJobCompleted(state: JobState, store: CheckpointStore): JobState {
   const next = { ...state, status: "completed" as const };
-  store.save(state.id, next);
-  return next;
-}
-
-export function markJobFailed(state: JobState, store: CheckpointStore): JobState {
-  const next = { ...state, status: "failed" as const };
   store.save(state.id, next);
   return next;
 }

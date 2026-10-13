@@ -76,6 +76,7 @@ test("an interrupted run resumes from disk and matches uninterrupted output", as
   const migration = new MarkdownConnector();
   const firstStore = new CheckpointStore(database);
   let writes = 0;
+  let interruptedManifest;
 
   await assert.rejects(executeMigration(manifest(interruptedOutput, sourceItems), {
     approved: true,
@@ -90,12 +91,15 @@ test("an interrupted run resumes from disk and matches uninterrupted output", as
     }
   }), (error) => {
     assert.match(error.message, /simulated crash/);
+    interruptedManifest = error.manifest;
     assert.deepEqual(error.manifest.items.map(({ status }) => status), ["migrated", "failed", "planned"]);
     assert.ok(error.manifest.items[1].checksum.sourceValue);
     return true;
   });
-  assert.deepEqual(firstStore.load("resume").completedItemIds, ["one"]);
-  assert.ok(firstStore.load("resume").failedItems.two.checksum.sourceValue);
+  const savedState = firstStore.load("resume");
+  assert.deepEqual(savedState.completedItemIds, ["one"]);
+  assert.deepEqual(savedState.completedItems.one.checksum, interruptedManifest.items[0].checksum);
+  assert.ok(savedState.failedItems.two.checksum.sourceValue);
   firstStore.close();
 
   const resumedStore = new CheckpointStore(database);
@@ -107,6 +111,7 @@ test("an interrupted run resumes from disk and matches uninterrupted output", as
   });
   assert.equal(resumed.state.status, "completed");
   assert.deepEqual(resumed.manifest.items.map(({ status }) => status), ["migrated", "migrated", "migrated"]);
+  assert.deepEqual(resumed.manifest.items[0].checksum, savedState.completedItems.one.checksum);
   assert.ok(resumed.manifest.items.every(({ checksum }) => checksum?.destinationValue));
 
   const continuousStore = new CheckpointStore(path.join(parent, "continuous.sqlite"));

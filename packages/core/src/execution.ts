@@ -2,12 +2,12 @@ import { createHash } from "node:crypto";
 import type { MigrationConnector } from "./connector.js";
 import type { MigrationManifest, ContentItem } from "./manifest.js";
 import { renderMarkdown, uniqueSlug } from "./markdown.js";
-import { CheckpointStore } from "./checkpoint-store.js";
+import type { CheckpointStore } from "./checkpoint-store.js";
 import {
   createJobState,
   markCompleted,
   markItemFailed,
-  markJobCompleted,
+  markJobCompleted
 } from "./job-state.js";
 import type { JobState } from "./job-state.js";
 
