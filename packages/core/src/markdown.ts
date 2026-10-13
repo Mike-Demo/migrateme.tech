@@ -5,14 +5,17 @@ export function safeSlug(value: string): string {
   const slug = value.normalize("NFKD").toLowerCase()
     .replace(/[\u0300-\u036f]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 120)
+    .replace(/-+$/g, "");
   return slug || "untitled";
 }
 
 export function outputPath(root: string, item: ContentItem): string {
   const resolvedRoot = path.resolve(root);
   const target = path.resolve(resolvedRoot, `${safeSlug(item.slug || item.title)}.md`);
-  if (target === resolvedRoot || !target.startsWith(`${resolvedRoot}${path.sep}`)) {
+  const relative = path.relative(resolvedRoot, target);
+  if (!relative || relative === ".." || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) {
     throw new Error("Output path escapes output root");
   }
   return target;

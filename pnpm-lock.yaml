@@ -18,6 +18,12 @@ importers:
         specifier: 5.9.3
         version: 5.9.3
 
+  packages/connectors/markdown:
+    dependencies:
+      '@migrateme/core':
+        specifier: workspace:*
+        version: link:../../core
+
   packages/core:
     dependencies:
       better-sqlite3:
