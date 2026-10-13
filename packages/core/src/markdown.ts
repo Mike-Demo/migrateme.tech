@@ -11,6 +11,18 @@ export function safeSlug(value: string): string {
   return slug || "untitled";
 }
 
+export function uniqueSlug(value: string, used: Set<string>): string {
+  const base = safeSlug(value);
+  let slug = base;
+  let suffix = 2;
+  while (used.has(slug)) {
+    const ending = `-${suffix++}`;
+    slug = `${base.slice(0, 120 - ending.length).replace(/-+$/g, "")}${ending}`;
+  }
+  used.add(slug);
+  return slug;
+}
+
 export function outputPath(root: string, item: ContentItem): string {
   const resolvedRoot = path.resolve(root);
   const target = path.resolve(resolvedRoot, `${safeSlug(item.slug || item.title)}.md`);
