@@ -11,6 +11,7 @@ export function planMigration(
   const manifest: MigrationManifest = {
     version: 1,
     source: { type: "wordpress-wxr", file: sourceFile },
+    destination: { connector: "markdown", outputPath: outputRoot },
     createdAt: new Date().toISOString(),
     items,
     mappings: items.flatMap(deterministicMappings),

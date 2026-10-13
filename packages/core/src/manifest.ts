@@ -1,13 +1,25 @@
 import { MigrationManifestSchema } from "./manifest.schema.js";
 
-export type FieldMapping = {
+export interface FieldMapping {
   sourceField: string;
   targetField: string;
   method: "deterministic" | "ai" | "manual";
   confidence?: number;
   rationale?: string;
-};
-export type ContentItem = {
+}
+
+export interface Taxonomy {
+  name: string;
+  terms: string[];
+}
+
+export interface ContentChecksum {
+  algorithm: "sha256";
+  sourceValue: string;
+  destinationValue?: string;
+}
+
+export interface ContentItem {
   id: string;
   type: "post" | "page" | "attachment" | "other";
   title: string;
@@ -16,33 +28,45 @@ export type ContentItem = {
   body: string;
   categories: string[];
   tags: string[];
+  taxonomies?: Taxonomy[];
+  author?: string;
+  links?: string[];
   featuredImage?: string;
   customFields: Record<string, string>;
-};
-export type Asset = {
+  destinationId?: string;
+  checksum?: ContentChecksum;
+  status: "planned" | "dry_run_previewed" | "migrated" | "validated" | "failed" | "rolled_back";
+}
+
+export interface Asset {
   source: string;
   destination?: string;
   checksum?: string;
   status: "pending" | "copied" | "missing" | "skipped";
-};
-export type TransformationRecord = {
+}
+
+export interface TransformationRecord {
   contentId: string;
   field: string;
   operation: string;
   at: string;
-};
-export type ProvenanceRecord = {
+}
+
+export interface ProvenanceRecord {
   source: string;
   importedAt: string;
   sourceId?: string;
-};
-export type RollbackInfo = {
+}
+
+export interface RollbackInfo {
   enabled: boolean;
   backupDirectory?: string;
-};
-export type MigrationManifest = {
+}
+
+export interface MigrationManifest {
   version: 1;
   source: { type: "wordpress-wxr"; file: string };
+  destination: { connector: "markdown"; outputPath: string };
   createdAt: string;
   items: ContentItem[];
   mappings: FieldMapping[];
@@ -50,8 +74,8 @@ export type MigrationManifest = {
   transformations: TransformationRecord[];
   provenance: ProvenanceRecord[];
   rollback: RollbackInfo;
-};
+}
 
 export function validateManifest(value: unknown): MigrationManifest {
-  return MigrationManifestSchema.parse(value) as MigrationManifest;
+  return MigrationManifestSchema.parse(value);
 }
