@@ -7,8 +7,10 @@ export type ConnectorCapability =
   | "rollback";
 
 export class UnsupportedCapabilityError extends Error {
+  readonly code = "UNSUPPORTED_CAPABILITY";
+
   constructor(readonly capability: ConnectorCapability) {
-    super(`Unsupported capability: ${capability}`);
+    super(`UNSUPPORTED_CAPABILITY: connector does not support ${capability}`);
     this.name = "UnsupportedCapabilityError";
   }
 }
