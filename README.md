@@ -30,4 +30,5 @@ metadata, and rich-text rendering) instead of eyeballed.
 
 - Canonical brief & content contracts: [Mike-Demo/dxs-cms-testbed](https://github.com/Mike-Demo/dxs-cms-testbed)
 - Non-cloud (mock data layer) implementation: [Mike-Demo/dxs-non-cloud](https://github.com/Mike-Demo/dxs-non-cloud)
+- Cloud (Supabase data layer) implementation: [Mike-Demo/info-grove](https://github.com/Mike-Demo/info-grove)
 - Live deployments: [lovable.sandbox.migrateme.tech](https://lovable.sandbox.migrateme.tech) · [lovable.cloud.sandbox.migrateme.tech](https://lovable.cloud.sandbox.migrateme.tech)
