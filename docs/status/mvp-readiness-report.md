@@ -1,6 +1,6 @@
 # MVP readiness report
 
-**Run date:** 2026-10-14  
+**Run date:** 2026-10-14
 **Scope:** Repository test suite and the WordPress WXR → Markdown MVP path.
 
 ## Test results
