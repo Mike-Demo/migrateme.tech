@@ -108,7 +108,9 @@ async function run(command: string, options: Options): Promise<unknown> {
       const filename = requireValue(options, "manifest");
       const manifest = await loadManifest(filename);
       const output = optionalValue(options, "output", manifest.destination.outputPath);
-      return { command, report: await validateOutput(manifest, output) };
+      const report = await validateOutput(manifest, output);
+      if (!report.passed) process.exitCode = 1;
+      return { command, report };
     }
     case "job": {
       const jobId = requireValue(options, "job-id");

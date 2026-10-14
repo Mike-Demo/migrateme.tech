@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, mkdtemp, readFile, readdir } from "node:fs/promises";
+import { access, mkdtemp, readFile, readdir, rm } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
@@ -50,6 +50,11 @@ test("migrate fails closed without --approve and executes/validates after approv
   const validated = execute(["validate", "--manifest", manifest]);
   assert.equal(validated.status, 0, validated.stderr);
   assert.equal(JSON.parse(validated.stdout).report.passed, true);
+
+  await rm(output, { recursive: true });
+  const invalid = execute(["validate", "--manifest", manifest]);
+  assert.equal(invalid.status, 1);
+  assert.equal(JSON.parse(invalid.stdout).report.passed, false);
 
   const job = execute(["job", "--state-db", stateDb, "--job-id", "job-1"]);
   assert.equal(job.status, 0, job.stderr);
