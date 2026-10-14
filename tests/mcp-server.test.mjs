@@ -12,7 +12,9 @@ import { createMcpServer } from "../packages/mcp-server/dist/index.js";
 const requireMcpPackage = createRequire(new URL("../packages/mcp-server/package.json", import.meta.url));
 const { Client } = requireMcpPackage("@modelcontextprotocol/sdk/client/index.js");
 const { InMemoryTransport } = requireMcpPackage("@modelcontextprotocol/sdk/inMemory.js");
+const { StdioClientTransport } = requireMcpPackage("@modelcontextprotocol/sdk/client/stdio.js");
 const fixture = fileURLToPath(new URL("./fixtures/wordpress-wxr.xml", import.meta.url));
+const serverEntry = fileURLToPath(new URL("../packages/mcp-server/dist/index.js", import.meta.url));
 
 test("MCP tools expose validated schemas and execute through the shared engine", async () => {
   const parent = await mkdtemp(path.join(os.tmpdir(), "mcp-server-"));
@@ -108,5 +110,45 @@ test("MCP tools expose validated schemas and execute through the shared engine",
     await client.close();
     await server.close();
     store.close();
+  }
+});
+
+test("MCP stdio subprocess initializes, lists tools, and refuses unapproved execution", async () => {
+  const parent = await mkdtemp(path.join(os.tmpdir(), "mcp-stdio-"));
+  const transport = new StdioClientTransport({
+    command: process.execPath,
+    args: [serverEntry],
+    cwd: parent,
+    env: { ...process.env, MIGRATEME_JOB_DB: path.join(parent, "jobs.sqlite") }
+  });
+  const client = new Client({ name: "mcp-stdio-test", version: "0.1.0" });
+
+  try {
+    await client.connect(transport);
+    const { tools } = await client.listTools();
+    assert.ok(tools.some(({ name }) => name === "execute_migration"));
+
+    const proposed = await client.callTool({
+      name: "propose_mapping",
+      arguments: { sourcePath: fixture, outputPath: path.join(parent, "content") }
+    });
+    const refused = await client.callTool({
+      name: "execute_migration",
+      arguments: {
+        manifest: proposed.structuredContent.manifest,
+        jobId: "stdio-unapproved",
+        approved: false
+      }
+    });
+    assert.equal(refused.isError, true);
+    assert.match(refused.content[0].text, /requires explicit approval/);
+
+    const status = await client.callTool({
+      name: "get_job_status",
+      arguments: { jobId: "stdio-unapproved" }
+    });
+    assert.equal(status.structuredContent.state, null);
+  } finally {
+    await client.close();
   }
 });
