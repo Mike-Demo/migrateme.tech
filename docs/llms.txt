@@ -1,0 +1,29 @@
+# migrateme.tech
+
+> Open-source, AI-assisted CMS migration toolkit. Dry-run first: plan, rehearse with a risk report, approve, execute with checkpoints, validate with reconciliation. MVP path: WordPress (WXR) to Markdown/MDX. One core engine, three surfaces: CLI, MCP server, web.
+
+## Project
+
+- [Live site](https://migrateme.tech/): project home, including the naming convention and the donation-bundle concept demo
+- [GitHub repository](https://github.com/Mike-Demo/migrateme.tech): source, MIT licensed
+- [Copilot usage log](https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/copilot-usage.md): how the MVP was planned and built with GitHub Copilot
+- [MVP readiness report](https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/status/mvp-readiness-report.md): what the tests establish and what they do not
+
+## Proof — the real-world run (October 14, 2026)
+
+- [Migration output site](https://from.wp.sandbox.migrateme.tech/): all 44 items migrated from the live WordPress testbed, rendered, with raw engine output and the run manifest
+- [Output repository](https://github.com/Mike-Demo/migrateme-from-wp-sandbox): the same output as files
+- Source testbed: [wp.sandbox.migrateme.tech](https://wp.sandbox.migrateme.tech/) (WordPress / DXS)
+- Same testbed via SpaceFast's official WordPress migration: [wp.spacefast.sandbox.migrateme.tech](https://wp.spacefast.sandbox.migrateme.tech/)
+- DXS app editions: [lovable.sandbox.migrateme.tech](https://lovable.sandbox.migrateme.tech/) (mock data), [lovable.cloud.sandbox.migrateme.tech](https://lovable.cloud.sandbox.migrateme.tech/) (Supabase)
+
+## Concepts
+
+- Naming convention: every address declares what it is — `from.<source>` for run output, `<source>-to-<destination>` for routes (vision: [issue #17](https://github.com/Mike-Demo/migrateme.tech/issues/17))
+- Open Migration Package: a platform-neutral format — manifest envelope, Portable Text bodies, BagIt-style checksums ([issue #34](https://github.com/Mike-Demo/migrateme.tech/issues/34))
+- Connector roadmap, Lovable source first ([issue #32](https://github.com/Mike-Demo/migrateme.tech/issues/32))
+- Business model: freemium; a Humble Bundle–style donation bundle split across the source platform's foundation, the destination platform's foundation, the open-source libraries used, and the tool — sliders on the live site
+
+## For agents
+
+- [agents.md](https://migrateme.tech/agents.md): how to drive the toolkit — surfaces, pipeline contract, and the approval rules that bind every surface
