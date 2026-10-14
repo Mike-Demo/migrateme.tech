@@ -32,3 +32,7 @@ metadata, and rich-text rendering) instead of eyeballed.
 - Non-cloud (mock data layer) implementation: [Mike-Demo/dxs-non-cloud](https://github.com/Mike-Demo/dxs-non-cloud)
 - Cloud (Supabase data layer) implementation: [Mike-Demo/info-grove](https://github.com/Mike-Demo/info-grove)
 - Live deployments: [lovable.sandbox.migrateme.tech](https://lovable.sandbox.migrateme.tech) · [lovable.cloud.sandbox.migrateme.tech](https://lovable.cloud.sandbox.migrateme.tech)
+
+## Roadmap
+
+The MVP migrates **WordPress (WXR) → Markdown/MDX**. Post-MVP, the connector roadmap ([#32](https://github.com/Mike-Demo/migrateme.tech/issues/32)) adds a **Lovable source connector** — DXS above is its reference testbed — plus more CMS sources and destinations in both directions (Ghost, Contentful, Sanity, Joomla, Drupal, WordPress as a destination, and more). Each supported pair gets a route under the per-route subdomain vision ([#17](https://github.com/Mike-Demo/migrateme.tech/issues/17)), e.g. `lovable-to-wordpress.migrateme.tech`.
