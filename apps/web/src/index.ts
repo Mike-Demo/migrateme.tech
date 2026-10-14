@@ -218,9 +218,14 @@ function parseForm(body: Buffer): URLSearchParams {
   return new URLSearchParams(body.toString("utf8"));
 }
 
-function respondError(response: ServerResponse, session: Session, error: unknown, cookie?: string): void {
-  const message = error instanceof Error ? error.message : String(error);
-  send(response, 400, "text/html; charset=utf-8", renderPage(session, message), cookie);
+function respondError(response: ServerResponse, session: Session, cookie?: string): void {
+  send(
+    response,
+    400,
+    "text/html; charset=utf-8",
+    renderPage(session, "This step could not be completed. Review the previous step and try again."),
+    cookie
+  );
 }
 
 export function createWebServer(options: { tempRoot?: string } = {}): Server {
@@ -310,12 +315,17 @@ export function createWebServer(options: { tempRoot?: string } = {}): Server {
       }
       response.writeHead(303, { location: "/", "cache-control": "no-store", ...(cookie ? { "set-cookie": cookie } : {}) });
       response.end();
-    } catch (error) {
+    } catch {
       if (url.pathname === "/api/upload") {
-        const message = error instanceof Error ? error.message : String(error);
-        send(response, 400, "application/json; charset=utf-8", JSON.stringify({ error: message }), cookie);
+        send(
+          response,
+          400,
+          "application/json; charset=utf-8",
+          JSON.stringify({ error: "Upload failed. Check that the file is a valid WXR export no larger than 10 MB." }),
+          cookie
+        );
       } else {
-        respondError(response, session, error, cookie);
+        respondError(response, session, cookie);
       }
     }
   });

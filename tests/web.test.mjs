@@ -115,3 +115,15 @@ test("fixture-derived markup is rendered as inert escaped text", async () => {
     assert.doesNotMatch(preview, /<img src=x onerror=/);
   });
 });
+
+test("upload failures do not expose internal exception details", async () => {
+  await withServer(async (baseUrl) => {
+    const initial = await fetch(baseUrl);
+    const cookie = initial.headers.get("set-cookie").split(";")[0];
+    const response = await upload(baseUrl, cookie, "<not a WXR export>");
+    assert.equal(response.status, 400);
+    const result = await response.json();
+    assert.match(result.error, /valid WXR export/);
+    assert.doesNotMatch(result.error, /Error:| at .+\(/);
+  });
+});
