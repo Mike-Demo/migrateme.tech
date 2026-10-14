@@ -1,7 +1,7 @@
 ---
 title: "I built a migration tool that refuses to migrate"
 published: false
-description: "migrateme.tech — a dry-run-first, AI-assisted WordPress → Markdown toolkit. It shows its work, asks permission, and only then writes. Built with GitHub Copilot in one day; verified like it owed me money."
+description: "migrateme.tech — a dry-run-first, AI-assisted CMS migration toolkit. WordPress to Markdown is the first route; the architecture is any platform to any platform. It shows its work, asks permission, and only then writes. Built with GitHub Copilot in one day; verified like it owed me money."
 tags: devchallenge, hf26challenge, opensource, ai
 cover_image: https://migrateme.tech/media/cover.png
 ---
@@ -16,9 +16,9 @@ cover_image: https://migrateme.tech/media/cover.png
 
 Every WordPress freelancer I know has a migration story, and none of them are happy. A client wants off their old host, or off WordPress entirely, and somebody has to move ten years of posts, pages, taxonomies, comments, and media into a new system without losing anything. The tooling is export buttons, importer plugins, and hope. The work is billable, dreaded, and one bad run away from a very long weekend.
 
-So I built the tool I watched people need for a decade in the hosting industry: **migrateme.tech**, an open-source, AI-assisted CMS migration toolkit whose defining feature is restraint.
+So I built the tool I watched people need for a decade in the hosting industry: **migrateme.tech**, an open-source, AI-assisted CMS migration toolkit whose defining feature is restraint. It is not a WordPress exit tool. It is a route between any two platforms, in either direction — and WordPress to Markdown is simply the first route that shipped, chosen because WXR is an open, documented export format and the pain is the one I know best. The engine is built around a canonical manifest: connectors turn a source into the manifest, mappers work on the manifest, destinations render from it. Add a connector and a destination and the route exists — Lovable to WordPress, Joomla to WordPress, WordPress to Drupal, a closed SaaS export to an open one. WordPress appears on both sides of those examples on purpose: it is a source here and a destination on the roadmap, because the goal was never leaving a platform. It is being able to move.
 
-It migrates WordPress (via a standard WXR export) to Markdown/MDX. But before it writes a single file, it does three things most migration tools skip:
+The first route migrates WordPress (via a standard WXR export) to Markdown/MDX. But before it writes a single file, it does three things most migration tools skip:
 
 **It shows its work.** A dry run reads the export, builds a canonical manifest of everything in it, maps every field, renders the output in memory, and writes *nothing*. You get a risk report instead: unresolved field mappings, unsupported fields, missing assets, validation concerns. The zero-writes property isn't a promise — it's covered by tests.
 
@@ -28,9 +28,9 @@ It migrates WordPress (via a standard WXR export) to Markdown/MDX. But before it
 
 Field mapping is **deterministic first, AI second**. A rule-based mapper handles everything it can prove. Only the leftovers go to the AI mapper, which runs a local open-weight model through Ollama and may only propose targets from the destination's actual field list — its output is validated against a strict schema before it's accepted. Malformed output, an invented field, a prompt-injection attempt buried in post content, or the model simply being down: all of it falls back to a manual-review queue. The AI can suggest. It cannot invent, and it cannot write.
 
-One engine, three ways to drive it: a **CLI** (`plan`, `dry-run`, `migrate`, `validate`, `job`), an **MCP server** with six tools so other agents can run migrations under the same approval rules, and a **web flow** (upload → inventory → mapping review → dry-run preview → approval → migrate → validation report) that contains no business logic of its own.
+One engine, every route, three ways to drive it: a **CLI** (`plan`, `dry-run`, `migrate`, `validate`, `job`), an **MCP server** with six tools so other agents can run migrations under the same approval rules, and a **web flow** (upload → inventory → mapping review → dry-run preview → approval → migrate → validation report) that contains no business logic of its own.
 
-**Who pays for this?** Nobody has to — and that's the business model. The toolkit is freemium in the literal sense: free, MIT-licensed, and cheap to run because the AI step is a local model with zero marginal cost. The people who'll reach for it first are the ones who already get paid to migrate sites — freelancers, small agencies, consultants doing platform exits — because the risk in a migration is concentrated in exactly the steps this tool makes visible: what will break, what won't map, what went missing. A dry run with a risk report is something you can attach to a quote; a validation report is proof of work you can hand a client.
+**Who pays for this?** Nobody has to — and that's the business model. The toolkit is freemium in the literal sense: free, MIT-licensed, and cheap to run because the AI step is a local model with zero marginal cost. The people who'll reach for it first are the ones who already get paid to migrate sites — freelancers, small agencies, consultants moving clients between platforms in either direction — because the risk in a migration is concentrated in exactly the steps this tool makes visible: what will break, what won't map, what went missing. A dry run with a risk report is something you can attach to a quote; a validation report is proof of work you can hand a client.
 
 The revenue idea is a **donation bundle, Humble Bundle style**. When a migration succeeds, the tool inventories the open-source technology it touched — the platform the site came from, the platform it's going to, and the open-source stack the tool itself stands on — and where a project has an open-source foundation behind it, it assembles a suggested donation across all three directions. A set of sliders lets the user choose the total and the split: how much supports this tool, and how much flows back to the foundations and libraries that made the original site, the conversion, and the new site possible. A tool that moves people between open-source platforms should feed the commons it depends on. The bundle is designed, not yet wired — the landing page carries a working concept demo of the sliders.
 
@@ -56,7 +56,7 @@ The revenue idea is a **donation bundle, Humble Bundle style**. When a migration
 
 {% embed https://www.youtube.com/watch?v=LNV4KZDbTRI %}
 
-The domain isn't a label; it's the routing table. The post-MVP vision (issue #17) gives every supported migration pair its own address in the form *source.to.destination* — `lovable.to.wordpress.migrateme.tech` reads as the route it serves, and `wordpress.to.static.migrateme.tech` names the WordPress-to-static route the SpaceFast edition below already proves by hand. The sandbox namespace is already live on the domain (`lovable.sandbox`, `lovable.cloud.sandbox`, `wp.sandbox`, and now `wp.spacefast.sandbox` for the SpaceFast-hosted edition) — labels stacked like words in a sentence, each address declaring what it is. As the connector roadmap (issue #32) adds sources and destinations in both directions — Ghost, Contentful, Sanity, Drupal, WordPress as a *destination* — each new route gets a name that's also its address. One disclosure, since a prize category turns on it: I missed the free-domain promo entirely and bought migrateme.tech through my existing registrar during the challenge window — claimed for this project, just not through the promo.
+The domain isn't a label; it's the routing table. The post-MVP vision (issue #17) gives every supported migration pair its own address in the form *source.to.destination* — `lovable.to.wordpress.migrateme.tech` reads as the route it serves, and `wordpress.to.static.migrateme.tech` names the WordPress-to-static route the SpaceFast edition below already proves by hand. The sandbox namespace is already live on the domain (`lovable.sandbox`, `lovable.cloud.sandbox`, `wp.sandbox`, and now `wp.spacefast.sandbox` for the SpaceFast-hosted edition) — labels stacked like words in a sentence, each address declaring what it is. As the connector roadmap (issue #32) adds sources and destinations in both directions — Ghost, Contentful, Sanity, Drupal, WordPress as a *destination* — each new route gets a name that's also its address. The roadmap already names them on both sides of the arrow: Lovable, Joomla, Drupal, and Ghost as sources *and* destinations, the closed SaaS builders and hosted CMSs whose exports trap people today, and WordPress as a destination, not just a way out. One disclosure, since a prize category turns on it: I missed the free-domain promo entirely and bought migrateme.tech through my existing registrar during the challenge window — claimed for this project, just not through the promo.
 
 Quick start:
 
@@ -78,6 +78,8 @@ The test-bed repos are part of the project, not decoration:
 
 - [dxs-cms-testbed](https://github.com/Mike-Demo/dxs-cms-testbed) — the canonical DXS brief and content contracts. Provenance matters, so it's stated in the repo too: the brief is based on a prompt from **Microsoft Copilot Cowork**.
 - [dxs-non-cloud](https://github.com/Mike-Demo/dxs-non-cloud) and [info-grove](https://github.com/Mike-Demo/info-grove) — the two DXS implementations the connectors will be built against.
+
+The roadmap around them is connector-shaped, because the architecture is: issue #32 sequences the connector program — Lovable first as a source, then the rest in both directions, including the closed SaaS platforms people are most often locked into — and issue #34 proposes an Open Migration Package format (portable content bodies, integrity manifests) plus a connector-authoring kit, so a route nobody has built yet is a connector away, not a rewrite.
 
 ## How I Built It
 
@@ -113,7 +115,7 @@ The agent also flagged a real edge case unprompted: the scheduled post in the fi
 ### What's verified and what isn't
 
 - **Verified:** 41 automated tests, all passing, CI green — unit, connector contracts, golden-file comparisons, integration flows across CLI/MCP/web, checkpoint-resume equivalence, approval gates on every surface, SSRF rejection (the validator checks DNS resolutions and pins connections, refusing private/link-local/loopback targets), path-traversal and symlink containment, XSS escaping in the web flow.
-- **Not yet established:** behavior against the full zoo of real-world, plugin-generated WXR exports (the readiness report says this plainly); correctness against a live remote CMS destination, with real credentials, throttling, and API failures; AI mapping *quality* against a live model on production data — the tests prove the safety rails, not the taste.
+- **Not yet established:** behavior against the full zoo of real-world, plugin-generated WXR exports (the readiness report says this plainly); correctness against a live remote CMS destination, with real credentials, throttling, and API failures — WordPress as a destination is designed into the connector roadmap, not yet built, and this post claims the architecture for it, not the implementation; AI mapping *quality* against a live model on production data — the tests prove the safety rails, not the taste.
 
 
 ## Why Does Open Innovation Matter?
