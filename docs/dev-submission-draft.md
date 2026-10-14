@@ -8,7 +8,7 @@ cover_image: https://migrateme.tech/media/cover.png
 
 *This is a submission for the [Hacktoberfest Open-Source AI Challenge Week 2: Side Hustle](https://dev.to/challenges/hacktoberfest-week2-2026-10-12)*
 
-{% embed https://www.youtube.com/watch?v=-OOF7C13RyA %}
+<!-- On DEV, the header video is set as the post's cover video (Demo's choice, Oct 14) instead of a body embed. Local cover fallback: cover_image above. -->
 
 ## What I Built
 
