@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>migrateme.tech — AI-assisted CMS migrations, dry-run first</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Open-source, AI-assisted CMS migration toolkit. WordPress WXR to Markdown/MDX, dry-run first, with a shared core engine across CLI, MCP, and web.">
 <style>
   :root { color-scheme: dark; }
@@ -14,6 +18,7 @@
   .mark { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
   .mark span { color: #3fb950; }
   .tag { font-size: 1.2rem; color: #9da7b3; margin: 0.6rem 0 2rem; }
+  h2 i { margin-right: 0.45em; }
   h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.08em; color: #3fb950; margin: 2.2rem 0 0.6rem; }
   p, li { color: #c9d1d9; }
   ul { padding-left: 1.2rem; }
@@ -28,10 +33,11 @@
 </head>
 <body>
 <main>
-  <p class="mark">migrateme<span>.tech</span></p>
+  <p class="mark"><img src="logo.svg" alt="migrateme.tech logo" width="46" height="46" style="vertical-align:-7px;margin-right:12px">migrateme<span>.tech</span></p>
   <p class="tag">Open-source, AI-assisted CMS migrations — dry-run first, so you see exactly what moves before anything does.</p>
 
-  <h2>What it does</h2>
+  <nav style="margin:0 0 1.6rem;font-size:0.95rem"><a href="#what-it-does">What it does</a> · <a href="#proof">Proof</a> · <a href="#paid-for">How it's paid for</a> · <a href="#name">The name is the spec</a> · <a href="#open-source">Open source</a> · <a href="#status">Status</a> · <a href="llms.txt">llms.txt</a> · <a href="agents.md">For agents</a></nav>
+  <h2 id="what-it-does"><i class="fa-solid fa-gears"></i>What it does</h2>
   <p>Migrating a site between platforms usually means hand-written scripts, silent data loss, and no way to rehearse. migrateme.tech treats a migration as a pipeline you can inspect: extract, map, rehearse with a full dry-run risk report, approve, execute with checkpoints, then validate with a reconciliation report.</p>
   <ul>
     <li><strong>MVP path:</strong> WordPress (WXR export) → Markdown / MDX</li>
@@ -40,7 +46,7 @@
     <li><strong>Safe by default:</strong> dry-run before execution, checkpointed runs with resume, idempotent writes</li>
   </ul>
 
-  <h2>Proof, not promises</h2>
+  <h2 id="proof"><i class="fa-solid fa-clipboard-check"></i>Proof, not promises</h2>
   <p>On October 14, 2026 the toolkit ran against a real WordPress site — not a fixture. The source is <a href="https://wp.sandbox.migrateme.tech">DXS</a>, a purpose-built WordPress testbed; its live export went through the full pipeline: plan, dry run, approved migration, validation.</p>
   <ul>
     <li><strong>44 items</strong> migrated — posts (incl. draft, private, and scheduled), pages, attachments, plus the site's templates, navigation, global styles, and even its AI Guidelines</li>
@@ -55,7 +61,7 @@
     <a href="https://lovable.sandbox.migrateme.tech">DXS on Lovable</a>
   </p>
 
-  <h2>How it's paid for</h2>
+  <h2 id="paid-for"><i class="fa-solid fa-hand-holding-heart"></i>How it's paid for</h2>
   <p><strong>Freemium, with a donation bundle instead of a paywall.</strong> The toolkit is free and MIT-licensed, and the AI step runs a local open-weight model, so a migration costs nothing to run — that's what makes freemium honest here rather than a trial in disguise.</p>
   <p>When a migration succeeds, the tool inventories the open-source technology it touched: the platform the site came <em>from</em>, the platform it's going <em>to</em>, and the open-source stack the tool itself stands on. Where a project has an open-source foundation behind it (the WordPress Foundation is the model), the tool assembles a suggested donation across all three directions — source, destination, and the conversion itself. A Humble Bundle–style slider lets you set the amount and choose the split: how much supports this tool, and how much flows to the foundations and libraries that made the original site, the move, and the new site possible.</p>
   <p>Designed, not yet wired: the MVP ships the migration pipeline; the donation bundle is the business model it will grow into, because a tool that moves people between open-source platforms should feed the commons it depends on.</p>
@@ -120,7 +126,7 @@
     })();
   </script>
 
-  <h2>The name is the spec</h2>
+  <h2 id="name"><i class="fa-solid fa-signs-post"></i>The name is the spec</h2>
   <p>Every address in this project declares what it is. The naming convention is the product idea, worn on the outside:</p>
   <table>
     <tr><th>Address</th><th>What its name tells you</th></tr>
@@ -136,7 +142,20 @@
     <p style="margin-bottom:0">Read the URL and you already know the source, the destination, and the tool. That's the post-MVP vision, tracked in <a href="https://github.com/Mike-Demo/migrateme.tech/issues/17">issue #17</a> — and the addresses above are the convention already running in production, not a mockup of it.</p>
   </div>
 
-  <h2>Status</h2>
+    <h2 id="open-source"><i class="fa-solid fa-code-branch"></i>Open source, top to bottom</h2>
+  <p>This project is open source standing on open source — and the donation bundle above is priced from exactly this inventory. The tool's job, when it ships, is to detect stacks like these at a migration's source and destination; these are the ones this migration story itself used, at every step:</p>
+  <table>
+    <tr><th>Layer</th><th>Open-source stack</th></tr>
+    <tr><td>The source</td><td><strong>WordPress</strong> (GPL, WordPress Foundation) on PHP and MySQL — and <strong>Simply Static</strong> (GPL), the plugin that produced the SpaceFast edition's export</td></tr>
+    <tr><td>The toolkit</td><td><strong>TypeScript</strong> on <strong>Node.js</strong>; <strong>Zod</strong> for schema validation, <strong>saxes</strong> for WXR/XML parsing, <strong>better-sqlite3 / SQLite</strong> for checkpoint state, the <strong>Model Context Protocol SDK</strong> for the agent surface, <strong>pnpm</strong> and <strong>Vitest</strong> in the toolchain</td></tr>
+    <tr><td>The AI</td><td><strong>Ollama</strong> serving open-weight models locally — the mapping step runs on the user's machine, under the user's choice of model</td></tr>
+    <tr><td>The formats</td><td><strong>Markdown / MDX</strong>, <strong>JSON Schema</strong>, <strong>Portable Text</strong>, <strong>BagIt</strong> (RFC 8493), the <strong>Model Context Protocol</strong> — every interchange format in the pipeline is an open one</td></tr>
+    <tr><td>The testbeds</td><td><strong>React</strong>, <strong>Vite</strong>, <strong>Tailwind CSS</strong>, <strong>shadcn/ui</strong> on <strong>Radix UI</strong>, <strong>TanStack</strong> Router / Query / Start, <strong>React Hook Form</strong>, and <strong>Supabase</strong> on <strong>PostgreSQL</strong> for the cloud edition</td></tr>
+    <tr><td>These sites</td><td>Hand-written HTML/CSS/JS (and the <strong>Font Awesome</strong> free icons in these headings) on GitHub Pages; the migration-output site is generated with <strong>Python</strong>, the <strong>Markdown</strong> library, and <strong>Pillow</strong></td></tr>
+  </table>
+  <p>One honest exception, named rather than hidden: the code was planned and largely written with GitHub Copilot, which is proprietary. Everything it produced, and everything that code runs on, is open.</p>
+
+<h2 id="status"><i class="fa-solid fa-signal"></i>Status</h2>
   <p>Built in the open for the DEV Hacktoberfest Open-Source AI Challenge, Week 2 ("Side Hustle"), October 12–18, 2026 — planned and built with GitHub Copilot, with the full paper trail in the repository.</p>
   <p>Next: an open, platform-neutral migration format (<a href="https://github.com/Mike-Demo/migrateme.tech/issues/34">issue #34</a>) so any tool can speak it, and a Lovable source connector (<a href="https://github.com/Mike-Demo/migrateme.tech/issues/32">issue #32</a>) as the first new route — anything to anything, one pair of translators at a time.</p>
   <p>
