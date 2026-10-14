@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, mkdtemp } from "node:fs/promises";
+import { access, mkdtemp, readFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -31,37 +31,11 @@ test("dry-run returns golden Markdown previews and a summary without writing des
   assert.deepEqual(result.preview, [
     {
       path: path.join(output, "hello.md"),
-      content: [
-        "---",
-        'title: "Hello: world"',
-        'slug: "hello"',
-        'type: "post"',
-        "categories:",
-        '  - "News"',
-        "tags:",
-        '  - "Migration"',
-        "---",
-        "",
-        "Markdown body",
-        ""
-      ].join("\n")
+      content: await readFile(new URL("./fixtures/golden/hello.md", import.meta.url), "utf8")
     },
     {
       path: path.join(output, "hello-2.md"),
-      content: [
-        "---",
-        'title: "Second"',
-        'slug: "hello-2"',
-        'type: "post"',
-        "categories:",
-        '  - "News"',
-        "tags:",
-        '  - "Migration"',
-        "---",
-        "",
-        "Markdown body",
-        ""
-      ].join("\n")
+      content: await readFile(new URL("./fixtures/golden/hello-2.md", import.meta.url), "utf8")
     }
   ]);
   assert.deepEqual(result.summary, { itemCount: 2, previewCount: 2, riskCount: 0 });
