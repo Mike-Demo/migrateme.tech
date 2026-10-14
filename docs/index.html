@@ -18,6 +18,9 @@
   p, li { color: #c9d1d9; }
   ul { padding-left: 1.2rem; }
   code { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 0.1em 0.4em; font-size: 0.92em; }
+  table { border-collapse: collapse; width: 100%; margin: 0.8rem 0 0.4rem; font-size: 0.95rem; }
+  th, td { border-bottom: 1px solid #30363d; text-align: left; padding: 0.45rem 0.5rem; vertical-align: top; }
+  th { color: #9da7b3; font-weight: 600; }
   a { color: #58a6ff; }
   .card { border: 1px solid #30363d; border-radius: 12px; padding: 1.1rem 1.3rem; background: #161b22; margin-top: 1rem; }
   footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid #30363d; color: #9da7b3; font-size: 0.92rem; }
@@ -117,11 +120,20 @@
     })();
   </script>
 
-  <h2>The idea behind the name</h2>
+  <h2>The name is the spec</h2>
+  <p>Every address in this project declares what it is. The naming convention is the product idea, worn on the outside:</p>
+  <table>
+    <tr><th>Address</th><th>What its name tells you</th></tr>
+    <tr><td><a href="https://wp.sandbox.migrateme.tech"><code>wp.sandbox</code></a></td><td>The <strong>source</strong>: a WordPress site, in the sandbox namespace where testbeds live</td></tr>
+    <tr><td><a href="https://wp.spacefast.sandbox.migrateme.tech"><code>wp.spacefast.sandbox</code></a></td><td>The same WordPress site after a route <strong>to SpaceFast</strong> — the platform it moved to, named in the address</td></tr>
+    <tr><td><a href="https://from.wp.sandbox.migrateme.tech"><code>from.wp.sandbox</code></a></td><td>The <strong>output</strong> of this toolkit's run — everything that came <em>from</em> the wp.sandbox source</td></tr>
+    <tr><td><a href="https://lovable.sandbox.migrateme.tech"><code>lovable.sandbox</code></a> · <a href="https://lovable.cloud.sandbox.migrateme.tech"><code>lovable.cloud.sandbox</code></a></td><td>The Lovable editions of the testbed — platform, variant, namespace</td></tr>
+    <tr><td><a href="https://migrateme.tech"><code>migrateme.tech</code></a></td><td>The toolkit itself: name the migration, get migrated</td></tr>
+  </table>
   <div class="card">
-    <p style="margin-top:0">The address <em>is</em> the migration spec. A route subdomain names the source and destination:</p>
+    <p style="margin-top:0">The convention scales to routes. A migration pair gets an address that reads as the migration itself:</p>
     <p><code>lovable-to-wordpress.migrateme.tech</code></p>
-    <p style="margin-bottom:0">Read the URL and you already know the migration. Post-MVP vision, tracked in <a href="https://github.com/Mike-Demo/migrateme.tech/issues/17">issue #17</a>.</p>
+    <p style="margin-bottom:0">Read the URL and you already know the source, the destination, and the tool. That's the post-MVP vision, tracked in <a href="https://github.com/Mike-Demo/migrateme.tech/issues/17">issue #17</a> — and the addresses above are the convention already running in production, not a mockup of it.</p>
   </div>
 
   <h2>Status</h2>
