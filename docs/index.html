@@ -37,6 +37,26 @@
     <li><strong>Safe by default:</strong> dry-run before execution, checkpointed runs with resume, idempotent writes</li>
   </ul>
 
+  <h2>Proof, not promises</h2>
+  <p>On October 14, 2026 the toolkit ran against a real WordPress site — not a fixture. The source is <a href="https://wp.sandbox.migrateme.tech">DXS</a>, a purpose-built WordPress testbed; its live export went through the full pipeline: plan, dry run, approved migration, validation.</p>
+  <ul>
+    <li><strong>44 items</strong> migrated — posts (incl. draft, private, and scheduled), pages, attachments, plus the site's templates, navigation, global styles, and even its AI Guidelines</li>
+    <li><strong>420 field mappings</strong> — 287 deterministic, 133 held for human review rather than guessed</li>
+    <li><strong>310 risks</strong> flagged in the plan; <strong>zero</strong> files written by the dry run</li>
+    <li><strong>Validation passed:</strong> 44 expected, 44 found, empty exception queue</li>
+  </ul>
+  <p>
+    <a href="https://from.wp.sandbox.migrateme.tech">Browse the migration output</a> ·
+    <a href="https://github.com/Mike-Demo/migrateme-from-wp-sandbox">Output repository</a> ·
+    <a href="https://wp.spacefast.sandbox.migrateme.tech">The same testbed, via SpaceFast</a> ·
+    <a href="https://lovable.sandbox.migrateme.tech">DXS on Lovable</a>
+  </p>
+
+  <h2>How it's paid for</h2>
+  <p><strong>Freemium, with a donation bundle instead of a paywall.</strong> The toolkit is free and MIT-licensed, and the AI step runs a local open-weight model, so a migration costs nothing to run — that's what makes freemium honest here rather than a trial in disguise.</p>
+  <p>When a migration succeeds, the tool inventories the open-source technology it touched: the platform the site came <em>from</em>, the platform it's going <em>to</em>, and the open-source stack the tool itself stands on. Where a project has an open-source foundation behind it (the WordPress Foundation is the model), the tool assembles a suggested donation across all three directions — source, destination, and the conversion itself. A Humble Bundle–style slider lets you set the amount and choose the split: how much supports this tool, and how much flows to the foundations and libraries that made the original site, the move, and the new site possible.</p>
+  <p>Designed, not yet wired: the MVP ships the migration pipeline; the donation bundle is the business model it will grow into, because a tool that moves people between open-source platforms should feed the commons it depends on.</p>
+
   <h2>The idea behind the name</h2>
   <div class="card">
     <p style="margin-top:0">The address <em>is</em> the migration spec. A route subdomain names the source and destination:</p>
@@ -46,6 +66,7 @@
 
   <h2>Status</h2>
   <p>Built in the open for the DEV Hacktoberfest Open-Source AI Challenge, Week 2 ("Side Hustle"), October 12–18, 2026 — planned and built with GitHub Copilot, with the full paper trail in the repository.</p>
+  <p>Next: an open, platform-neutral migration format (<a href="https://github.com/Mike-Demo/migrateme.tech/issues/34">issue #34</a>) so any tool can speak it, and a Lovable source connector (<a href="https://github.com/Mike-Demo/migrateme.tech/issues/32">issue #32</a>) as the first new route — anything to anything, one pair of translators at a time.</p>
   <p>
     <a href="https://github.com/Mike-Demo/migrateme.tech">GitHub repository</a> ·
     <a href="https://github.com/users/Mike-Demo/projects/1">MVP Week 1 board</a> ·
