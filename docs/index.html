@@ -56,6 +56,66 @@
   <p><strong>Freemium, with a donation bundle instead of a paywall.</strong> The toolkit is free and MIT-licensed, and the AI step runs a local open-weight model, so a migration costs nothing to run — that's what makes freemium honest here rather than a trial in disguise.</p>
   <p>When a migration succeeds, the tool inventories the open-source technology it touched: the platform the site came <em>from</em>, the platform it's going <em>to</em>, and the open-source stack the tool itself stands on. Where a project has an open-source foundation behind it (the WordPress Foundation is the model), the tool assembles a suggested donation across all three directions — source, destination, and the conversion itself. A Humble Bundle–style slider lets you set the amount and choose the split: how much supports this tool, and how much flows to the foundations and libraries that made the original site, the move, and the new site possible.</p>
   <p>Designed, not yet wired: the MVP ships the migration pipeline; the donation bundle is the business model it will grow into, because a tool that moves people between open-source platforms should feed the commons it depends on.</p>
+  <div class="card" id="bundle-demo">
+    <p style="margin-top:0"><strong>Try the split</strong> — a concept demo of the bundle, Humble-style. Set a total, pick a preset or drag the sliders; the total never changes, only who it's shared with. <em>No payments are taken.</em></p>
+    <p>Total donation: $<input id="bd-total" type="number" min="0" step="1" value="25" style="width:5.5em;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:6px;padding:0.15em 0.4em"></p>
+    <p>
+      <label><input type="radio" name="bd-preset" value="default" checked> Default split</label> ·
+      <label><input type="radio" name="bd-preset" value="commons"> Extra to the commons</label> ·
+      <label><input type="radio" name="bd-preset" value="custom"> Custom amount</label>
+    </p>
+    <div id="bd-rows"></div>
+  </div>
+  <script>
+    (function () {
+      var recipients = [
+        { id: 'source', label: 'Where it came from — the source platform\u2019s foundation', def: 35, commons: 45 },
+        { id: 'dest',   label: 'Where it\u2019s going — the destination platform\u2019s foundation', def: 25, commons: 35 },
+        { id: 'libs',   label: 'The open-source libraries the conversion stands on', def: 25, commons: 15 },
+        { id: 'tool',   label: 'migrateme.tech — the tool itself', def: 15, commons: 5 }
+      ];
+      var rowsEl = document.getElementById('bd-rows');
+      var totalEl = document.getElementById('bd-total');
+      recipients.forEach(function (r) {
+        var row = document.createElement('p');
+        row.innerHTML = '<label style="display:block;font-size:0.92rem;color:#c9d1d9">' + r.label + '</label>' +
+          '<input type="range" min="0" max="100" step="1" value="' + r.def + '" data-id="' + r.id + '" style="width:70%">' +
+          ' <span data-amt="' + r.id + '"></span>';
+        rowsEl.appendChild(row);
+      });
+      var sliders = Array.prototype.slice.call(rowsEl.querySelectorAll('input[type=range]'));
+      function shares() { return sliders.map(function (s) { return Number(s.value); }); }
+      function render() {
+        var total = Math.max(0, Number(totalEl.value) || 0);
+        var sh = shares(), sum = sh.reduce(function (a, b) { return a + b; }, 0) || 1;
+        recipients.forEach(function (r, i) {
+          var amt = total * sh[i] / sum;
+          rowsEl.querySelector('[data-amt="' + r.id + '"]').textContent = '$' + amt.toFixed(2);
+        });
+      }
+      function applyPreset(name) {
+        recipients.forEach(function (r, i) { sliders[i].value = (name === 'commons') ? r.commons : r.def; });
+        render();
+      }
+      sliders.forEach(function (s) {
+        s.addEventListener('input', function () {
+          document.querySelector('input[name=bd-preset][value=custom]').checked = true;
+          var changed = sliders.indexOf(s), v = Number(s.value);
+          var others = sliders.filter(function (_, i) { return i !== changed; });
+          var rest = 100 - v, osum = others.reduce(function (a, o) { return a + Number(o.value); }, 0);
+          others.forEach(function (o) { o.value = osum ? Math.round(rest * Number(o.value) / osum) : Math.round(rest / others.length); });
+          var drift = 100 - shares().reduce(function (a, b) { return a + b; }, 0);
+          if (drift && others.length) { others[0].value = Number(others[0].value) + drift; }
+          render();
+        });
+      });
+      document.querySelectorAll('input[name=bd-preset]').forEach(function (r) {
+        r.addEventListener('change', function () { if (r.value !== 'custom') applyPreset(r.value); });
+      });
+      totalEl.addEventListener('input', render);
+      render();
+    })();
+  </script>
 
   <h2>The idea behind the name</h2>
   <div class="card">
