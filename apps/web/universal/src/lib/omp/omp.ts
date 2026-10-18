@@ -121,10 +121,14 @@ export function validateOmpManifest(raw: unknown): OmpValidationResult {
     errors.push('manifest.items is required and must be an array.');
   } else {
     m.items.forEach((entry, i) => {
+      if (!entry || typeof entry !== 'object' || Array.isArray(entry)) {
+        errors.push(`items[${i}] must be an object.`);
+        return;
+      }
       const it = entry as Record<string, unknown>;
       if (!strOf(it.id).trim()) errors.push(`items[${i}].id is required.`);
-      if (!strOf(it.title).trim() && !strOf(it.slug).trim()) {
-        errors.push(`items[${i}] needs at least a title or a slug.`);
+      if (!strOf(it.title).trim()) {
+        errors.push(`items[${i}].title is required (the OMP schema requires both id and title).`);
       }
       if (it.body === null && !Array.isArray(it.bodyBlocks) && !strOf(it.contentFile)) {
         warnings.push(`items[${i}] has no body, bodyBlocks or contentFile.`);
@@ -133,6 +137,20 @@ export function validateOmpManifest(raw: unknown): OmpValidationResult {
   }
   if (m.assets !== undefined && !Array.isArray(m.assets)) {
     errors.push('manifest.assets must be an array when present.');
+  } else if (Array.isArray(m.assets)) {
+    m.assets.forEach((entry, i) => {
+      if (!entry || typeof entry !== 'object' || Array.isArray(entry)) {
+        errors.push(`assets[${i}] must be an object.`);
+        return;
+      }
+      const a = entry as Record<string, unknown>;
+      if (!strOf(a.path).trim()) errors.push(`assets[${i}].path is required.`);
+      if (!strOf(a.contentType).trim()) errors.push(`assets[${i}].contentType is required.`);
+      if (typeof a.bundled !== 'boolean') errors.push(`assets[${i}].bundled must be a boolean.`);
+      if (a.checksum !== undefined && !/^[a-f0-9]{64}$/.test(strOf(a.checksum))) {
+        errors.push(`assets[${i}].checksum must be a sha256 hex digest.`);
+      }
+    });
   }
   if (m.taxonomy !== undefined) {
     const tax = m.taxonomy as Record<string, unknown>;
@@ -144,8 +162,16 @@ export function validateOmpManifest(raw: unknown): OmpValidationResult {
       errors.push('manifest.taxonomy must be an object with optional categories/tags arrays.');
     }
   }
-  if (m.checksums !== undefined && typeof m.checksums !== 'object') {
-    errors.push('manifest.checksums must be an object mapping file paths to sha256 hex digests.');
+  if (m.checksums !== undefined) {
+    if (!m.checksums || typeof m.checksums !== 'object' || Array.isArray(m.checksums)) {
+      errors.push('manifest.checksums must be an object mapping file paths to sha256 hex digests.');
+    } else {
+      for (const [path, digest] of Object.entries(m.checksums as Record<string, unknown>)) {
+        if (!/^[a-f0-9]{64}$/.test(strOf(digest))) {
+          errors.push(`manifest.checksums["${path}"] must be a sha256 hex digest.`);
+        }
+      }
+    }
   }
 
   return {
