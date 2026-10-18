@@ -42,7 +42,16 @@
   .viewtoggle button { background: #161b22; color: #58a6ff; border: 1px solid #30363d; border-radius: 8px; padding: 0.45em 0.9em; font-size: 0.95rem; cursor: pointer; }
   .viewtoggle button:hover { border-color: #58a6ff; }
   .viewtoggle button:focus-visible { outline: 3px solid #58a6ff; outline-offset: 2px; }
-  footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid #30363d; color: #9da7b3; font-size: 0.92rem; }  <p class="viewtoggle"><button id="vt-btn" type="button" aria-pressed="false">See the original version (v1 story first)</button></p>
+  footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid #30363d; color: #9da7b3; font-size: 0.92rem; }
+</style>
+</head>
+<body>
+<main>
+  <p class="mark"><img src="logo.svg" alt="migrateme.tech logo" width="46" height="46" style="vertical-align:-7px;margin-right:12px">migrateme<span>.tech</span></p>
+  <p class="tag">Open-source, AI-assisted CMS migrations — dry-run first, so you see exactly what moves before anything does. Now anything to anything.</p>
+
+  <nav style="margin:0 0 1.6rem;font-size:0.95rem"><a href="#what-it-does">What it does</a> · <a href="#universal">Universal</a> · <a href="#standard">The standard</a> · <a href="#proof">Proof</a> · <a href="#paid-for">How it's paid for</a> · <a href="#name">The name is the spec</a> · <a href="#open-source">Open source</a> · <a href="#status">Status</a> · <a href="llms.txt">llms.txt</a> · <a href="agents.md">For agents</a></nav>
+    <p class="viewtoggle"><button id="vt-btn" type="button" aria-pressed="false">See the original version (v1 story first)</button></p>
   <script>
     (function () {
       var lead = document.getElementById('lead');
@@ -106,16 +115,6 @@
 
   </section>
 </div>
-  44 expected, 44 found, empty exception queue</li>
-  </ul>
-  <p>
-    <a href="https://from.wp.sandbox.migrateme.tech">Browse the migration output</a> ·
-    <a href="https://github.com/Mike-Demo/migrateme-from-wp-sandbox">Output repository</a> ·
-    <a href="https://wp.spacefast.sandbox.migrateme.tech">The same testbed, via SpaceFast</a> ·
-    <a href="https://lovable.sandbox.migrateme.tech">DXS on Lovable</a>
-  </p>
-  <p>Universal was held to the same standard before it joined this repository: the fold-in was verified locally first — full monorepo build across 9 projects, <strong>43/43 tests passing</strong>, typecheck clean — then reviewed by Copilot on the pull request (13 findings: 12 fixed, 1 design point answered on the record) and merged only after the gate cleared.</p>
-
   <h2 id="paid-for"><i class="fa-solid fa-hand-holding-heart"></i>How it's paid for</h2>
   <p><strong>Freemium, with a donation bundle instead of a paywall.</strong> The toolkit is free and MIT-licensed, and the AI step runs a local open-weight model, so a migration costs nothing to run — that's what makes freemium honest here rather than a trial in disguise.</p>
   <p>When a migration succeeds, the tool inventories the open-source technology it touched: the platform the site came <em>from</em>, the platform it's going <em>to</em>, and the open-source stack the tool itself stands on. Where a project has an open-source foundation behind it (the WordPress Foundation is the model), the tool assembles a suggested donation across all three directions — source, destination, and the conversion itself. A Humble Bundle–style slider lets you set the amount and choose the split: how much supports this tool, and how much flows to the foundations and libraries that made the original site, the move, and the new site possible.</p>
