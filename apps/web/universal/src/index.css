@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --app-body-font: var(--wa-font-family-body);
+  --app-heading-font: var(--wa-font-family-heading);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--wa-color-surface-default);
+  color: var(--wa-color-text-normal);
+  font-family: var(--wa-font-family-body);
+  font-size: var(--wa-font-size-m);
+}
+
+body {
+  margin: 0;
+  background-color: var(--wa-color-surface-default);
+  color: var(--wa-color-text-normal);
+  font-family: var(--wa-font-family-body);
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--wa-font-family-heading);
+  font-weight: var(--wa-font-weight-bold);
+  color: var(--wa-color-text-normal);
+  line-height: 1.2;
+}
+
+h1 { font-size: var(--wa-font-size-xl); }
+h2 { font-size: var(--wa-font-size-l); }
+h3 { font-size: var(--wa-font-size-m); }
+
+a {
+  color: var(--wa-color-text-link);
+}
+
+:focus-visible {
+  outline: var(--wa-focus-ring-style) var(--wa-focus-ring-width) var(--wa-color-focus);
+  outline-offset: var(--wa-focus-ring-offset);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

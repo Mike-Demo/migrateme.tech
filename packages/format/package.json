@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@migrateme/connector-universal": "workspace:*"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./validator": "./dist/validator.js"
+  },
+  "main": "./dist/index.js",
+  "name": "@migrateme/format",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "version": "0.1.0"
+}

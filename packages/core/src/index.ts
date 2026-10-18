@@ -5,6 +5,7 @@ export * from "./dry-run.js";
 export * from "./execution.js";
 export * from "./job-state.js";
 export * from "./manifest.js";
+export * from "./manifest-v2.js";
 export * from "./manifest.schema.js";
 export * from "./markdown.js";
 export * from "./risk-report.js";

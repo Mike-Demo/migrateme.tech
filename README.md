@@ -1,6 +1,23 @@
 # migrateme.tech
 Open-source AI-assisted CMS migration toolkit. Dry-run-first, local-first WordPress → Markdown migrations via CLI, MCP, web, and agents. 
 
+## MigrateMe Universal + Open Migration Package (folded in 2026-10-18)
+
+The anything-to-anything Universal converter and the Open Migration
+Package (OMP) standard (issue #34) were folded in from the Universal
+Bolt Forge build:
+
+- `packages/connectors/universal` — 15 source parsers + 15 destination
+  renderers on one canonical hub (no pair-to-pair converters), plus the
+  21-platform registry with honest Supported / Lossy / Planned labels.
+- `packages/format` (`@migrateme/format`) — the OMP manifest JSON Schema
+  and validator surface; the spec lives at
+  `docs/format/open-migration-package.md`.
+- `packages/core` gained Manifest v2 (`manifest-v2.ts`): v1 manifests
+  upgrade losslessly, so any registered pair can be described.
+- `apps/web/universal` — the Universal web app (standalone Vite app;
+  live at https://migrateme-universal-4zev.bolt.host).
+
 ## Setup
 
 Use Node.js **24.21.0** (version in `.nvmrc`) and pnpm **10.22.0** (pinned by

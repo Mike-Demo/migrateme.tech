@@ -1,0 +1,152 @@
+/**
+ * JSON Schema (draft 2020-12) for the OMP manifest.json, matching the wire
+ * manifest produced by the OMP destination connector and validated by
+ * validateOmpManifest on import.
+ */
+export const OMP_MANIFEST_SCHEMA = JSON.stringify(
+  {
+    $schema: 'https://json-schema.org/draft/2020-12/schema',
+    $id: 'https://migrateme.tech/schemas/omp-manifest-v2.json',
+    title: 'Open Migration Package manifest',
+    description:
+      'manifest.json at the root of an Open Migration Package (OMP) bundle.',
+    type: 'object',
+    required: ['format', 'version', 'sourcePlatform', 'exportedAt', 'items'],
+    properties: {
+      format: { type: 'string', const: 'open-migration-package' },
+      version: {
+        type: 'string',
+        pattern: '^\\d+\\.\\d+$',
+        description: 'Semantic version of the OMP format, e.g. "0.1".',
+      },
+      sourcePlatform: { type: 'string', minLength: 1 },
+      exportedAt: { type: 'string', format: 'date-time' },
+      items: {
+        type: 'array',
+        items: {
+          type: 'object',
+          required: ['id', 'title'],
+          properties: {
+            id: { type: 'string' },
+            type: {
+              type: 'string',
+              description: 'post | page | attachment | other',
+            },
+            title: { type: 'string' },
+            slug: { type: 'string' },
+            date: { type: ['string', 'null'], format: 'date-time' },
+            body: {
+              type: ['string', 'null'],
+              description: 'Markdown body when text content is available.',
+            },
+            bodyBlocks: {
+              type: 'array',
+              description: 'Portable Text-style blocks (alternative to body).',
+              items: { type: 'object' },
+            },
+            excerpt: { type: 'string' },
+            categories: { type: 'array', items: { type: 'string' } },
+            tags: { type: 'array', items: { type: 'string' } },
+            author: { type: 'string' },
+            featuredImage: { type: ['string', 'null'] },
+            customFields: {
+              type: 'object',
+              additionalProperties: { type: 'string' },
+            },
+            status: { type: 'string' },
+            contentFile: {
+              type: 'string',
+              description: 'Path under content/ for this item.',
+            },
+          },
+        },
+      },
+      assets: {
+        type: 'array',
+        items: {
+          type: 'object',
+          required: ['path', 'contentType', 'bundled'],
+          properties: {
+            path: {
+              type: 'string',
+              description:
+                'Package path for bundled assets, or the remote URL for referenced-only assets.',
+            },
+            contentType: { type: 'string' },
+            size: { type: 'integer' },
+            checksum: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+            altText: { type: ['string', 'null'] },
+            role: { type: 'string', enum: ['featuredImage', 'inline', 'other'] },
+            bundled: {
+              type: 'boolean',
+              description:
+                'True when the binary file is bundled in the package; false when the entry is a reference only.',
+            },
+          },
+        },
+      },
+      taxonomy: {
+        type: 'object',
+        properties: {
+          categories: { type: 'array', items: { type: 'string' } },
+          tags: { type: 'array', items: { type: 'string' } },
+        },
+      },
+      mappings: {
+        type: 'object',
+        properties: {
+          mapped: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['field', 'target'],
+              properties: {
+                field: { type: 'string' },
+                target: { type: 'string' },
+              },
+            },
+          },
+          defaulted: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['field', 'value'],
+              properties: {
+                field: { type: 'string' },
+                value: { type: 'string' },
+              },
+            },
+          },
+          dropped: {
+            type: 'array',
+            items: {
+              type: 'object',
+              required: ['field', 'reason'],
+              properties: {
+                field: { type: 'string' },
+                reason: { type: 'string' },
+              },
+            },
+          },
+        },
+      },
+      provenance: {
+        type: 'object',
+        properties: {
+          generator: { type: 'string' },
+          originalSource: { type: 'string' },
+          demoMode: { type: 'boolean' },
+          notes: { type: 'string' },
+        },
+      },
+      checksums: {
+        type: 'object',
+        description:
+          'sha256 hex digest per bundled file, keyed by file path (manifest.json itself excluded).',
+        additionalProperties: { type: 'string', pattern: '^[a-f0-9]{64}$' },
+      },
+    },
+  },
+  null,
+  2,
+);
