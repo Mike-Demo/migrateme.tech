@@ -11,14 +11,6 @@ const WEBFLOW_KNOWN = new Set([
   'post url', 'posturl', 'status', 'draft',
 ]);
 
-function pick(rec: Record<string, string>, ...keys: string[]): string | null {
-  for (const key of keys) {
-    const v = rec[key];
-    if (v !== undefined && v !== '') return v;
-  }
-  return null;
-}
-
 function pickCi(rec: Record<string, string>, ...keys: string[]): string | null {
   const lower: Record<string, string> = {};
   for (const [k, v] of Object.entries(rec)) lower[k.toLowerCase()] = v;
@@ -65,8 +57,8 @@ export const webflowCsvSource: SourceParser = {
       headers.forEach((h, i) => {
         rec[h] = values[i] ?? '';
       });
-      const slug = pick(rec, 'Slug');
-      const name = pick(rec, 'Name');
+      const slug = pickCi(rec, 'Slug');
+      const name = pickCi(rec, 'Name');
       if (!slug && !name) continue;
 
       const item = emptyItem('Webflow CMS Collection CSV');
@@ -83,9 +75,9 @@ export const webflowCsvSource: SourceParser = {
       if (updated) item.customFields['webflow_updated_on'] = updated;
       item.featuredImage =
         pickCi(rec, 'Main Image', 'MainImage', 'Thumbnail Image', 'Image') || null;
-      item.author = pick(rec, 'Author') ?? '';
+      item.author = pickCi(rec, 'Author') ?? '';
       item.categories = toArray(pickCi(rec, 'Category', 'Categories'));
-      item.tags = toArray(pick(rec, 'Tags'));
+      item.tags = toArray(pickCi(rec, 'Tags'));
       const draftFromSource = pickCi(rec, 'Draft', 'Status');
       const draft = (draftFromSource ?? '').toLowerCase();
       item.status =

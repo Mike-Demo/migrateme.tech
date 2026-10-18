@@ -53,28 +53,28 @@ export const shopifyCsvSource: SourceParser = {
       headers.forEach((h, i) => {
         rec[h] = values[i] ?? '';
       });
-      const handle = pick(rec, 'Handle');
+      const handle = pickCi(rec, 'Handle');
       if (!handle) continue;
 
-      const isNewProduct = pick(rec, 'Title') !== null;
+      const isNewProduct = pickCi(rec, 'Title') !== null;
       if (isNewProduct) {
         const item = emptyItem('Shopify product CSV');
         item.id = `shopify-${handle}`;
         item.slug = handle;
-        item.title = pick(rec, 'Title') ?? '';
+        item.title = pickCi(rec, 'Title') ?? '';
         item.body = pickCi(rec, 'Body (HTML)', 'Body_HTML', 'Body') ?? '';
         item.bodyFormat = 'html';
-        item.author = pick(rec, 'Vendor') ?? '';
+        item.author = pickCi(rec, 'Vendor') ?? '';
         item.categories = (() => {
           const cat = pickCi(rec, 'Product Category', 'Type');
           return cat ? [cat] : [];
         })();
-        const tagsRaw = pick(rec, 'Tags') ?? '';
+        const tagsRaw = pickCi(rec, 'Tags') ?? '';
         item.tags = tagsRaw
           .split(',')
           .map((t) => t.trim())
           .filter(Boolean);
-        const publishedRaw = pick(rec, 'Published');
+        const publishedRaw = pickCi(rec, 'Published');
         item.status = publishedRaw === 'false' ? 'draft' : 'published';
         if (publishedRaw !== null) markRead(item, 'status');
         item.date =

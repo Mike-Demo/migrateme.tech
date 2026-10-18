@@ -54,6 +54,13 @@ export function isManifestV2(value: unknown): value is ManifestV2 {
     !!destination &&
     typeof destination.connector === "string" &&
     typeof destination.outputPath === "string" &&
-    Array.isArray(m.items)
+    typeof m.createdAt === "string" &&
+    Array.isArray(m.items) &&
+    Array.isArray(m.mappings) &&
+    Array.isArray(m.assets) &&
+    Array.isArray(m.transformations) &&
+    Array.isArray(m.provenance) &&
+    !!m.rollback &&
+    typeof m.rollback === "object"
   );
 }

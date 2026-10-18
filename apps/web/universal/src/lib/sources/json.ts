@@ -71,6 +71,12 @@ export const jsonSource: SourceParser = {
               ? 'scheduled'
               : 'published';
       if (statusFromSource) markRead(item, 'status');
+      // firstString ignores booleans: a JSON `published: false` must not
+      // silently become published.
+      if (!statusFromSource && typeof rec['published'] === 'boolean') {
+        item.status = rec['published'] ? 'published' : 'draft';
+        markRead(item, 'status');
+      }
 
       const custom: Record<string, string> = {};
       for (const [k, v] of Object.entries(rec)) {

@@ -69,7 +69,7 @@ export const contentfulJsonDest: DestinationRenderer = {
             { id: 'title', name: 'Title', type: 'Symbol', required: true },
             { id: 'slug', name: 'Slug', type: 'Symbol', required: true },
             { id: 'date', name: 'Date', type: 'Date' },
-            { id: 'body', name: 'Body', type: 'Symbol' },
+            { id: 'body', name: 'Body', type: 'Text' },
             { id: 'tags', name: 'Tags', type: 'Array', items: { type: 'Symbol' } },
             {
               id: 'categories',

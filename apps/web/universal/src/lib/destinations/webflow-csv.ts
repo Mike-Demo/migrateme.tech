@@ -41,7 +41,7 @@ export const webflowCsvDest: DestinationRenderer = {
       item.author,
       item.categories[0] ?? '',
       item.tags.join(', '),
-      item.status === 'draft' ? 'true' : 'false',
+      item.status === 'published' ? 'false' : 'true',
     ]);
     const manifest = buildManifest(items, 'webflow-csv', () => 'collection.csv');
     return {

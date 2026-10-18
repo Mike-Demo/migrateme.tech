@@ -13,7 +13,7 @@ const CANONICAL_ALIASES = new Set([
 export const csvSource: SourceParser = {
   id: 'csv',
   label: 'CSV (first row is headers)',
-  extensions: ['.csv', '.tsv'],
+  extensions: ['.csv'],
   sourceFields: [
     'title', 'slug', 'date', 'body', 'excerpt', 'categories', 'tags',
     'author', 'featuredImage', 'status',
@@ -62,6 +62,13 @@ export const csvSource: SourceParser = {
               ? 'scheduled'
               : 'published';
       if (statusFromSource) markRead(item, 'status');
+      // A boolean-like `published` column (true/false) is a status, not a
+      // date: false means the item must not come out as published.
+      const publishedFlag = pick(rec, 'published');
+      if (!statusFromSource && publishedFlag !== null && /^(true|false)$/i.test(publishedFlag.trim())) {
+        item.status = publishedFlag.trim().toLowerCase() === 'false' ? 'draft' : 'published';
+        markRead(item, 'status');
+      }
 
       const custom: Record<string, string> = {};
       for (const [k, v] of Object.entries(rec)) {

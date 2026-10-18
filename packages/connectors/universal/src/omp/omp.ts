@@ -126,9 +126,11 @@ export function validateOmpManifest(raw: unknown): OmpValidationResult {
         return;
       }
       const it = entry as Record<string, unknown>;
-      if (!strOf(it.id).trim()) errors.push(`items[${i}].id is required.`);
-      if (!strOf(it.title).trim()) {
-        errors.push(`items[${i}].title is required (the OMP schema requires both id and title).`);
+      if (typeof it.id !== 'string' || !it.id.trim()) {
+        errors.push(`items[${i}].id is required and must be a string.`);
+      }
+      if (typeof it.title !== 'string' || !it.title.trim()) {
+        errors.push(`items[${i}].title is required and must be a string (the OMP schema requires both id and title).`);
       }
       if (it.body === null && !Array.isArray(it.bodyBlocks) && !strOf(it.contentFile)) {
         warnings.push(`items[${i}] has no body, bodyBlocks or contentFile.`);
@@ -155,7 +157,9 @@ export function validateOmpManifest(raw: unknown): OmpValidationResult {
   if (m.taxonomy !== undefined) {
     const tax = m.taxonomy as Record<string, unknown>;
     if (
+      !tax ||
       typeof tax !== 'object' ||
+      Array.isArray(tax) ||
       (tax.categories !== undefined && !Array.isArray(tax.categories)) ||
       (tax.tags !== undefined && !Array.isArray(tax.tags))
     ) {

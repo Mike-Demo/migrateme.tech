@@ -71,29 +71,8 @@ export const ompDest: DestinationRenderer = {
       }
     }
 
-    if (assets.length > 0) {
-      files.push({
-        path: `${OMP_ASSETS_DIR}index.json`,
-        content: JSON.stringify(
-          {
-            note: 'Asset reference index for this Open Migration Package. No binary files are bundled: every entry below is a reference that the conversion report names as not bundled.',
-            count: assets.length,
-            assets: assets.map((a) => ({ ...a, bundled: false })),
-          },
-          null,
-          2,
-        ),
-      });
-      files.push({
-        path: `${OMP_ASSETS_DIR}README.md`,
-        content:
-          '# Assets\n\nThis folder holds only `index.json` — an index of the media referenced by content items. ' +
-          'No binary files are bundled in this export: each entry records the reference (package path or URL), its content type, role (featuredImage or inline), and alt text, with `bundled: false`. ' +
-          'The conversion report lists every referenced asset as not bundled so targets can resolve them.\n',
-      });
-    }
-
     // content/ folder: one markdown file per content item.
+    const usedContentPaths = new Set<string>();
     const ompItems = items
       .filter((item) => item.type !== 'attachment')
       .map((item, i) => {
@@ -112,7 +91,13 @@ export const ompDest: DestinationRenderer = {
         if (item.author) fm.author = item.author;
         if (item.featuredImage) fm.featuredImage = item.featuredImage;
         if (Object.keys(item.customFields).length) fm.customFields = item.customFields;
-        const contentPath = `${OMP_CONTENT_DIR}${slug}.md`;
+        // Duplicate slugs must not overwrite each other in the ZIP:
+        // suffix later collisions deterministically (-2, -3, ...).
+        let contentPath = `${OMP_CONTENT_DIR}${slug}.md`;
+        for (let n = 2; usedContentPaths.has(contentPath); n++) {
+          contentPath = `${OMP_CONTENT_DIR}${slug}-${n}.md`;
+        }
+        usedContentPaths.add(contentPath);
         files.push({
           path: contentPath,
           content: `${toFrontmatter(fm)}\n\n${item.body}\n`,
@@ -141,6 +126,28 @@ export const ompDest: DestinationRenderer = {
       if (item.type !== 'attachment') continue;
       const url = item.featuredImage ?? item.customFields['attachment_url'] ?? '';
       if (url) addAsset(url, undefined, 'other');
+    }
+
+    if (assets.length > 0) {
+      files.push({
+        path: `${OMP_ASSETS_DIR}index.json`,
+        content: JSON.stringify(
+          {
+            note: 'Asset reference index for this Open Migration Package. No binary files are bundled: every entry below is a reference that the conversion report names as not bundled.',
+            count: assets.length,
+            assets: assets.map((a) => ({ ...a, bundled: false })),
+          },
+          null,
+          2,
+        ),
+      });
+      files.push({
+        path: `${OMP_ASSETS_DIR}README.md`,
+        content:
+          '# Assets\n\nThis folder holds only `index.json` — an index of the media referenced by content items. ' +
+          'No binary files are bundled in this export: each entry records the reference (package path or URL), its content type, role (featuredImage or inline), and alt text, with `bundled: false`. ' +
+          'The conversion report lists every referenced asset as not bundled so targets can resolve them.\n',
+      });
     }
 
     const manifest: OmpManifest = {

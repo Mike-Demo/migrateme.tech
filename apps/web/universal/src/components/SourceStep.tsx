@@ -31,6 +31,7 @@ export function SourceStep({
   const demo = demoForSource(parserId);
   const inputRef = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
+  const [loadError, setLoadError] = useState<string | null>(null);
 
   const extensions = parser?.extensions ?? ['.md', '.zip'];
 
@@ -59,6 +60,12 @@ export function SourceStep({
         const text = await file.text();
         onLoaded({ text, fileName: file.name });
       }
+    } catch (e) {
+      setLoadError(
+        e instanceof Error
+          ? `Could not read that file: ${e.message}`
+          : 'Could not read that file. It may be corrupt or in an unexpected format.',
+      );
     } finally {
       setBusy(false);
     }
@@ -101,6 +108,11 @@ export function SourceStep({
           Choose file
         </button>
         {busy && <p className="mt-2 text-sm text-ink-normal">Reading file…</p>}
+        {loadError && (
+          <div className="mt-3">
+            <ErrorAlert message={loadError} onDismiss={() => setLoadError(null)} />
+          </div>
+        )}
       </div>
 
       {demo && (
