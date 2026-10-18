@@ -1,0 +1,1 @@
+{"dependencies":{"jszip":"^3.10.1"},"exports":{".":"./dist/index.js"},"main":"./dist/index.js","name":"@migrateme/connector-universal","scripts":{"build":"tsc -p tsconfig.json"},"type":"module","types":"./dist/index.d.ts","version":"0.1.0"}
