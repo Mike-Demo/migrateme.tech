@@ -1,0 +1,222 @@
+{
+  "boltSlidesVersion": 1,
+  "boltSlidesId": "11011050-f9d6-4d43-8a9e-3e43af51bbaf",
+  "deck": {
+    "title": "MigrateMe — move your content anywhere, safely",
+    "transition": "fade",
+    "font": "space",
+    "accent": "#14b8a6"
+  },
+  "slides": [
+    {
+      "id": "s1",
+      "position": 0,
+      "layout": "cover",
+      "props": {
+        "kicker": "Open source · migrateme.tech",
+        "title": "MigrateMe — move your content ==anywhere, safely==.",
+        "subtitle": "An AI-assisted, dry-run-first CMS migration toolkit.",
+        "foot": "github.com/Mike-Demo/migrateme.tech"
+      },
+      "background": {
+        "type": "gradient",
+        "from": "#07211d",
+        "to": "#06080d",
+        "angle": 160
+      },
+      "animation": "cascade",
+      "transition": null,
+      "nav": null,
+      "notes": "Hook: everyone has a CMS they want to leave. MigrateMe makes leaving safe — preview first, write second.",
+      "status": "none"
+    },
+    {
+      "id": "s2",
+      "position": 1,
+      "layout": "contrast",
+      "props": {
+        "kicker": "The problem",
+        "title": "Leaving a CMS is ==painful==.",
+        "left": {
+          "label": "Today",
+          "title": "One-shot scripts",
+          "points": [
+            "Content trapped in proprietary exports",
+            "A script you run once and pray",
+            "No preview of what you'll get",
+            "No going back once it writes"
+          ]
+        },
+        "right": {
+          "label": "Should be",
+          "title": "Dry-run first",
+          "points": [
+            "See the plan before anything changes",
+            "Rehearse the migration safely",
+            "Check risks up front",
+            "Only write when you trust the result"
+          ]
+        }
+      },
+      "background": {
+        "type": "color",
+        "color": "var(--bg)"
+      },
+      "animation": "cascade",
+      "transition": null,
+      "nav": null,
+      "notes": "The pain is universal: exports are proprietary and migrations are blind. Land the gap between the two columns.",
+      "status": "none"
+    },
+    {
+      "id": "s3",
+      "position": 2,
+      "layout": "steps",
+      "props": {
+        "kicker": "What it does",
+        "title": "Local-first, ==dry-run-first==.",
+        "items": [
+          { "title": "Plan", "body": "Map every field before anything moves" },
+          { "title": "Dry-run", "body": "Rehearse the whole migration locally" },
+          { "title": "Migrate", "body": "Write for real, only when you're ready" },
+          { "title": "Validate", "body": "Check every item made it across intact" }
+        ]
+      },
+      "background": {
+        "type": "color",
+        "color": "var(--bg)"
+      },
+      "animation": "cascade",
+      "transition": null,
+      "nav": null,
+      "notes": "Four verbs. Everything runs locally — mappings and risk reports come before any write.",
+      "status": "none"
+    },
+    {
+      "id": "s4",
+      "position": 3,
+      "layout": "bigNumber",
+      "props": {
+        "kicker": "First route: WordPress → Markdown/MDX",
+        "value": "44/44",
+        "caption": "items migrated and validated from a real WordPress WXR export",
+        "foot": "Proven on a live export — not a demo"
+      },
+      "background": {
+        "type": "color",
+        "color": "var(--bg)"
+      },
+      "animation": "cascade",
+      "transition": null,
+      "nav": null,
+      "notes": "First shipping route: WordPress WXR to Markdown/MDX. 44 items in, 44 out, all validated.",
+      "status": "none"
+    },
+    {
+      "id": "s5",
+      "position": 4,
+      "layout": "manifesto",
+      "props": {
+        "label": "Where it's going",
+        "text": "One canonical format. Every source parses into it, every destination renders from it — and your preview lives at from.wp.sandbox.migrateme.tech."
+      },
+      "background": {
+        "type": "color",
+        "color": "var(--bg)"
+      },
+      "animation": "cascade",
+      "transition": null,
+      "nav": null,
+      "notes": "The vision: anything-to-anything. N sources + M destinations become N + M parsers instead of N times M scripts.",
+      "status": "none"
+    },
+    {
+      "id": "s6",
+      "position": 5,
+      "layout": "bento",
+      "props": {
+        "kicker": "Key features",
+        "title": "Built for real migrations.",
+        "tiles": [
+          {
+            "fig": "420",
+            "title": "Field mappings",
+            "body": "per real run",
+            "variant": "accent",
+            "c": 2
+          },
+          {
+            "title": "Risk flags",
+            "body": "Problems reported before anything is written",
+            "c": 2
+          },
+          {
+            "title": "Per-item Markdown",
+            "body": "One clean output file per piece of content",
+            "c": 2
+          },
+          {
+            "title": "CLI, MCP & web",
+            "body": "Drive it from the terminal, an agent, or a browser",
+            "c": 3
+          },
+          {
+            "title": "AI-assisted",
+            "body": "Mapping help where the schema gets messy",
+            "c": 3
+          }
+        ]
+      },
+      "background": {
+        "type": "color",
+        "color": "var(--bg)"
+      },
+      "animation": "cascade",
+      "transition": null,
+      "nav": null,
+      "notes": "420 field mappings per real run; risk flags surface trouble early; output is one Markdown file per item. Three surfaces: CLI, MCP, web.",
+      "status": "none"
+    },
+    {
+      "id": "s7",
+      "position": 6,
+      "layout": "statement",
+      "props": {
+        "kicker": "Status",
+        "title": "Built for ==DEV's Hacktoberfest== Week 2, October 2026.",
+        "body": "Open source, MIT-spirited, and looking for contributors."
+      },
+      "background": {
+        "type": "color",
+        "color": "var(--bg)"
+      },
+      "animation": "cascade",
+      "transition": null,
+      "nav": null,
+      "notes": "Timing and provenance: a Hacktoberfest Week 2 build, fully open source.",
+      "status": "none"
+    },
+    {
+      "id": "s8",
+      "position": 7,
+      "layout": "cover",
+      "props": {
+        "kicker": "Move your content",
+        "title": "Try MigrateMe ==today==.",
+        "subtitle": "migrateme.tech · github.com/Mike-Demo/migrateme.tech",
+        "foot": "Open source · Contributions welcome"
+      },
+      "background": {
+        "type": "gradient",
+        "from": "#07211d",
+        "to": "#06080d",
+        "angle": 160
+      },
+      "animation": "cascade",
+      "transition": null,
+      "nav": null,
+      "notes": "Close with the links: migrateme.tech to try it, GitHub to contribute.",
+      "status": "none"
+    }
+  ]
+}
