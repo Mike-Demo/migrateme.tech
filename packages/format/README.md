@@ -14,5 +14,5 @@ The Open Migration Package is MigrateMe's open import/export standard
 
 MigrateMe Universal (apps/web/universal) is the reference implementation:
 it exports `.omp` packages, imports them as a source, and validates them
-against this schema. Conformance levels — OMP Reader, OMP Writer,
+against this schema's required fields, item/asset shapes, and checksum rules. Conformance levels — OMP Reader, OMP Writer,
 OMP Full — are defined in the spec under `docs/format/`.

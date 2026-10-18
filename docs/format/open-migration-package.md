@@ -21,9 +21,9 @@ the same layout:
 
 - `manifest.json` — the package description: `format`
   (`open-migration-package`), `version`, `sourcePlatform`, `exportedAt`,
-  `items[]`, `assets[]`, `taxonomy[]`, `mappings[]`, `provenance[]`, and
-  a `checksums` map of sha256 hashes (BagIt-style, RFC 8493) covering
-  every bundled file.
+  the `items` and `assets` arrays, the `taxonomy`, `mappings`, and
+  `provenance` objects, and a `checksums` map of sha256 hashes
+  (BagIt-style, RFC 8493) covering every bundled file.
 - `content/` — one Markdown/MDX file per item, with a stable slug-based
   name referenced from the manifest's item list. Bodies may also be
   expressed as Portable Text block arrays for structured targets; the
@@ -44,7 +44,8 @@ generated from the same source (`packages/format/src/index.ts`):
 - the downloadable schema on the Universal app's "The Standard" page.
 
 Validation is a format-level guarantee, not a courtesy: importing an OMP
-package validates the manifest against the schema **and** verifies the
+package validates the manifest against the schema's required fields,
+item/asset shapes, and value rules **and** verifies the
 sha256 checksums, and failures produce specific, distinguishable errors
 (missing file, schema violation, checksum mismatch) rather than a
 generic failure. Dry-run first applies to the format itself: a package

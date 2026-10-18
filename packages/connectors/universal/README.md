@@ -29,3 +29,8 @@ work. These modules run in the browser today (the Universal web app in
 `apps/web/universal` consumes this same module tree); the Node engine's
 CLI/MCP connectors remain `packages/connectors/wordpress` and
 `packages/connectors/markdown`.
+
+Note on copy parity: this package's modules are the same code as the
+web app's `apps/web/universal/src/lib/` tree, with one package-only
+addition — `src/index.ts`, the export barrel for `@migrateme/connector-universal`,
+which has no counterpart in the app copy by design.

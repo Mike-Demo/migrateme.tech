@@ -132,6 +132,17 @@ export function validateOmpManifest(raw: unknown): OmpValidationResult {
       if (typeof it.title !== 'string' || !it.title.trim()) {
         errors.push(`items[${i}].title is required and must be a string (the OMP schema requires both id and title).`);
       }
+      if (it.customFields !== undefined) {
+        if (!it.customFields || typeof it.customFields !== 'object' || Array.isArray(it.customFields)) {
+          errors.push(`items[${i}].customFields must be an object mapping field names to strings.`);
+        } else {
+          for (const [k, v] of Object.entries(it.customFields as Record<string, unknown>)) {
+            if (typeof v !== 'string') {
+              errors.push(`items[${i}].customFields["${k}"] must be a string.`);
+            }
+          }
+        }
+      }
       if (it.body === null && !Array.isArray(it.bodyBlocks) && !strOf(it.contentFile)) {
         warnings.push(`items[${i}] has no body, bodyBlocks or contentFile.`);
       }
