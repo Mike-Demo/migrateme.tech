@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://migrateme.tech/</loc></url>
-</urlset>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap><loc>https://migrateme.tech/sitemap-main.xml</loc></sitemap>
+  <sitemap><loc>https://migrateme.tech/sitemap-pairs.xml</loc></sitemap>
+</sitemapindex>
