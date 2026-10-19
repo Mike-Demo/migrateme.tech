@@ -1,13 +1,24 @@
 # migrateme.tech
 
-> Open-source, AI-assisted CMS migration toolkit. Dry-run first: plan, rehearse with a risk report, approve, execute with checkpoints, validate with reconciliation. MVP path: WordPress (WXR) to Markdown/MDX. One core engine, three surfaces: CLI, MCP server, web.
+> Open-source, AI-assisted content migration toolkit. Dry-run first: plan, rehearse with a risk report, approve, execute with checkpoints, validate with reconciliation. Two layers: the core engine (WordPress WXR → Markdown/MDX reference path, CLI / MCP / web) and **MigrateMe Universal** — a browser-only anything-to-anything converter built on one canonical format, with the **Open Migration Package (OMP)** as an open import/export standard. All sites in this family are hosted on SpaceFast.
 
 ## Project
 
 - [Live site](https://migrateme.tech/): project home, including the naming convention and the donation-bundle concept demo
-- [GitHub repository](https://github.com/Mike-Demo/migrateme.tech): source, MIT licensed
+- [MigrateMe Universal](https://universal.migrateme.tech/): the anything-to-anything converter — runs 100% in the browser, files never leave the device
+- [GitHub repository](https://github.com/Mike-Demo/migrateme.tech): source, MIT licensed; Universal lives in `apps/web/universal` and `packages/connectors/universal`, the OMP format in `packages/format`
+- [Open Migration Package spec](https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/format/open-migration-package.md): manifest envelope, Portable Text bodies, sha256 checksums, JSON Schema, conformance levels (OMP Reader / Writer / Full)
 - [Copilot usage log](https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/copilot-usage.md): how the MVP was planned and built with GitHub Copilot
 - [MVP readiness report](https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/status/mvp-readiness-report.md): what the tests establish and what they do not
+
+## MigrateMe Universal — the converter
+
+- **One canonical hub, no N×N converters.** Every source parses into the same canonical item model; every destination renders from it. Adding a platform is one parser or one renderer, never both.
+- **Registry (37 nodes):** 21 researched platforms — 10 AI builders (Replit, Lovable, Bolt.new, v0 by Vercel, Bubble, Softr, Glide, Google AppSheet, Adalo, DronaHQ) and 11 CMS platforms by market share (WordPress, Shopify, Wix, Squarespace, Joomla, Tilda, Webflow, Duda, Drupal, GoDaddy Website Builder, plus WordPress.com) — plus 15 format connectors (WXR, Markdown, Ghost, JSON, CSV, RSS/Atom, Blogger, Shopify CSV, Webflow CSV, Notion, Medium, Sanity NDJSON, Contentful, static HTML, OMP).
+- **Honest statuses.** Every route is labelled Supported, Lossy (with the losses named in the report), or Planned. 37 × 36 = 1,332 directed pairs, each with its own landing page stating what is kept, what is dropped, and the route status.
+- **Pair addresses.** Every pair has a path page — `https://universal.migrateme.tech/convert/<source>-to-<destination>` — and a subdomain address: `<source>.<destination>.migrateme.tech` (for example, https://lovable.wordpress.migrateme.tech/).
+- **Scanner (lite).** When a source has no export, the in-browser scanner discovers content via sitemap, RSS/Atom, and JSON-LD. It respects robots rules and never bypasses logins, CAPTCHAs, or paywalls. A full headless crawl is server/CLI work, not something the browser tool claims to do.
+- **Accessibility.** WCAG 2.2 AA targets throughout: landmarks and skip link, full keyboard support with visible focus, aria-live progress announcements, and statuses always shown as icon plus text, never colour alone.
 
 ## Proof — the real-world run (October 14, 2026)
 
@@ -19,11 +30,12 @@
 
 ## Concepts
 
-- Naming convention: every address declares what it is — `from.<source>` for run output, `<source>-to-<destination>` for routes (vision: [issue #17](https://github.com/Mike-Demo/migrateme.tech/issues/17))
-- Open Migration Package: a platform-neutral format — manifest envelope, Portable Text bodies, BagIt-style checksums ([issue #34](https://github.com/Mike-Demo/migrateme.tech/issues/34))
-- Connector roadmap, Lovable source first ([issue #32](https://github.com/Mike-Demo/migrateme.tech/issues/32))
+- Naming convention: every address declares what it is — `from.<source>` for run output, `<source>.<destination>` for pair routes, `<source>-to-<destination>` in path form (issue #17)
+- Open Migration Package: a platform-neutral format — manifest envelope, Portable Text bodies, BagIt-style checksums (issue #34, shipped: spec, JSON Schema, validator, and Universal as the reference implementation)
+- Connector roadmap (issue #32)
 - Business model: freemium; a Humble Bundle–style donation bundle split across the source platform's foundation, the destination platform's foundation, the open-source libraries used, and the tool — sliders on the live site
 
 ## For agents
 
 - [agents.md](https://migrateme.tech/agents.md): how to drive the toolkit — surfaces, pipeline contract, and the approval rules that bind every surface
+- [sitemap.xml](https://migrateme.tech/sitemap.xml): this site's pages; the converter's full pair index is at https://universal.migrateme.tech/sitemap.xml

@@ -29,3 +29,10 @@ The reference run (October 14, 2026, live WordPress testbed → Markdown) and ev
 - Client content stays on the client's machine: prefer the local-model path; do not send export contents to hosted APIs.
 - Report counts exactly as the tools return them (items, mappings by method, risks, exceptions). Do not round a partial success up to a pass.
 - If a step fails verification three times, stop and escalate to the human rather than retrying variations.
+
+## MigrateMe Universal (added 2026-10-18)
+
+- **Universal converter** — https://universal.migrateme.tech/ — a browser-only surface over the same canonical model: 15 source parsers and 15 destination renderers around the canonical item hub (`packages/connectors/universal` in the repo). Files are processed locally in the visitor's browser; nothing is uploaded.
+- **Open Migration Package (OMP)** — the shipped standard (issue #34): `packages/format` holds the JSON Schema and validator; the spec is `docs/format/open-migration-package.md`. Conformance levels: OMP Reader, OMP Writer, OMP Full. When exchanging content with another tool, prefer an OMP package over a platform-specific export.
+- **Pair pages** — every source × destination pair (1,332) has a landing page at `https://universal.migrateme.tech/convert/<source>-to-<destination>` and a subdomain address `<source>.<destination>.migrateme.tech`. A pair page states the route status (Supported / Lossy with named losses / Planned) — trust the page's stated status, not this file, for any individual route.
+- **Scanner (lite)** — browser-side discovery via sitemap / RSS / JSON-LD only; robots-respecting; never a login, CAPTCHA, or paywall bypass. Do not represent it as a full crawl.
