@@ -56,6 +56,37 @@ function initialTheme(): Theme {
   return 'auto';
 }
 
+function CarbonEstimate() {
+  const [grams, setGrams] = useState<number | null>(null);
+  useEffect(() => {
+    const t = window.setTimeout(() => {
+      try {
+        let bytes = 0;
+        const nav = performance.getEntriesByType('navigation')[0] as
+          | PerformanceNavigationTiming
+          | undefined;
+        if (nav) bytes += nav.transferSize || 0;
+        for (const r of performance.getEntriesByType('resource')) {
+          bytes += (r as PerformanceResourceTiming).transferSize || 0;
+        }
+        // CO2.js (SWD model) per-byte factor: ~0.698 g CO2e per MB transferred.
+        if (bytes > 0) setGrams((bytes / 1_000_000) * 0.698);
+      } catch {
+        /* estimate unavailable — render nothing */
+      }
+    }, 1500);
+    return () => window.clearTimeout(t);
+  }, []);
+  if (grams === null) return null;
+  return (
+    <p className="mt-2 text-xs">
+      ≈ {grams.toFixed(2)} g CO₂e estimated for this page view — computed in your
+      browser from the page's transfer size using the CO2.js model. An estimate,
+      not a measurement. <a className="underline" href="/carbon.txt">Carbon disclosure</a>
+    </p>
+  );
+}
+
 export default function App() {
   const [theme, setTheme] = useState<Theme>(initialTheme);
 
@@ -848,6 +879,7 @@ export default function App() {
             upload leaves this device. Conversions marked Lossy name what they lose in
             the report. Part of the open-source MigrateMe.Tech project (MIT).
           </p>
+          <CarbonEstimate />
         </div>
       </footer>
     </div>

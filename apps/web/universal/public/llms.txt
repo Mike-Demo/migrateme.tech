@@ -1,0 +1,39 @@
+# MigrateMe Universal
+
+> Anything-to-anything content migration that runs entirely in your browser.
+> Part of the open-source MigrateMe.Tech project (MIT). Nothing you upload
+> leaves your device: conversion happens locally, in this page.
+
+MigrateMe Universal converts between 37 platforms and formats through one
+canonical hub (the Open Migration Package model): every source parses into
+canonical content items, every destination renders from them. There are
+37 x 36 = 1,332 directed migration routes. Each route states honestly
+whether it is Supported, Lossy (the report names what it loses), or Planned.
+
+## Key pages
+
+- Converter and route matrix: https://universal.migrateme.tech/
+- Contribute a parser, a renderer, or a loss fix: https://universal.migrateme.tech/contribute
+- Every route has its own address, e.g. Lovable to WordPress:
+  https://lovable.wordpress.migrateme.tech/
+- Full index of all 1,332 canonical route URLs:
+  https://migrateme.tech/sitemap-pairs.xml
+
+## The standard
+
+Universal is the reference implementation of the Open Migration Package
+(OMP), an open import/export format: a manifest.json with sha256 checksums,
+a content/ folder (Markdown/MDX with Portable Text bodies), and an assets/
+index. Conformance levels: OMP Reader, OMP Writer, OMP Full.
+
+- Spec: https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/format/open-migration-package.md
+- Code: https://github.com/Mike-Demo/migrateme.tech
+- Project home: https://migrateme.tech/
+
+## Notes for agents
+
+- Conversions marked Lossy name their losses in the report; never present a
+  Lossy route as lossless, or a Planned route as available.
+- Scanner (lite) is a browser-side discovery aid only (sitemap, feeds,
+  structured data). It respects robots rules and does not bypass logins,
+  CAPTCHAs, or paywalls.

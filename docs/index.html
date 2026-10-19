@@ -71,6 +71,14 @@
     font: 500 0.875rem/1.4 Geist, sans-serif; cursor: pointer;
   }
   .viewtoggle button:hover { border-color: var(--link); color: var(--text); }
+  .finder { margin: 1rem 0 0; display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+  .finder label { font: 500 0.875rem/1.4 Geist, sans-serif; color: var(--text-secondary); }
+  .finder select {
+    min-height: 44px; max-width: 100%; padding: 0.55rem 0.9rem; border: 1px solid var(--border);
+    border-radius: 4px; background: var(--surface); color: var(--text);
+    font: 500 0.875rem/1.4 Geist, sans-serif; cursor: pointer;
+  }
+  .finder select:hover, .finder select:focus-visible { border-color: var(--link); }
   #lead { display: flex; flex-direction: column; gap: 1rem; }
   #lead.show-universal #sec-universal { order: 1; }
   #lead.show-universal #sec-topology { order: 2; }
@@ -155,6 +163,7 @@
         <h1 class="mark"><img src="logo.svg" alt="migrateme.tech logo" width="46" height="46">migrateme<span>.tech</span></h1>
         <p class="tag">Open-source, AI-assisted CMS migrations — dry-run first, so you see exactly what moves before anything does. Now anything to anything.</p>
         <p class="viewtoggle"><button id="vt-btn" type="button" aria-pressed="false">See the original version (v1 story first)</button></p>
+        <p class="finder"><label for="finder-select">Find what you need:</label> <select id="finder-select" onchange="if(this.value){window.location.href=this.value}"><option value="">Choose…</option><option value="https://universal.migrateme.tech/">Convert content now — open MigrateMe Universal</option><option value="https://universal.migrateme.tech/contribute">Contribute a migration route</option><option value="#standard">Read about the Open Migration Package</option><option value="#proof">See the proof — the validated real-world run</option><option value="#paid-for">How the project is paid for</option><option value="https://github.com/Mike-Demo/migrateme.tech">Get the code on GitHub</option><option value="https://dev.to/mpmike/open-source-migration-tool-2ki0">Read the build story on DEV</option></select></p>
       </div>
       <nav aria-label="Primary navigation"><a href="#what-it-does">What it does</a><a href="#universal">Universal</a><a href="#standard">The standard</a><a href="#proof">Proof</a><a href="#paid-for">How it's paid for</a><a href="#name">The name is the spec</a><a href="#open-source">Open source</a><a href="#status">Status</a><a href="llms.txt">llms.txt</a><a href="agents.md">For agents</a></nav>
     </div>
