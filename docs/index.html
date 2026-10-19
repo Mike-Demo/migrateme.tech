@@ -9,49 +9,135 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="description" content="Open-source, AI-assisted CMS migration toolkit. A proven WordPress WXR to Markdown/MDX pipeline, plus MigrateMe Universal: anything-to-anything conversion in the browser and the Open Migration Package, an open import/export standard. Dry-run first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  :root { color-scheme: dark; }
+  :root {
+    color-scheme: dark;
+    --canvas: #0d1117;
+    --surface: #161b22;
+    --surface-raised: #21262d;
+    --border: #30363d;
+    --border-muted: #21262d;
+    --text: #f0f6fc;
+    --text-secondary: #c9d1d9;
+    --text-muted: #8b949e;
+    --link: #58a6ff;
+    --success: #3fb950;
+    --focus: #58a6ff;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      color-scheme: light;
+      --canvas: #f6f8fa;
+      --surface: #ffffff;
+      --surface-raised: #f6f8fa;
+      --border: #d0d7de;
+      --border-muted: #d8dee4;
+      --text: #1f2328;
+      --text-secondary: #3d444d;
+      --text-muted: #59636e;
+      --link: #0969da;
+      --success: #1a7f37;
+      --focus: #0969da;
+    }
+  }
   * { box-sizing: border-box; }
-  body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-         background: #0d1117; color: #e6edf3; line-height: 1.6; }
-  main { max-width: 720px; margin: 0 auto; padding: 4rem 1.5rem 3rem; }
-  .mark { font-size: 2.6rem; font-weight: 800; letter-spacing: -0.02em; margin: 0; }
-  .mark span { color: #3fb950; }
-  .tag { font-size: 1.2rem; color: #9da7b3; margin: 0.6rem 0 2rem; }
-  h2 i { margin-right: 0.45em; }
-  h2 { font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.08em; color: #3fb950; margin: 2.2rem 0 0.6rem; }
-  p, li { color: #c9d1d9; }
-  ul { padding-left: 1.2rem; }
-  code { background: #161b22; border: 1px solid #30363d; border-radius: 6px; padding: 0.1em 0.4em; font-size: 0.92em; }
-  table { border-collapse: collapse; width: 100%; margin: 0.8rem 0 0.4rem; font-size: 0.95rem; }
-  th, td { border-bottom: 1px solid #30363d; text-align: left; padding: 0.45rem 0.5rem; vertical-align: top; }
-  th { color: #9da7b3; font-weight: 600; }
-  a { color: #58a6ff; }
-  .card { border: 1px solid #30363d; border-radius: 12px; padding: 1.1rem 1.3rem; background: #161b22; margin-top: 1rem; }
-
-  #lead { display: flex; flex-direction: column; }
+  html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
+  body { margin: 0; background: var(--canvas); color: var(--text); font: 16px/1.6 Geist, sans-serif; }
+  a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+  a:hover { text-decoration-thickness: 2px; }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--focus); outline-offset: 2px;
+  }
+  .site-header { border-bottom: 1px solid var(--border-muted); background: var(--canvas); }
+  .header-inner, main, footer { width: min(100% - 2rem, 72rem); margin-inline: auto; }
+  .header-inner { padding: 1rem 0; display: grid; gap: 1rem; }
+  .brand { display: flex; align-items: center; gap: 0.75rem; }
+  .mark { margin: 0; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.03em; }
+  .mark img { width: 2rem; height: 2rem; vertical-align: middle; margin-right: 0.5rem; }
+  .mark span { color: var(--success); }
+  .tag { max-width: 54rem; margin: 0.75rem 0 0; color: var(--text-secondary); font-size: clamp(1.25rem, 3vw, 2rem); line-height: 1.3; letter-spacing: -0.025em; }
+  nav { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; }
+  nav a { color: var(--text-secondary); font-size: 0.875rem; }
+  nav a:hover { color: var(--text); }
+  main { padding: 2.5rem 0 3rem; }
+  .hero { padding: 0 0 2.5rem; }
+  .viewtoggle { margin: 1.25rem 0 0; }
+  .viewtoggle button {
+    min-height: 44px; padding: 0.55rem 0.9rem; border: 1px solid var(--border);
+    border-radius: 4px; background: var(--surface); color: var(--text-secondary);
+    font: 500 0.875rem/1.4 Geist, sans-serif; cursor: pointer;
+  }
+  .viewtoggle button:hover { border-color: var(--link); color: var(--text); }
+  #lead { display: flex; flex-direction: column; gap: 1rem; }
   #lead.show-universal #sec-universal { order: 1; }
-  #lead.show-universal #sec-standard { order: 2; }
-  #lead.show-universal #sec-what { order: 3; }
+  #lead.show-universal #sec-topology { order: 2; }
+  #lead.show-universal #sec-standard { order: 3; }
   #lead.show-universal #sec-proof { order: 4; }
+  #lead.show-universal #sec-what { order: 5; }
   #lead.show-classic #sec-what { order: 1; }
   #lead.show-classic #sec-universal { order: 2; }
-  #lead.show-classic #sec-standard { order: 3; }
-  #lead.show-classic #sec-proof { order: 4; }
-  .viewtoggle { margin: 0 0 0.4rem; }
-  .viewtoggle button { background: #161b22; color: #58a6ff; border: 1px solid #30363d; border-radius: 8px; padding: 0.45em 0.9em; font-size: 0.95rem; cursor: pointer; }
-  .viewtoggle button:hover { border-color: #58a6ff; }
-  .viewtoggle button:focus-visible { outline: 3px solid #58a6ff; outline-offset: 2px; }
-  footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid #30363d; color: #9da7b3; font-size: 0.92rem; }
+  #lead.show-classic #sec-topology { order: 3; }
+  #lead.show-classic #sec-standard { order: 4; }
+  #lead.show-classic #sec-proof { order: 5; }
+  #lead > section, .card {
+    min-width: 0; padding: clamp(1rem, 3vw, 1.5rem);
+    border: 1px solid var(--border); border-radius: 8px; background: var(--surface);
+  }
+  #lead h2, main > h2 {
+    margin: 0 0 1rem; color: var(--text); font-size: clamp(1.25rem, 2.4vw, 1.5rem);
+    line-height: 1.35; letter-spacing: -0.02em; font-weight: 600;
+  }
+  h2 i { margin-right: 0.5rem; color: var(--link); }
+  p, li { color: var(--text-secondary); }
+  ul { padding-left: 1.25rem; }
+  li + li { margin-top: 0.4rem; }
+  strong { color: var(--text); }
+  code { padding: 0.12em 0.35em; border: 1px solid var(--border); border-radius: 4px; background: var(--canvas); color: var(--text); font: 0.9em "JetBrains Mono", monospace; overflow-wrap: anywhere; }
+  table { width: 100%; margin: 0.8rem 0 0.4rem; border-collapse: collapse; font-size: 0.9rem; }
+  th, td { padding: 0.65rem 0.75rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+  th { color: var(--text-muted); font-weight: 600; }
+  #sec-universal { border-color: var(--link) !important; }
+  #sec-universal > p:first-of-type { font-size: 1.05rem; }
+  #sec-topology { background: var(--surface-raised) !important; }
+  #sec-proof li strong { color: var(--success); }
+  .card { margin-top: 1rem; }
+  #bundle-demo input[type="number"] {
+    width: 5.5em; padding: 0.3rem 0.45rem; border: 1px solid var(--border);
+    border-radius: 4px; background: var(--canvas); color: var(--text); font: inherit;
+  }
+  #bundle-demo input[type="range"] { width: min(70%, 30rem); accent-color: var(--link); }
+  #bundle-demo input[type="radio"] { accent-color: var(--link); }
+  #bd-rows label { display: block; color: var(--text-secondary); font-size: 0.9rem; }
+  .secondary-section { margin-top: 2.5rem; padding: clamp(1rem, 3vw, 1.5rem); border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+  footer { padding: 1.25rem 0 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.875rem; }
+  @media (max-width: 640px) {
+    .header-inner, main, footer { width: min(100% - 2rem, 72rem); }
+    main { padding-top: 1.75rem; }
+    .hero { padding-bottom: 1.75rem; }
+    nav { gap: 0.35rem 0.75rem; }
+    table { display: block; overflow-x: auto; }
+    th, td { min-width: 9rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
 </style>
 </head>
 <body>
-<main>
-  <p class="mark"><img src="logo.svg" alt="migrateme.tech logo" width="46" height="46" style="vertical-align:-7px;margin-right:12px">migrateme<span>.tech</span></p>
-  <p class="tag">Open-source, AI-assisted CMS migrations — dry-run first, so you see exactly what moves before anything does. Now anything to anything.</p>
-
-  <nav style="margin:0 0 1.6rem;font-size:0.95rem"><a href="#what-it-does">What it does</a> · <a href="#universal">Universal</a> · <a href="#standard">The standard</a> · <a href="#proof">Proof</a> · <a href="#paid-for">How it's paid for</a> · <a href="#name">The name is the spec</a> · <a href="#open-source">Open source</a> · <a href="#status">Status</a> · <a href="llms.txt">llms.txt</a> · <a href="agents.md">For agents</a></nav>
-    <p class="viewtoggle"><button id="vt-btn" type="button" aria-pressed="false">See the original version (v1 story first)</button></p>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="hero">
+        <h1 class="mark"><img src="logo.svg" alt="migrateme.tech logo" width="46" height="46">migrateme<span>.tech</span></h1>
+        <p class="tag">Open-source, AI-assisted CMS migrations — dry-run first, so you see exactly what moves before anything does. Now anything to anything.</p>
+        <p class="viewtoggle"><button id="vt-btn" type="button" aria-pressed="false">See the original version (v1 story first)</button></p>
+      </div>
+      <nav aria-label="Primary navigation"><a href="#what-it-does">What it does</a><a href="#universal">Universal</a><a href="#standard">The standard</a><a href="#proof">Proof</a><a href="#paid-for">How it's paid for</a><a href="#name">The name is the spec</a><a href="#open-source">Open source</a><a href="#status">Status</a><a href="llms.txt">llms.txt</a><a href="agents.md">For agents</a></nav>
+    </div>
+  </header>
+  <main>
   <script>
     (function () {
       var lead = document.getElementById('lead');
@@ -65,7 +151,7 @@
     })();
   </script>
 <div id="lead" class="show-universal">
-<section id="sec-what"><h2 id="what-it-does"><i class="fa-solid fa-gears"></i>What it does</h2>
+<section id="sec-what"><h2 id="what-it-does"><i class="fa-solid fa-gears" aria-hidden="true"></i>What it does</h2>
   <p>Migrating a site between platforms usually means hand-written scripts, silent data loss, and no way to rehearse. migrateme.tech treats a migration as a pipeline you can inspect: extract, map, rehearse with a full dry-run risk report, approve, execute with checkpoints, then validate with a reconciliation report.</p>
   <ul>
     <li><strong>First proven path:</strong> WordPress (WXR export) → Markdown / MDX, run end-to-end against a real site (see Proof)</li>
@@ -76,7 +162,7 @@
   </ul>
 
   </section>
-<section id="sec-universal"><h2 id="universal"><i class="fa-solid fa-right-left"></i>Universal: anything to anything</h2>
+<section id="sec-universal"><h2 id="universal"><i class="fa-solid fa-right-left" aria-hidden="true"></i>Universal: anything to anything</h2>
   <p><strong>MigrateMe Universal</strong> generalises the v1 pipeline into a canonical hub. Every source parses into one shared content model; every destination renders from it. No N×N pair converters — add one parser or one renderer and it composes with everything already there. It runs entirely in your browser: files you open never leave your device.</p>
   <ul>
     <li><strong>In:</strong> WordPress WXR (plus the Squarespace and WordPress.com variants), Markdown / MDX folders, Ghost, RSS / Atom, Blogger, Shopify CSV, Webflow CMS CSV, Notion ZIP, Medium ZIP, Sanity NDJSON, Contentful JSON, Open Migration Package — and a Scanner (lite) that reads a public site’s sitemap, feeds, and structured data when a platform offers no export. It is a best-effort reader, labelled as one — not a crawler, and it never bypasses logins or paywalls</li>
@@ -87,7 +173,24 @@
   <p><a href="https://universal.migrateme.tech"><strong>Try Universal live</strong></a> — pick a pair, or start from any pair page. Universal was built in a single Bolt Forge weekend and folded into this repository on October 18, 2026 (<a href="https://github.com/Mike-Demo/migrateme.tech/pull/35">PR #35</a>): the connectors live in <code>packages/connectors</code>, the app in <code>apps/web</code>.</p>
 
   </section>
-<section id="sec-standard"><h2 id="standard"><i class="fa-solid fa-file-contract"></i>The standard: Open Migration Package</h2>
+<section id="sec-topology"><h2 id="name"><i class="fa-solid fa-signs-post" aria-hidden="true"></i>The name is the spec</h2>
+  <p>Every address in this project declares what it is. The naming convention is the product idea, worn on the outside:</p>
+  <table>
+    <tr><th>Address</th><th>What its name tells you</th></tr>
+    <tr><td><a href="https://wp.sandbox.migrateme.tech"><code>wp.sandbox</code></a></td><td>The <strong>source</strong>: a WordPress site, in the sandbox namespace where testbeds live</td></tr>
+    <tr><td><a href="https://wp.spacefast.sandbox.migrateme.tech"><code>wp.spacefast.sandbox</code></a></td><td>The same WordPress site after a route <strong>to SpaceFast</strong> — the platform it moved to, named in the address</td></tr>
+    <tr><td><a href="https://from.wp.sandbox.migrateme.tech"><code>from.wp.sandbox</code></a></td><td>The <strong>output</strong> of this toolkit's run — everything that came <em>from</em> the wp.sandbox source</td></tr>
+    <tr><td><a href="https://lovable.sandbox.migrateme.tech"><code>lovable.sandbox</code></a> · <a href="https://lovable.cloud.sandbox.migrateme.tech"><code>lovable.cloud.sandbox</code></a></td><td>The Lovable editions of the testbed — platform, variant, namespace</td></tr>
+    <tr><td><a href="https://migrateme.tech"><code>migrateme.tech</code></a></td><td>The toolkit itself: name the migration, get migrated</td></tr>
+  </table>
+  <div class="card">
+    <p style="margin-top:0">The convention scales to routes. A migration pair gets an address in the form <em>source.to.destination</em> — it reads as the migration itself:</p>
+    <p><code>lovable.wordpress.migrateme.tech</code></p>
+    <p><code>wordpress.static-html.migrateme.tech</code></p>
+    <p style="margin-bottom:0">Read the URL and you already know the source, the destination, and the tool. The pair pages behind these addresses already exist — all 1,332 of them, generated from the Universal registry and live in the app today (<a href="https://github.com/Mike-Demo/migrateme.tech/issues/17">issue #17</a>); the subdomain rollout that points these addresses at them is the next step.</p>
+  </div>
+  </section>
+<section id="sec-standard"><h2 id="standard"><i class="fa-solid fa-file-contract" aria-hidden="true"></i>The standard: Open Migration Package</h2>
   <p>Universal is the reference implementation of the <strong>Open Migration Package (OMP)</strong> — an open format any tool can read or write, so content stops being hostage to whichever platform holds it today. A package is a folder (or ZIP) with a verifiable shape:</p>
   <ul>
     <li><code>manifest.json</code> — format and version, source platform, every item, asset, taxonomy term, field mapping, and provenance entry</li>
@@ -97,7 +200,7 @@
   <p>The JSON Schema, validator, and full specification live in this repository (<code>packages/format</code>, <a href="https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/format/open-migration-package.md">docs/format</a>), with three conformance levels — OMP Reader, Writer, and Full. <strong>The adoption ask:</strong> if you build a CMS, a site builder, or an AI app builder, ship OMP import and export. Your users’ content should be able to leave — and arrive — without a rescue mission. The platforms named on this page are the first adoption targets.</p>
 
   </section>
-<section id="sec-proof"><h2 id="proof"><i class="fa-solid fa-clipboard-check"></i>Proof, not promises</h2>
+<section id="sec-proof"><h2 id="proof"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>Proof, not promises</h2>
   <p>On October 14, 2026 the toolkit ran against a real WordPress site — not a fixture. The source is <a href="https://wp.sandbox.migrateme.tech">DXS</a>, a purpose-built WordPress testbed; its live export went through the full pipeline: plan, dry run, approved migration, validation.</p>
   <ul>
     <li><strong>44 items</strong> migrated — posts (incl. draft, private, and scheduled), pages, attachments, plus the site's templates, navigation, global styles, and even its AI Guidelines</li>
@@ -115,13 +218,14 @@
 
   </section>
 </div>
-  <h2 id="paid-for"><i class="fa-solid fa-hand-holding-heart"></i>How it's paid for</h2>
+  <section class="secondary-section">
+  <h2 id="paid-for"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>How it's paid for</h2>
   <p><strong>Freemium, with a donation bundle instead of a paywall.</strong> The toolkit is free and MIT-licensed, and the AI step runs a local open-weight model, so a migration costs nothing to run — that's what makes freemium honest here rather than a trial in disguise.</p>
   <p>When a migration succeeds, the tool inventories the open-source technology it touched: the platform the site came <em>from</em>, the platform it's going <em>to</em>, and the open-source stack the tool itself stands on. Where a project has an open-source foundation behind it (the WordPress Foundation is the model), the tool assembles a suggested donation across all three directions — source, destination, and the conversion itself. A Humble Bundle–style slider lets you set the amount and choose the split: how much supports this tool, and how much flows to the foundations and libraries that made the original site, the move, and the new site possible.</p>
   <p>Designed, not yet wired: the MVP ships the migration pipeline; the donation bundle is the business model it will grow into, because a tool that moves people between open-source platforms should feed the commons it depends on.</p>
   <div class="card" id="bundle-demo">
     <p style="margin-top:0"><strong>Try the split</strong> — a concept demo of the bundle, Humble-style. Set a total, pick a preset or drag the sliders; the total never changes, only who it's shared with. <em>No payments are taken.</em></p>
-    <p>Total donation: $<input id="bd-total" type="number" min="0" step="1" value="25" style="width:5.5em;background:#0d1117;color:#e6edf3;border:1px solid #30363d;border-radius:6px;padding:0.15em 0.4em"></p>
+    <p>Total donation: $<input id="bd-total" type="number" min="0" step="1" value="25" aria-label="Total donation"></p>
     <p>
       <label><input type="radio" name="bd-preset" value="default" checked> Default split</label> ·
       <label><input type="radio" name="bd-preset" value="commons"> Extra to the commons</label> ·
@@ -141,8 +245,8 @@
       var totalEl = document.getElementById('bd-total');
       recipients.forEach(function (r) {
         var row = document.createElement('p');
-        row.innerHTML = '<label style="display:block;font-size:0.92rem;color:#c9d1d9">' + r.label + '</label>' +
-          '<input type="range" min="0" max="100" step="1" value="' + r.def + '" data-id="' + r.id + '" style="width:70%">' +
+        row.innerHTML = '<label for="bd-' + r.id + '">' + r.label + '</label>' +
+          '<input id="bd-' + r.id + '" type="range" min="0" max="100" step="1" value="' + r.def + '" data-id="' + r.id + '">' +
           ' <span data-amt="' + r.id + '"></span>';
         rowsEl.appendChild(row);
       });
@@ -179,25 +283,10 @@
       render();
     })();
   </script>
+  </section>
 
-  <h2 id="name"><i class="fa-solid fa-signs-post"></i>The name is the spec</h2>
-  <p>Every address in this project declares what it is. The naming convention is the product idea, worn on the outside:</p>
-  <table>
-    <tr><th>Address</th><th>What its name tells you</th></tr>
-    <tr><td><a href="https://wp.sandbox.migrateme.tech"><code>wp.sandbox</code></a></td><td>The <strong>source</strong>: a WordPress site, in the sandbox namespace where testbeds live</td></tr>
-    <tr><td><a href="https://wp.spacefast.sandbox.migrateme.tech"><code>wp.spacefast.sandbox</code></a></td><td>The same WordPress site after a route <strong>to SpaceFast</strong> — the platform it moved to, named in the address</td></tr>
-    <tr><td><a href="https://from.wp.sandbox.migrateme.tech"><code>from.wp.sandbox</code></a></td><td>The <strong>output</strong> of this toolkit's run — everything that came <em>from</em> the wp.sandbox source</td></tr>
-    <tr><td><a href="https://lovable.sandbox.migrateme.tech"><code>lovable.sandbox</code></a> · <a href="https://lovable.cloud.sandbox.migrateme.tech"><code>lovable.cloud.sandbox</code></a></td><td>The Lovable editions of the testbed — platform, variant, namespace</td></tr>
-    <tr><td><a href="https://migrateme.tech"><code>migrateme.tech</code></a></td><td>The toolkit itself: name the migration, get migrated</td></tr>
-  </table>
-  <div class="card">
-    <p style="margin-top:0">The convention scales to routes. A migration pair gets an address in the form <em>source.to.destination</em> — it reads as the migration itself:</p>
-    <p><code>lovable.wordpress.migrateme.tech</code></p>
-    <p><code>wordpress.static-html.migrateme.tech</code></p>
-    <p style="margin-bottom:0">Read the URL and you already know the source, the destination, and the tool. The pair pages behind these addresses already exist — all 1,332 of them, generated from the Universal registry and live in the app today (<a href="https://github.com/Mike-Demo/migrateme.tech/issues/17">issue #17</a>); the subdomain rollout that points these addresses at them is the next step.</p>
-  </div>
-
-    <h2 id="open-source"><i class="fa-solid fa-code-branch"></i>Open source, top to bottom</h2>
+  <section class="secondary-section">
+  <h2 id="open-source"><i class="fa-solid fa-code-branch" aria-hidden="true"></i>Open source, top to bottom</h2>
   <p>This project is open source standing on open source — and the donation bundle above is priced from exactly this inventory. The tool's job, when it ships, is to detect stacks like these at a migration's source and destination; these are the ones this migration story itself used, at every step:</p>
   <table>
     <tr><th>Layer</th><th>Open-source stack</th></tr>
@@ -210,8 +299,10 @@
     <tr><td>These sites</td><td>Hand-written HTML/CSS/JS (and the <strong>Font Awesome</strong> free icons in these headings) on GitHub Pages; the migration-output site is generated with <strong>Python</strong>, the <strong>Markdown</strong> library, and <strong>Pillow</strong></td></tr>
   </table>
   <p>One honest exception, named rather than hidden: the code was planned and largely written with GitHub Copilot, which is proprietary. Everything it produced, and everything that code runs on, is open.</p>
+  </section>
 
-<h2 id="status"><i class="fa-solid fa-signal"></i>Status</h2>
+  <section class="secondary-section">
+<h2 id="status"><i class="fa-solid fa-signal" aria-hidden="true"></i>Status</h2>
   <p>Built in the open for the DEV Hacktoberfest Open-Source AI Challenge, Week 2 ("Side Hustle"), October 12–18, 2026 — planned and built with GitHub Copilot, with the full paper trail in the repository.</p>
   <p>Then, in one Bolt Forge weekend (October 17–18, 2026): MigrateMe Universal — anything-to-anything conversion with an honest Supported / Lossy / Planned registry — folded into this repository, and the platform-neutral format shipped as the <strong>Open Migration Package</strong> (<a href="https://github.com/Mike-Demo/migrateme.tech/issues/34">issue #34</a>), with Universal as its reference implementation.</p>
   <p>Next: the pair-subdomain rollout so every one of the 1,332 pair pages gets its own <code>source.destination</code> address, OMP adoption outreach to the platforms above, and a server-side scanner for sources with no export at all.</p>
@@ -220,8 +311,9 @@
     <a href="https://github.com/users/Mike-Demo/projects/1">MVP Week 1 board</a> ·
     <a href="https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/copilot-usage.md">Copilot usage log</a>
   </p>
+  </section>
 
-  <footer>MIT licensed. Built by <a href="https://mikedemo.dev">Mike "Demo" Demopoulos</a>.</footer>
 </main>
+<footer>MIT licensed. Built by <a href="https://mikedemo.dev">Mike "Demo" Demopoulos</a>.</footer>
 </body>
 </html>
