@@ -32,6 +32,15 @@ export function pairPath(sourceId: string, destId: string): string {
   return `/convert/${sourceId}-to-${destId}`;
 }
 
+export function pairPathFromHostname(hostname: string): string | null {
+  const parts = hostname.split('.');
+  if (parts.length !== 4 || parts[2] !== 'migrateme' || parts[3] !== 'tech') return null;
+  const [sourceId, destId] = [parts[0], parts[1]];
+  if (sourceId === destId) return null;
+  if (!findPlatform(sourceId) || !findPlatform(destId)) return null;
+  return pairPath(sourceId, destId);
+}
+
 export function parsePairPath(pathname: string): [string, string] | null {
   if (!pathname.startsWith('/convert/')) return null;
   const rest = pathname.slice('/convert/'.length);

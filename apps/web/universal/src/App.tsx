@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { resolveRoute, type ResolvedRoute } from './lib/routes';
-import { buildPairInfo, pairPath, parsePairPath } from './lib/pairs';
+import { buildPairInfo, pairPath, pairPathFromHostname, parsePairPath } from './lib/pairs';
 import type { PairInfo } from './lib/pairs';
 import { findSource } from './lib/sources';
 import { findDestination } from './lib/destinations';
@@ -87,11 +87,12 @@ export default function App() {
       : '',
   );
   const [page, setPage] = useState<'convert' | 'standard'>('convert');
-  const [pairPathname, setPairPathname] = useState<string | null>(
-    typeof window !== 'undefined' && parsePairPath(window.location.pathname)
-      ? window.location.pathname
-      : null,
-  );
+  const [pairPathname, setPairPathname] = useState<string | null>(() => {
+    if (typeof window === 'undefined') return null;
+    if (parsePairPath(window.location.pathname)) return window.location.pathname;
+    // Pair subdomains (<source>.<destination>.migrateme.tech) land on their pair page.
+    return pairPathFromHostname(window.location.hostname);
+  });
 
   const route: ResolvedRoute | null =
     sourceId && destId ? resolveRoute(sourceId, destId) : null;
