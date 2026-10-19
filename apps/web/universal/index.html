@@ -6,17 +6,18 @@
       (function () {
         try {
           var t = localStorage.getItem('mm-theme');
-          if (t === 'dark') {
-            var el = document.documentElement;
-            el.classList.remove('wa-light');
-            el.classList.add('wa-dark');
-          }
+          var dark = t === 'dark' || (t !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          var el = document.documentElement;
+          el.classList.remove('wa-light', 'wa-dark');
+          el.classList.add(dark ? 'wa-dark' : 'wa-light');
         } catch (e) {}
       })();
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@3.12.0/dist/styles/webawesome.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@awesome.me/webawesome@3.12.0/dist/styles/utilities/fouce.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.3.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/geist@5.2.6/index.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource-variable/jetbrains-mono@5.2.6/index.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MigrateMe Universal — browser-only content migration</title>
     <meta

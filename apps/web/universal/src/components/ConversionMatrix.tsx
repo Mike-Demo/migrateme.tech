@@ -137,7 +137,7 @@ export function ConversionMatrix({ onStart }: MatrixProps) {
               onChange={(e) =>
                 setDetail((d) => ({ source: e.target.value, dest: d?.dest ?? '' }))
               }
-              className="rounded-form mt-1 w-full border border-surface-border bg-surface-raised px-2 py-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+              className="rounded-form mt-1 w-full border border-surface-border bg-surface-lowered px-2 py-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
             >
               <option value="">— choose —</option>
               {all.map((p) => (
@@ -158,7 +158,7 @@ export function ConversionMatrix({ onStart }: MatrixProps) {
               onChange={(e) =>
                 setDetail((d) => ({ source: d?.source ?? '', dest: e.target.value }))
               }
-              className="rounded-form mt-1 w-full border border-surface-border bg-surface-raised px-2 py-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+              className="rounded-form mt-1 w-full border border-surface-border bg-surface-lowered px-2 py-1.5 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
             >
               <option value="">— choose —</option>
               {all.map((p) => (
@@ -196,7 +196,7 @@ export function ConversionMatrix({ onStart }: MatrixProps) {
               <button
                 type="button"
                 onClick={() => onStart(detail.source, detail.dest)}
-                className="mt-3 rounded-md border border-brand-border-loud bg-brand-fill-loud px-3 py-1.5 text-sm font-semibold text-brand-on-loud hover:bg-brand-fill-loud-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
+                className="action-primary mt-3 rounded border px-3 py-1.5 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
               >
                 Start this conversion
               </button>

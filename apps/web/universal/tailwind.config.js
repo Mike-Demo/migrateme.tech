@@ -26,7 +26,10 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'Consolas', 'monospace'],
+      },
+      fontWeight: {
+        bold: '600',
       },
       borderRadius: {
         DEFAULT: 'var(--wa-border-radius-s)',

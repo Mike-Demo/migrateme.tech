@@ -84,7 +84,7 @@ export function StandardPage({ onBack }: Props) {
           <button
             type="button"
             onClick={downloadSchema}
-            className="inline-flex items-center gap-2 rounded-md border border-brand-border-loud bg-brand-fill-loud px-4 py-2 text-sm font-semibold text-brand-on-loud hover:bg-brand-fill-loud-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
+            className="action-primary inline-flex items-center gap-2 rounded border px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
           >
             <Download aria-hidden="true" className="h-4 w-4" /> Download manifest
             JSON Schema

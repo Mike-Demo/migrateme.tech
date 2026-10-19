@@ -103,7 +103,7 @@ export function SourceStep({
         <button
           type="button"
           onClick={() => inputRef.current?.click()}
-          className="mt-3 rounded-md border border-brand-border-loud bg-brand-fill-loud px-4 py-2 text-sm font-semibold text-brand-on-loud hover:bg-brand-fill-loud-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
+          className="action-primary mt-3 rounded border px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
         >
           Choose file
         </button>

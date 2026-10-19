@@ -44,13 +44,16 @@ function initialQueryRoute(): ResolvedRoute | null {
   return r.ok ? r : null;
 }
 
-type Theme = 'light' | 'dark';
+type Theme = 'auto' | 'light' | 'dark';
 
 function initialTheme(): Theme {
-  if (typeof document !== 'undefined' && document.documentElement.classList.contains('wa-dark')) {
-    return 'dark';
+  try {
+    const saved = localStorage.getItem('mm-theme');
+    if (saved === 'light' || saved === 'dark') return saved;
+  } catch {
+    /* storage unavailable — use the system preference */
   }
-  return 'light';
+  return 'auto';
 }
 
 export default function App() {
@@ -58,13 +61,20 @@ export default function App() {
 
   useEffect(() => {
     const el = document.documentElement;
-    el.classList.remove('wa-light', 'wa-dark');
-    el.classList.add(theme === 'dark' ? 'wa-dark' : 'wa-light');
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+    const applyTheme = () => {
+      const dark = theme === 'dark' || (theme === 'auto' && media.matches);
+      el.classList.toggle('wa-dark', dark);
+      el.classList.toggle('wa-light', !dark);
+    };
+    applyTheme();
     try {
       localStorage.setItem('mm-theme', theme);
     } catch {
       /* storage unavailable — theme still applies for this session */
     }
+    if (theme === 'auto') media.addEventListener('change', applyTheme);
+    return () => media.removeEventListener('change', applyTheme);
   }, [theme]);
 
   const [boot] = useState(initialQueryRoute);
@@ -332,12 +342,12 @@ export default function App() {
         Skip to main content
       </a>
 
-      <header className="bg-neutral-fill-loud text-neutral-on-loud">
+      <header className="border-b border-surface-border bg-surface-raised">
         <div className="mx-auto max-w-6xl px-4 py-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <h1 className="text-xl font-bold tracking-tight">MigrateMe Universal</h1>
-              <p className="mt-1 text-sm text-neutral-on-loud-80">
+              <p className="mt-1 text-sm text-ink-quiet">
                 Anything-to-anything content migration that runs entirely in your browser.
               </p>
             </div>
@@ -348,10 +358,10 @@ export default function App() {
                     type="button"
                     onClick={() => setPage('convert')}
                     aria-current={page === 'convert' ? 'page' : undefined}
-                    className={`rounded-md px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-fill-loud ${
+                    className={`rounded-md border px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 ${
                       page === 'convert'
-                        ? 'bg-surface-raised text-ink-normal'
-                        : 'border border-neutral-on-loud-40 text-neutral-on-loud hover:bg-neutral-on-loud-10'
+                        ? 'border-brand-border-normal bg-brand-fill-quiet text-brand-on-quiet'
+                        : 'border-surface-border bg-surface-raised text-ink-normal hover:bg-surface-lowered'
                     }`}
                   >
                     Convert
@@ -362,10 +372,10 @@ export default function App() {
                     type="button"
                     onClick={() => setPage('standard')}
                     aria-current={page === 'standard' ? 'page' : undefined}
-                    className={`rounded-md px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-fill-loud ${
+                    className={`rounded-md border px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 ${
                       page === 'standard'
-                        ? 'bg-surface-raised text-ink-normal'
-                        : 'border border-neutral-on-loud-40 text-neutral-on-loud hover:bg-neutral-on-loud-10'
+                        ? 'border-brand-border-normal bg-brand-fill-quiet text-brand-on-quiet'
+                        : 'border-surface-border bg-surface-raised text-ink-normal hover:bg-surface-lowered'
                     }`}
                   >
                     The Standard
@@ -376,29 +386,27 @@ export default function App() {
                     type="button"
                     onClick={() => setPage('contribute')}
                     aria-current={page === 'contribute' ? 'page' : undefined}
-                    className={`rounded-md px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-fill-loud ${
+                    className={`rounded-md border px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 ${
                       page === 'contribute'
-                        ? 'bg-surface-raised text-ink-normal'
-                        : 'border border-neutral-on-loud-40 text-neutral-on-loud hover:bg-neutral-on-loud-10'
+                        ? 'border-brand-border-normal bg-brand-fill-quiet text-brand-on-quiet'
+                        : 'border-surface-border bg-surface-raised text-ink-normal hover:bg-surface-lowered'
                     }`}
                   >
                     Contribute
                   </button>
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
-                    aria-pressed={theme === 'dark'}
-                    aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-                    title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-                    className="rounded-md border border-neutral-on-loud-40 px-3 py-2 text-sm text-neutral-on-loud hover:bg-neutral-on-loud-10 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-fill-loud"
+                  <label className="sr-only" htmlFor="theme-select">Color theme</label>
+                  <select
+                    id="theme-select"
+                    value={theme}
+                    onChange={(event) => setTheme(event.target.value as Theme)}
+                    className="rounded-md border border-surface-border bg-surface-raised px-3 py-2 text-sm text-ink-normal focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                   >
-                    <i
-                      aria-hidden="true"
-                      className={`fa-solid ${theme === 'dark' ? 'fa-sun' : 'fa-moon'}`}
-                    ></i>
-                  </button>
+                    <option value="auto">Auto</option>
+                    <option value="light">Light</option>
+                    <option value="dark">Dark</option>
+                  </select>
                 </li>
               </ul>
             </nav>
@@ -597,7 +605,7 @@ export default function App() {
                                       [srcField]: e.target.value,
                                     }))
                                   }
-                                  className="rounded-form w-full border border-surface-border bg-surface-raised px-2 py-1 text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                                  className="rounded-form w-full border border-surface-border bg-surface-lowered px-2 py-1 text-xs focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                                 >
                                   {canonicalOptions.map((opt) => (
                                     <option key={opt} value={opt}>
@@ -667,7 +675,7 @@ export default function App() {
                       id="variant-select"
                       value={variant ?? dest.variants[0].id}
                       onChange={(e) => setVariant(e.target.value)}
-                      className="rounded-form mt-1 w-full max-w-md border border-surface-border bg-surface-raised px-3 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                      className="rounded-form mt-1 w-full max-w-md border border-surface-border bg-surface-lowered px-3 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
                     >
                       {dest.variants.map((v) => (
                         <option key={v.id} value={v.id}>
@@ -833,7 +841,7 @@ export default function App() {
         )}
       </main>
 
-      <footer className="bg-neutral-fill-loud text-neutral-on-loud-80">
+      <footer className="border-t border-surface-border bg-surface-raised text-ink-quiet">
         <div className="mx-auto max-w-6xl px-4 py-6 text-sm">
           <p>
             MigrateMe Universal converts files locally in your browser — nothing you
@@ -859,10 +867,10 @@ function NavButton({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-md border px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 ${
+      className={`rounded border px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 ${
         primary
-          ? 'border-brand-border-loud bg-brand-fill-loud text-brand-on-loud hover:bg-brand-fill-loud-hover'
-          : 'border-brand-border-normal bg-brand-fill-normal text-brand-on-normal hover:bg-brand-fill-quiet'
+          ? 'action-primary'
+          : 'action-secondary'
       }`}
     >
       {children}
