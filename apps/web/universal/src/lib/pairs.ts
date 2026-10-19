@@ -32,6 +32,10 @@ export function pairPath(sourceId: string, destId: string): string {
   return `/convert/${sourceId}-to-${destId}`;
 }
 
+export function pairCanonicalUrl(sourceId: string, destId: string): string {
+  return `https://${sourceId}.${destId}.migrateme.tech/`;
+}
+
 export function pairPathFromHostname(hostname: string): string | null {
   const parts = hostname.split('.');
   if (parts.length !== 4 || parts[2] !== 'migrateme' || parts[3] !== 'tech') return null;

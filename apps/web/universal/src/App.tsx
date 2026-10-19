@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { resolveRoute, type ResolvedRoute } from './lib/routes';
-import { buildPairInfo, pairPath, pairPathFromHostname, parsePairPath } from './lib/pairs';
+import { buildPairInfo, pairCanonicalUrl, pairPathFromHostname, parsePairPath } from './lib/pairs';
 import type { PairInfo } from './lib/pairs';
 import { findSource } from './lib/sources';
 import { findDestination } from './lib/destinations';
@@ -99,16 +99,6 @@ export default function App() {
   const pairIds = pairPathname ? parsePairPath(pairPathname) : null;
   const pair: PairInfo | null = pairIds ? buildPairInfo(pairIds[0], pairIds[1]) : null;
 
-  const openPair = (pathname: string) => {
-    const ids = parsePairPath(pathname);
-    if (!ids) return;
-    setPairPathname(pathname);
-    setStep(0);
-    setPage('convert');
-    setError(null);
-    window.history.pushState({}, '', pathname);
-  };
-
   const closePair = () => {
     setPairPathname(null);
     setError(null);
@@ -153,7 +143,9 @@ export default function App() {
   };
 
   const openPairFromMatrix = (sid: string, did: string) => {
-    openPair(pairPath(sid, did));
+    // Pair pages are canonical on their subdomain (<source>.<destination>.migrateme.tech);
+    // the /convert/<pair> paths redirect there. Leave the app for the canonical URL.
+    window.location.href = pairCanonicalUrl(sid, did);
   };
 
   const parsePayload = (sid: string, data: LoadedPayload, isDemo: boolean): ParseResult => {

@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://migrateme.tech/sitemap.xml
+Sitemap: https://migrateme.tech/sitemap-pairs.xml
