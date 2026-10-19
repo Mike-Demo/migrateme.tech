@@ -125,7 +125,29 @@
     html { scroll-behavior: auto; }
   }
 </style>
-</head>
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Project",
+          "@id": "https://migrateme.tech/#project",
+          "name": "MigrateMe.Tech",
+          "url": "https://migrateme.tech/",
+          "description": "Open-source, AI-assisted content migration toolkit: dry-run-first migrations from a canonical content model, and home of MigrateMe Universal and the Open Migration Package (OMP) open standard.",
+          "sameAs": ["https://github.com/Mike-Demo/migrateme.tech"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://migrateme.tech/#site",
+          "name": "MigrateMe.Tech",
+          "url": "https://migrateme.tech/",
+          "isPartOf": { "@id": "https://migrateme.tech/#project" }
+        }
+      ]
+    }
+    </script>
+    </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
