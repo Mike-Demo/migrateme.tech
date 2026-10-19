@@ -2,6 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>
+(function () {
+  try {
+    var m = document.cookie.match(/(?:^|; )mm-theme=(auto|light|dark)/);
+    if (m) document.documentElement.setAttribute('data-theme', m[1]);
+  } catch (e) {}
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>migrateme.tech — AI-assisted CMS migrations, dry-run first</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -43,6 +51,36 @@
       --focus: #0969da;
     }
   }
+  /* Manual theme choice (shared .migrateme.tech cookie with the Universal app).
+     data-theme="auto" or absent: the media query above decides. */
+  :root[data-theme="light"] {
+    color-scheme: light;
+    --canvas: #f6f8fa;
+    --surface: #ffffff;
+    --surface-raised: #f6f8fa;
+    --border: #d0d7de;
+    --border-muted: #d8dee4;
+    --text: #1f2328;
+    --text-secondary: #3d444d;
+    --text-muted: #59636e;
+    --link: #0969da;
+    --success: #1a7f37;
+    --focus: #0969da;
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --canvas: #0d1117;
+    --surface: #161b22;
+    --surface-raised: #21262d;
+    --border: #30363d;
+    --border-muted: #21262d;
+    --text: #f0f6fc;
+    --text-secondary: #c9d1d9;
+    --text-muted: #8b949e;
+    --link: #58a6ff;
+    --success: #3fb950;
+    --focus: #58a6ff;
+  }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; scroll-padding-top: 1rem; }
   body { margin: 0; background: var(--canvas); color: var(--text); font: 16px/1.6 Geist, sans-serif; }
@@ -79,6 +117,15 @@
     font: 500 0.875rem/1.4 Geist, sans-serif; cursor: pointer;
   }
   .finder select:hover, .finder select:focus-visible { border-color: var(--link); }
+  .themectl { margin: 0.75rem 0 0; display: flex; align-items: center; gap: 0.6rem; }
+  .themectl .tc-label { font: 500 0.875rem/1.4 Geist, sans-serif; color: var(--text-secondary); }
+  .themegroup { display: inline-flex; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; }
+  .themegroup button {
+    width: 2.75rem; height: 2.75rem; border: 0; background: var(--surface); color: var(--text-secondary);
+    font-size: 0.95rem; cursor: pointer;
+  }
+  .themegroup button[aria-pressed="true"] { background: var(--surface-raised); color: var(--text); box-shadow: inset 0 0 0 1px var(--link); }
+  .themegroup button:hover { color: var(--text); }
   #lead { display: flex; flex-direction: column; gap: 1rem; }
   #lead.show-universal #sec-universal { order: 1; }
   #lead.show-universal #sec-topology { order: 2; }
@@ -171,6 +218,7 @@
         <p class="tag">Open-source, AI-assisted CMS migrations — dry-run first, so you see exactly what moves before anything does. Now anything to anything.</p>
         <p class="viewtoggle"><button id="vt-btn" type="button" aria-pressed="false">See the original version (v1 story first)</button></p>
         <p class="finder"><label for="finder-select">Find what you need:</label> <select id="finder-select" onchange="if(this.value){window.location.href=this.value}"><option value="">Choose…</option><option value="https://universal.migrateme.tech/">Convert content now — open MigrateMe Universal</option><option value="https://universal.migrateme.tech/contribute">Contribute a migration route</option><option value="#standard">Read about the Open Migration Package</option><option value="#proof">See the proof — the validated real-world run</option><option value="#paid-for">How the project is paid for</option><option value="https://github.com/Mike-Demo/migrateme.tech">Get the code on GitHub</option><option value="https://dev.to/mpmike/open-source-migration-tool-2ki0">Read the build story on DEV</option></select></p>
+        <p class="themectl"><span class="tc-label" id="tc-label">Theme:</span> <span class="themegroup" role="group" aria-labelledby="tc-label"><button type="button" data-set-theme="auto" aria-pressed="true" aria-label="Color theme: Auto (follows your system)" title="Auto (follows your system)"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i></button><button type="button" data-set-theme="light" aria-pressed="false" aria-label="Color theme: Light" title="Light"><i class="fa-solid fa-sun" aria-hidden="true"></i></button><button type="button" data-set-theme="dark" aria-pressed="false" aria-label="Color theme: Dark" title="Dark"><i class="fa-solid fa-moon" aria-hidden="true"></i></button></span></p>
       </div>
       <nav aria-label="Primary navigation"><a href="#what-it-does">What it does</a><a href="#universal">Universal</a><a href="#standard">The standard</a><a href="#proof">Proof</a><a href="#paid-for">How it's paid for</a><a href="#name">The name is the spec</a><a href="#open-source">Open source</a><a href="#status">Status</a><a href="llms.txt">llms.txt</a><a href="agents.md">For agents</a><a href="https://github.com/Mike-Demo/migrateme.tech"><i class="fa-brands fa-github" aria-hidden="true"></i> GitHub</a></nav>
     </div>
@@ -352,6 +400,52 @@
   </section>
 
 </main>
-<footer>MIT licensed. Built by <a href="https://mikedemo.dev">Mike "Demo" Demopoulos</a>.<nav class="socials" aria-label="Social links"><a href="https://github.com/Mike-Demo" aria-label="Demo on GitHub" title="Demo on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/mikedemopoulos" aria-label="Demo on LinkedIn" title="Demo on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a><a href="https://x.com/Mike_Demo" aria-label="Demo on X" title="Demo on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a><a href="https://www.threads.com/@mdemop" aria-label="Demo on Threads" title="Demo on Threads"><i class="fa-brands fa-threads" aria-hidden="true"></i></a><a href="https://www.instagram.com/mdemop" aria-label="Demo on Instagram" title="Demo on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="https://bsky.app/profile/mikedemo.bsky.social" aria-label="Demo on Bluesky" title="Demo on Bluesky"><i class="fa-brands fa-bluesky" aria-hidden="true"></i></a><a href="https://dev.to/mpmike" aria-label="Demo on DEV" title="Demo on DEV"><i class="fa-brands fa-dev" aria-hidden="true"></i></a></nav></footer>
+<footer>MIT licensed. Built by <a href="https://mikedemo.dev">Mike "Demo" Demopoulos</a>. <span id="co2line"></span> <a href="carbon.txt">Carbon disclosure</a>.<nav class="socials" aria-label="Social links"><a href="https://github.com/Mike-Demo" aria-label="Demo on GitHub" title="Demo on GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a><a href="https://www.linkedin.com/in/mikedemopoulos" aria-label="Demo on LinkedIn" title="Demo on LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a><a href="https://x.com/Mike_Demo" aria-label="Demo on X" title="Demo on X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a><a href="https://www.threads.com/@mdemop" aria-label="Demo on Threads" title="Demo on Threads"><i class="fa-brands fa-threads" aria-hidden="true"></i></a><a href="https://www.instagram.com/mdemop" aria-label="Demo on Instagram" title="Demo on Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a><a href="https://bsky.app/profile/mikedemo.bsky.social" aria-label="Demo on Bluesky" title="Demo on Bluesky"><i class="fa-brands fa-bluesky" aria-hidden="true"></i></a><a href="https://dev.to/mpmike" aria-label="Demo on DEV" title="Demo on DEV"><i class="fa-brands fa-dev" aria-hidden="true"></i></a></nav></footer>
+<script>
+(function () {
+  // Theme control — shares the mm-theme cookie (Domain=.migrateme.tech) with
+  // the Universal app, so the choice is honored on both sites, both ways.
+  function getTheme() {
+    var m = document.cookie.match(/(?:^|; )mm-theme=(auto|light|dark)/);
+    return m ? m[1] : 'auto';
+  }
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    var btns = document.querySelectorAll('[data-set-theme]');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].setAttribute('aria-pressed', btns[i].getAttribute('data-set-theme') === t ? 'true' : 'false');
+    }
+  }
+  var btns = document.querySelectorAll('[data-set-theme]');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', function () {
+      var t = this.getAttribute('data-set-theme');
+      try {
+        document.cookie = 'mm-theme=' + t + '; Domain=.migrateme.tech; Path=/; Max-Age=31536000; SameSite=Lax';
+      } catch (e) {}
+      applyTheme(t);
+    });
+  }
+  applyTheme(getTheme());
+  // CO2 footer estimate — computed locally from this page's transfer size
+  // (CO2.js model). An estimate, not a measurement.
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      try {
+        var bytes = 0;
+        var nav = performance.getEntriesByType('navigation')[0];
+        if (nav) bytes += nav.transferSize || 0;
+        var res = performance.getEntriesByType('resource');
+        for (var i = 0; i < res.length; i++) bytes += res[i].transferSize || 0;
+        if (bytes > 0) {
+          var g = (bytes / 1000000) * 0.698;
+          document.getElementById('co2line').textContent =
+            '≈ ' + g.toFixed(2) + ' g CO₂e estimated for this page view — computed in your browser from the page’s transfer size using the CO2.js model. An estimate, not a measurement.';
+        }
+      } catch (e) {}
+    }, 1200);
+  });
+})();
+</script>
 </body>
 </html>

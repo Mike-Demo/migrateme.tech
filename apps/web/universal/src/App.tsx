@@ -48,6 +48,10 @@ type Theme = 'auto' | 'light' | 'dark';
 
 function initialTheme(): Theme {
   try {
+    // Shared with migrateme.tech via a .migrateme.tech cookie, so a theme
+    // picked on the homepage or here is honored on both, in both directions.
+    const m = document.cookie.match(/(?:^|; )mm-theme=(auto|light|dark)/);
+    if (m) return m[1] as Theme;
     const saved = localStorage.getItem('mm-theme');
     if (saved === 'light' || saved === 'dark') return saved;
   } catch {
@@ -101,6 +105,7 @@ export default function App() {
     applyTheme();
     try {
       localStorage.setItem('mm-theme', theme);
+      document.cookie = `mm-theme=${theme}; Domain=.migrateme.tech; Path=/; Max-Age=31536000; SameSite=Lax`;
     } catch {
       /* storage unavailable — theme still applies for this session */
     }

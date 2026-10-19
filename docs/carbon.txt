@@ -1,0 +1,12 @@
+# Carbon disclosure for migrateme.tech
+
+Domain: migrateme.tech
+
+MigrateMe.Tech publishes this file as a good-faith disclosure. Hosting
+sustainability for this domain is unverified: we make no green-hosting claim
+and no carbon-neutral claim. No measurement of actual energy use or emissions
+has been made.
+
+The page footer shows a per-visit CO2 estimate computed in the browser from
+the page's transfer size using the CO2.js model; it is an estimate, not a
+measurement.
