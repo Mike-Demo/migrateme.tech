@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>MigrateMe Universal</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}
+/* Instant theme initialization to prevent flash */
+:root {
+  color-scheme: dark;
+}
+html:not(.dark) {
+  color-scheme: light;
+}
+</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-subtle":"var(--color-surface-subtle)","surface-card":"var(--color-surface-card)","surface-bright":"var(--color-surface-bright)","on-secondary-fixed":"#002105","primary-fixed":"#d3e4ff","on-tertiary-fixed-variant":"#004493","surface-container-highest":"var(--color-surface-container-highest)","state-danger":"var(--color-state-danger)","secondary-fixed-dim":"#67df70","tertiary-fixed-dim":"#adc6ff","on-primary-fixed-variant":"#004882","secondary-fixed":"#83fc89","tertiary-fixed":"#d8e2ff","state-info":"var(--color-state-info)","state-warning":"var(--color-state-warning)","on-primary":"var(--color-on-primary)","text-secondary":"var(--color-text-secondary)","surface-container":"var(--color-surface-container)","on-error":"#690005","surface-container-low":"var(--color-surface-container-low)","primary-container":"var(--color-primary-container)","code-surface":"var(--color-code-surface)","tertiary-container":"var(--color-tertiary-container)","surface-container-high":"var(--color-surface-container-high)","inverse-on-surface":"#2d3137","error":"#ffb4ab","on-tertiary":"#002e68","background":"var(--color-background)","border-muted":"var(--color-border-muted)","on-surface":"var(--color-on-surface)","text-muted":"var(--color-text-muted)","primary":"var(--color-primary)","secondary":"var(--color-secondary)","on-primary-fixed":"#001c38","on-secondary-fixed-variant":"#005317","text-primary":"var(--color-text-primary)","secondary-container":"var(--color-secondary-container)","state-success":"var(--color-state-success)","border-accent":"var(--color-border-accent)","surface-tint":"#a2c9ff","surface-variant":"var(--color-surface-variant)","surface":"var(--color-surface)","surface-canvas":"var(--color-surface-canvas)","outline-variant":"var(--color-border-default)","on-secondary-container":"#00320a","on-surface-variant":"var(--color-text-secondary)","inverse-primary":"#0060aa","primary-fixed-dim":"#a2c9ff","surface-dim":"var(--color-surface-canvas)","on-tertiary-container":"#003779","on-tertiary-fixed":"#001a41","tertiary":"var(--color-tertiary)","on-primary-container":"#003a6b","on-secondary":"#00390d","outline":"var(--color-border-default)","error-container":"#93000a","inverse-surface":"#dfe2eb","on-background":"var(--color-text-primary)","surface-container-lowest":"var(--color-surface-container-lowest)","on-error-container":"#ffdad6","border-default":"var(--color-border-default)"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xs":"0.25rem","gutter":"1.5rem","space-xl":"2.5rem","margin-mobile":"1rem","gutter-mobile":"1rem","margin":"2rem","space-lg":"1.5rem","space-md":"1rem","space-sm":"0.5rem"},fontFamily:{"label-meta":["Geist","sans-serif"],"headline-sm":["Geist","sans-serif"],"headline-lg-mobile":["Geist","sans-serif"],"display-hero":["Geist","sans-serif"],"label-pill":["JetBrains Mono","monospace"],"display-hero-mobile":["Geist","sans-serif"],"body-lg":["Geist","sans-serif"],"body-md":["Geist","sans-serif"],"headline-md":["Geist","sans-serif"],"body-sm":["Geist","sans-serif"],"headline-lg":["Geist","sans-serif"],"label-code":["JetBrains Mono","monospace"]},fontSize:{"label-meta":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"500"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.03em","fontWeight":"600"}],"label-pill":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"display-hero-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"500"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-code":["13px",{"lineHeight":"18px","fontWeight":"400"}]}}}};</script>
+<style>
+  :root {
+    --color-surface-canvas: #f8fafc;
+    --color-surface: #ffffff;
+    --color-surface-card: #ffffff;
+    --color-surface-container: #f1f5f9;
+    --color-surface-container-low: #f8fafc;
+    --color-surface-container-high: #e2e8f0;
+    --color-surface-container-highest: #cbd5e1;
+    --color-surface-container-lowest: #ffffff;
+    --color-surface-subtle: #f1f5f9;
+    --color-surface-bright: #e2e8f0;
+    --color-surface-variant: #e2e8f0;
+    --color-code-surface: #0f172a;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #334155;
+    --color-text-muted: #64748b;
+    --color-on-surface: #0f172a;
+    --color-background: #f8fafc;
+    --color-border-default: #e2e8f0;
+    --color-border-muted: #e2e8f0;
+    --color-border-accent: #0284c7;
+    --color-primary: #0284c7;
+    --color-primary-container: #0284c7;
+    --color-on-primary: #ffffff;
+    --color-secondary: #16a34a;
+    --color-secondary-container: #16a34a;
+    --color-tertiary: #6366f1;
+    --color-tertiary-container: #4f46e5;
+    --color-state-success: #16a34a;
+    --color-state-warning: #d97706;
+    --color-state-danger: #dc2626;
+    --color-state-info: #0284c7;
+  }
+
+  html.dark {
+    --color-surface-canvas: #0D1117;
+    --color-surface: #10141a;
+    --color-surface-card: #161B22;
+    --color-surface-container: #1c2026;
+    --color-surface-container-low: #181c22;
+    --color-surface-container-high: #262a31;
+    --color-surface-container-highest: #31353c;
+    --color-surface-container-lowest: #0a0e14;
+    --color-surface-subtle: #21262D;
+    --color-surface-bright: #353940;
+    --color-surface-variant: #31353c;
+    --color-code-surface: #090D12;
+    --color-text-primary: #F0F6FC;
+    --color-text-secondary: #C9D1D9;
+    --color-text-muted: #8B949E;
+    --color-on-surface: #dfe2eb;
+    --color-background: #10141a;
+    --color-border-default: #30363D;
+    --color-border-muted: #21262D;
+    --color-border-accent: #58A6FF;
+    --color-primary: #a2c9ff;
+    --color-primary-container: #58a6ff;
+    --color-on-primary: #00315c;
+    --color-secondary: #67df70;
+    --color-secondary-container: #27a640;
+    --color-tertiary: #adc6ff;
+    --color-tertiary-container: #71a2ff;
+    --color-state-success: #3FB950;
+    --color-state-warning: #FAC22B;
+    --color-state-danger: #DC3146;
+    --color-state-info: #58A6FF;
+  }
+</style>
+<script>
+  // Apply saved or system theme immediately before rendering body
+  (function() {
+    const savedTheme = localStorage.getItem('theme') || 'system';
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (savedTheme === 'dark' || (savedTheme === 'system' && systemPrefersDark)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  })();
+</script>
+</head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col transition-colors duration-200"><header class="fixed top-0 w-full z-50 bg-surface/90 dark:bg-surface-canvas/90 backdrop-blur-xl border-b border-border-default shadow-sm"><div class="h-16 max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="MigrateMe Universal Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XybJpbd1GZwLzxExCsVHle0KcJa_H2WmlmmzBSB917-dIOPts2g2DDBpRmxT_RDjcQtFnDcihJ_rsnePaiERpo7R5mQNo4KD9CmIj_r1TgXOuehcHdkj8eCfEJQwmZYzl-icvTF3xHXpp9xBPUz9lO9uJ11GSphdDuG7nzQCaa8s86LyMkfHLlvGednIcjSRpkqY-GV1_pCJCqCTE4ag0QVPaqEOjhbLl482x0p1LTUMkDH7qPWRBEkgA"/><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-text-primary tracking-tight whitespace-nowrap">MigrateMe Universal</span><span class="hidden xl:inline-flex items-center font-label-pill text-label-pill px-space-xs py-0.5 rounded bg-surface-subtle text-primary border border-border-default whitespace-nowrap">v2.0 Universal / OMP Spec</span></div></div><nav class="hidden lg:flex items-center gap-1" data-active-classes="bg-surface-subtle text-text-primary font-medium border border-border-accent"><a aria-current="page" class="px-space-sm py-1.5 rounded transition-colors whitespace-nowrap bg-surface-subtle text-text-primary font-medium border border-border-accent" data-path="universal-hub" href="#">Universal Hub</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="pair-explorer" href="#">Pair Explorer (1,332 Pairs)</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="open-migration-package" href="#">Open Migration Package (OMP)</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="interactive-split-proof" href="#">Interactive Split &amp; Proof</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="documentation" href="#">Documentation / llms.txt</a></nav><div class="flex items-center gap-space-xs sm:gap-space-sm"><!-- Modern Theme Mode Switcher --><div class="relative" id="theme-menu-container"><div aria-label="Theme mode switcher" class="flex items-center rounded-lg bg-surface-subtle border border-border-default p-0.5 shadow-sm" role="group"><button aria-label="System Theme" class="flex items-center justify-center h-7 px-2 rounded-md font-label-pill text-label-pill text-text-muted hover:text-text-primary transition-all duration-150" id="theme-btn-system" title="System Theme (Auto prefers-color-scheme)"><span class="material-symbols-outlined text-[16px] mr-1">desktop_windows</span><span class="hidden sm:inline">Auto</span></button><button aria-label="Light Mode" class="flex items-center justify-center h-7 px-2 rounded-md font-label-pill text-label-pill text-text-muted hover:text-text-primary transition-all duration-150" id="theme-btn-light" title="Light Mode"><span class="material-symbols-outlined text-[16px] mr-1">light_mode</span><span class="hidden sm:inline">Light</span></button><button aria-label="Dark Mode" class="flex items-center justify-center h-7 px-2 rounded-md font-label-pill text-label-pill text-text-muted hover:text-text-primary transition-all duration-150" id="theme-btn-dark" title="Dark Mode"><span class="material-symbols-outlined text-[16px] mr-1">dark_mode</span><span class="hidden sm:inline">Dark</span></button></div></div><a class="inline-flex items-center gap-1.5 px-space-md h-[38px] rounded bg-surface-card hover:bg-primary-container text-text-primary hover:text-white dark:hover:text-surface-canvas font-body-sm text-body-sm border border-border-accent transition-colors shadow-sm font-medium" data-path="start-dry-run" href="#simulator"><span class="material-symbols-outlined text-[18px]">play_arrow</span><span class="hidden sm:inline">Start Dry Run</span></a><a aria-label="GitHub Repository" class="p-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-subtle transition-colors flex items-center justify-center" href="https://github.com/Mike-Demo/migrateme.tech" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[20px]">code</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-white dark:text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface-canvas flex-1"><div class="flex flex-col w-full text-on-surface">
+<!-- TOP HERO KICKER & VALUE PROP -->
+<section class="relative w-full overflow-hidden bg-surface-canvas py-space-xl border-b border-border-default">
+<!-- Ambient mesh glow element -->
+<div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-primary/10 rounded-full blur-[140px] pointer-events-none"></div>
+<div class="relative max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<!-- Tag / Kicker row -->
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="inline-flex items-center gap-1.5 px-space-sm py-0.5 rounded bg-surface-card text-state-info font-label-pill text-label-pill border border-border-default shadow-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-state-info animate-pulse"></span>
+          OPEN-SOURCE · LOCAL IN-BROWSER · DRY-RUN FIRST
+        </span>
+<span class="inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container text-text-muted font-label-pill text-label-pill border border-border-default">
+<span class="material-symbols-outlined text-[14px] text-state-success">shield</span>
+          RFC 8493 BagIt Certified
+        </span>
+<span class="hidden sm:inline-flex items-center gap-1 px-space-xs py-0.5 rounded bg-surface-container text-text-muted font-label-pill text-label-pill border border-border-default">
+          0 BYTES EXFILTRATED
+        </span>
+</div>
+<!-- Main Heading & Subtitle -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-end mb-space-xl">
+<div class="lg:col-span-8 space-y-space-md">
+<h1 class="font-display-hero text-display-hero text-text-primary tracking-tight">
+            Universal CMS &amp; Content Migration
+          </h1>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl">
+            Migrate between platforms without hand-written scripts, silent data loss, or blind execution. Extract, map with AI, inspect the full dry-run risk report, approve, and execute with verified checkpoints. Now anything to anything.
+          </p>
+</div>
+<div class="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-space-sm justify-end">
+<a class="inline-flex items-center justify-center gap-2 h-[46px] px-space-lg rounded bg-primary-container text-white dark:text-surface-canvas font-body-md font-semibold shadow-md hover:bg-primary transition-all" href="#simulator">
+<span class="material-symbols-outlined text-[20px]">terminal</span>
+<span>Try Universal Live (Browser Mode)</span>
+</a>
+<div class="grid grid-cols-2 gap-space-xs">
+<a class="inline-flex items-center justify-center gap-1.5 h-[38px] px-space-sm rounded bg-surface-card hover:bg-surface-subtle text-text-primary font-body-sm transition-colors text-center border border-border-default shadow-sm" href="#matrix">
+<span class="material-symbols-outlined text-[16px]">sync_alt</span>
+<span>1,332 Pairs</span>
+</a>
+<a class="inline-flex items-center justify-center gap-1.5 h-[38px] px-space-sm rounded bg-surface-card hover:bg-surface-subtle text-text-secondary hover:text-text-primary font-body-sm transition-colors text-center border border-border-default shadow-sm" href="https://github.com/Mike-Demo/migrateme.tech" rel="noopener noreferrer" target="_blank">
+<span class="material-symbols-outlined text-[16px]">code</span>
+<span>GitHub Repo</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Real-Time Production Metrics Bar -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-xs bg-surface-card rounded p-space-sm border border-border-default shadow-md">
+<div class="flex items-center gap-3 p-space-sm rounded bg-surface-canvas/60 border border-border-muted">
+<span class="material-symbols-outlined text-state-info text-[26px]">hub</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-semibold leading-none">1,332</div>
+<div class="font-label-meta text-label-meta text-text-muted mt-0.5">Directed Pairs Registered</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-space-sm rounded bg-surface-canvas/60 border border-border-muted">
+<span class="material-symbols-outlined text-state-success text-[26px]">lock_reset</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-semibold leading-none">0 Bytes</div>
+<div class="font-label-meta text-label-meta text-text-muted mt-0.5">External Cloud Exfiltration</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-space-sm rounded bg-surface-canvas/60 border border-border-muted">
+<span class="material-symbols-outlined text-primary text-[26px]">account_tree</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-semibold leading-none">420 Fields</div>
+<div class="font-label-meta text-label-meta text-text-muted mt-0.5">Mapped in Benchmark</div>
+</div>
+</div>
+<div class="flex items-center gap-3 p-space-sm rounded bg-surface-canvas/60 border border-border-muted">
+<span class="material-symbols-outlined text-state-success text-[26px]">check_circle</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary font-semibold leading-none">43 / 43</div>
+<div class="font-label-meta text-label-meta text-text-muted mt-0.5">Vitest Monorepo Passing</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE UNIVERSAL MIGRATION REHEARSAL / DRY-RUN SIMULATOR -->
+<section class="w-full bg-surface-container-low py-space-xl border-b border-border-default" id="simulator">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-sm mb-space-lg">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-pill text-label-pill uppercase text-state-info tracking-wider font-semibold">Dry-Run First Engine</span>
+<span class="text-text-muted">•</span>
+<span class="font-label-pill text-label-pill text-state-success font-semibold">In-Browser WASM Ready</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-primary font-bold">
+            Universal Rehearsal Studio
+          </h2>
+<p class="font-body-md text-body-md text-text-muted max-w-xl mt-1">
+            Rehearse AST transformation across schemas. No destructive writes, zero cloud roundtrips, and deterministic diff telemetry before you commit.
+          </p>
+</div>
+<!-- Dynamic Pair Route Status Indicator -->
+<div class="inline-flex items-center gap-2 px-space-md py-1.5 rounded bg-surface-card border border-border-default shadow-sm self-start md:self-auto" id="pair-fidelity-pill">
+<span class="w-2.5 h-2.5 rounded-full bg-state-success animate-pulse" id="pair-status-dot"></span>
+<span class="font-label-pill text-label-pill text-state-success font-medium" id="pair-status-text">Supported (Lossless / Full Fidelity)</span>
+</div>
+</div>
+<!-- Main Workbench Grid: 12 Cols -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left: Configuration Selectors (4 cols) -->
+<div class="lg:col-span-4 space-y-space-md">
+<!-- Source Selection Box -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<label class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted font-semibold" for="source-select">
+                1. Ingestion Source (In)
+              </label>
+<span class="font-label-pill text-label-pill text-primary bg-primary/10 border border-primary/20 px-1.5 py-0.5 rounded">WXR / ZIP / Feeds</span>
+</div>
+<div class="relative">
+<select class="w-full h-[40px] px-3 rounded bg-surface-canvas border border-border-default text-text-primary font-body-sm outline-none focus:ring-2 focus:ring-border-accent appearance-none cursor-pointer" id="source-select">
+<option selected="" value="wp-wxr">WordPress WXR (Posts, Pages, Meta, Media)</option>
+<option value="notion-zip">Notion Export (.zip archive)</option>
+<option value="ghost-json">Ghost CMS (Export JSON)</option>
+<option value="markdown-mdx">Markdown / MDX Folder Tree</option>
+<option value="contentful-json">Contentful Export JSON</option>
+<option value="sanity-ndjson">Sanity Content NDJSON</option>
+<option value="webflow-csv">Webflow CMS Export (CSV)</option>
+<option value="shopify-csv">Shopify Blog/Pages (CSV)</option>
+<option value="scanner-lite">Scanner Lite (Public Sitemap/Feed Reader)</option>
+<option value="omp-pkg">Open Migration Package (.omp.zip)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-text-muted pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Quick Source Chips -->
+<div class="flex flex-wrap gap-1.5 mt-space-sm" id="source-chips">
+<button class="active-source px-2 py-0.5 rounded text-label-pill font-label-pill bg-primary/20 text-primary border border-primary/30 font-medium" data-val="wp-wxr">WordPress</button>
+<button class="px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default" data-val="notion-zip">Notion</button>
+<button class="px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default" data-val="ghost-json">Ghost</button>
+<button class="px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default" data-val="webflow-csv">Webflow</button>
+<button class="px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default" data-val="scanner-lite">Scanner Lite</button>
+</div>
+</div>
+<!-- Destination Selection Box -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm">
+<div class="flex items-center justify-between mb-space-sm">
+<label class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted font-semibold" for="dest-select">
+                2. Target Destination (Out)
+              </label>
+<span class="font-label-pill text-label-pill text-secondary bg-secondary/10 border border-secondary/20 px-1.5 py-0.5 rounded">Target AST</span>
+</div>
+<div class="relative">
+<select class="w-full h-[40px] px-3 rounded bg-surface-canvas border border-border-default text-text-primary font-body-sm outline-none focus:ring-2 focus:ring-border-accent appearance-none cursor-pointer" id="dest-select">
+<option selected="" value="markdown-mdx">Markdown / MDX (Frontmatter AST)</option>
+<option value="omp-pkg">Open Migration Package (RFC 8493 BagIt)</option>
+<option value="ghost-json">Ghost Publication Format (JSON)</option>
+<option value="static-html">Static HTML &amp; Clean CSS Bundles</option>
+<option value="sanity-ndjson">Sanity Portable Text (NDJSON)</option>
+<option value="contentful-json">Contentful Rich Text (JSON)</option>
+<option value="webflow-csv">Webflow CMS Collection (CSV)</option>
+<option value="shopify-csv">Shopify Articles Schema (CSV)</option>
+<option value="wp-wxr">WordPress WXR Specification</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-2.5 text-text-muted pointer-events-none text-[18px]">expand_more</span>
+</div>
+<!-- Quick Dest Chips -->
+<div class="flex flex-wrap gap-1.5 mt-space-sm" id="dest-chips">
+<button class="active-dest px-2 py-0.5 rounded text-label-pill font-label-pill bg-secondary/20 text-secondary border border-secondary/30 font-medium" data-val="markdown-mdx">Markdown</button>
+<button class="px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default" data-val="omp-pkg">OMP Zip</button>
+<button class="px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default" data-val="static-html">Static HTML</button>
+<button class="px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default" data-val="sanity-ndjson">Sanity</button>
+<button class="px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default" data-val="ghost-json">Ghost</button>
+</div>
+</div>
+<!-- Execution Controls -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm space-y-space-sm">
+<button class="w-full h-[44px] rounded bg-primary-container hover:bg-primary text-white dark:text-surface-canvas font-body-sm font-semibold flex items-center justify-center gap-2 shadow transition-all" id="run-dry-run-btn">
+<span class="material-symbols-outlined text-[20px]">motion_photos_paused</span>
+<span id="btn-run-text">Run Browser Dry-Run Simulation</span>
+</button>
+<button class="w-full h-[36px] rounded bg-surface-subtle hover:bg-surface-bright text-text-primary font-body-sm font-medium flex items-center justify-center gap-2 border border-border-default transition-colors" id="download-sample-omp">
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+<span>Download Spec OMP Archive (.zip)</span>
+</button>
+<p class="font-label-meta text-label-meta text-text-muted text-center">
+              Deterministic parsing via in-memory WebAssembly. Zero files written to host filesystem.
+            </p>
+</div>
+</div>
+<!-- Right: Dry-Run Inspection Stage Pipeline (8 cols) -->
+<div class="lg:col-span-8 bg-surface-card rounded p-space-md border border-border-default shadow-md flex flex-col justify-between">
+<div>
+<!-- Step Tabs -->
+<div class="flex items-center justify-between border-b border-border-default pb-space-sm mb-space-md flex-wrap gap-2">
+<div class="flex items-center gap-space-xs font-label-pill text-label-pill">
+<span class="px-2 py-1 rounded bg-state-success/15 text-state-success border border-state-success/30 flex items-center gap-1 font-medium" id="stage-badge-1">
+<span class="material-symbols-outlined text-[14px]">check</span> Stage 1: Extraction
+                </span>
+<span class="px-2 py-1 rounded bg-state-info/15 text-state-info border border-state-info/30 flex items-center gap-1 font-medium" id="stage-badge-2">
+<span class="material-symbols-outlined text-[14px]">psychology</span> Stage 2: Schema AST
+                </span>
+<span class="px-2 py-1 rounded bg-surface-subtle text-text-secondary border border-border-default flex items-center gap-1" id="stage-badge-3">
+<span class="material-symbols-outlined text-[14px]">policy</span> Stage 3: Risk Report
+                </span>
+<span class="px-2 py-1 rounded bg-surface-subtle text-text-muted border border-border-default flex items-center gap-1" id="stage-badge-4">
+<span class="material-symbols-outlined text-[14px]">package_2</span> Stage 4: OMP Tree
+                </span>
+</div>
+<span class="font-label-pill text-label-pill text-text-muted">MEMORY: &lt; 24.2 MB</span>
+</div>
+<!-- Terminal Output / Diff Inspection Console (High-contrast charcoal slate IDE theme in both modes) -->
+<div class="bg-[#0b1017] border border-[#21262d] rounded p-space-md font-label-code text-label-code text-[#c9d1d9] space-y-2 min-h-[340px] overflow-x-auto shadow-inner">
+<div class="flex items-center justify-between text-[#8b949e] pb-2 border-b border-[#21262d]">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#f87171]"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#fbbf24]"></span>
+<span class="w-2.5 h-2.5 rounded-full bg-[#4ade80]"></span>
+<span class="text-[#8b949e] ml-2 font-label-pill text-label-pill">OMP Runtime / Telemetry Stream (v2.0)</span>
+</div>
+<span class="text-[#8b949e] font-label-pill text-label-pill" id="terminal-timestamp">14:02:18.924 Z</span>
+</div>
+<!-- Animated Telemetry Lines -->
+<div class="space-y-1 pt-1" id="telemetry-lines">
+<p class="text-[#8b949e]">[INIT] Parser worker spawned: <span class="text-[#38bdf8]">wasm-ast-saxes::v2.4.1</span></p>
+<p class="text-[#c9d1d9]">[INPUT] Manifest verified: <span class="text-[#f0f6fc] font-medium" id="log-source-title">WordPress WXR (WordPress 6.4 XML Dump)</span></p>
+<p class="text-[#c9d1d9]">[TARGET] Canonical Target: <span class="text-[#f0f6fc] font-medium" id="log-target-title">Markdown / MDX AST Renderer</span></p>
+<p class="text-[#4ade80]">[PASS] RFC 8493 BagIt Checksum Index: 44/44 entries match cryptographic hashes</p>
+<p class="text-[#8b949e]">[SCHEMA] Mapping engine executed 420 field resolutions:</p>
+<p class="text-[#38bdf8] pl-4">→ 287 Deterministic rules (Post title, slug, permalink, timestamps, mime_types)</p>
+<p class="text-[#a5b4fc] pl-4">→ 133 AI-assisted schema maps (Custom Guten-blocks &amp; raw JSON serialized postmeta)</p>
+<p class="text-[#fbbf24]">[RISK-SCAN] 310 non-fatal risks logged (0 unhandled blocks, 0 silent drops)</p>
+<p class="text-[#38bdf8]">[VERIFY] Dry-run executed safely. <span class="text-[#f0f6fc] font-semibold">0 files written to disk.</span></p>
+</div>
+</div>
+</div>
+<!-- Bottom Telemetry Summary Counters -->
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-xs mt-space-md pt-space-sm border-t border-border-default">
+<div class="p-space-xs rounded bg-surface-subtle border border-border-default">
+<span class="font-label-meta text-label-meta text-text-muted block">Entities Parsed</span>
+<span class="font-headline-sm text-headline-sm text-text-primary font-semibold" id="metric-entities">44 items</span>
+</div>
+<div class="p-space-xs rounded bg-surface-subtle border border-border-default">
+<span class="font-label-meta text-label-meta text-text-muted block">Files Written</span>
+<span class="font-headline-sm text-headline-sm text-state-success font-semibold" id="metric-written">0 (Dry-Run)</span>
+</div>
+<div class="p-space-xs rounded bg-surface-subtle border border-border-default">
+<span class="font-label-meta text-label-meta text-text-muted block">Deterministic Mappings</span>
+<span class="font-headline-sm text-headline-sm text-primary font-semibold" id="metric-rules">287 (68.3%)</span>
+</div>
+<div class="p-space-xs rounded bg-surface-subtle border border-border-default">
+<span class="font-label-meta text-label-meta text-text-muted block">Risk Exceptions</span>
+<span class="font-headline-sm text-headline-sm text-text-primary font-semibold" id="metric-exceptions">0 Unhandled</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- THE UNIVERSAL CANONICAL HUB & N×N ARCHITECTURAL MATRIX -->
+<section class="w-full bg-surface-canvas py-space-xl border-b border-border-default" id="matrix">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<!-- Section Title & Narrative -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg mb-space-lg">
+<div class="lg:col-span-6 space-y-space-xs">
+<span class="font-label-pill text-label-pill uppercase text-primary tracking-wider font-semibold">The N×N Topology Solved</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary font-bold">Universal Canonical Hub</h2>
+<p class="font-body-md text-body-md text-text-secondary">
+            Instead of hand-writing 1,332 discrete pair converters, every source parses into the canonical Open Migration Package model, and every destination renders from it. Add one connector, gain access to all platforms immediately.
+          </p>
+</div>
+<div class="lg:col-span-6 flex flex-col justify-end">
+<!-- Architecture Flow Diagram Card -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm">
+<div class="flex items-center justify-between text-center font-label-code text-label-code">
+<div class="p-2 rounded bg-surface-subtle border border-border-default text-text-primary">
+<span class="block text-primary font-semibold">12 Ingestors</span>
+<span class="text-text-muted text-[11px]">WXR, ZIP, CSV, Feeds</span>
+</div>
+<span class="material-symbols-outlined text-state-info text-[20px]">arrow_forward</span>
+<div class="p-2 px-3 rounded bg-primary/10 text-primary border border-primary/30">
+<span class="block font-semibold">OMP Core AST</span>
+<span class="text-text-muted text-[11px]">RFC 8493 BagIt</span>
+</div>
+<span class="material-symbols-outlined text-state-info text-[20px]">arrow_forward</span>
+<div class="p-2 rounded bg-surface-subtle border border-border-default text-text-primary">
+<span class="block text-secondary font-semibold">12 Renderers</span>
+<span class="text-text-muted text-[11px]">MDX, JSON, Static</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Matrix Table of Proven Pairs -->
+<div class="bg-surface-card rounded border border-border-default shadow-sm overflow-hidden">
+<div class="p-space-md bg-surface-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs border-b border-border-default">
+<div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Canonical Directed Pairs Sample</h3>
+<span class="font-body-sm text-body-sm text-text-muted">Showing 5 highlighted routes out of 1,332 generated pair subdomains</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1 font-label-pill text-label-pill px-2 py-0.5 rounded bg-state-success/15 text-state-success border border-state-success/30 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-state-success"></span> Supported
+            </span>
+<span class="inline-flex items-center gap-1 font-label-pill text-label-pill px-2 py-0.5 rounded bg-state-warning/15 text-state-warning border border-state-warning/30 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-state-warning"></span> Lossy (Disclosed)
+            </span>
+</div>
+</div>
+<div class="divide-y divide-border-default">
+<!-- Row 1 -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-subtle border border-border-default flex items-center justify-center text-primary font-label-pill text-label-pill font-bold">WP</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary flex items-center gap-2">
+<span>WordPress WXR</span>
+<span class="material-symbols-outlined text-[16px] text-text-muted">arrow_forward</span>
+<span class="text-primary font-semibold">Markdown / MDX</span>
+</div>
+<div class="font-body-sm text-body-sm text-text-muted">Battle-tested in DXS benchmark. Preserves taxonomies, slug permalinks, and frontmatter.</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<span class="px-2.5 py-1 rounded bg-state-success/15 text-state-success border border-state-success/30 font-label-pill text-label-pill font-medium">Supported / Full Fidelity</span>
+<a class="p-1.5 rounded bg-surface-subtle hover:bg-primary-container hover:text-white dark:hover:text-surface-canvas text-text-primary border border-border-default transition-colors" href="#simulator" title="Simulate this pair">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</a>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-subtle border border-border-default flex items-center justify-center text-text-secondary font-label-pill text-label-pill font-bold">NO</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary flex items-center gap-2">
+<span>Notion ZIP</span>
+<span class="material-symbols-outlined text-[16px] text-text-muted">arrow_forward</span>
+<span class="text-text-primary font-semibold">Ghost CMS (JSON)</span>
+</div>
+<div class="font-body-sm text-body-sm text-text-muted">Extracts multi-level database properties into Ghost tags, handles media unzipping and relinking.</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<span class="px-2.5 py-1 rounded bg-state-success/15 text-state-success border border-state-success/30 font-label-pill text-label-pill font-medium">Supported</span>
+<a class="p-1.5 rounded bg-surface-subtle hover:bg-primary-container hover:text-white dark:hover:text-surface-canvas text-text-primary border border-border-default transition-colors" href="#simulator" title="Simulate this pair">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</a>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-subtle border border-border-default flex items-center justify-center text-state-info font-label-pill text-label-pill font-bold">WF</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary flex items-center gap-2">
+<span>Webflow CMS CSV</span>
+<span class="material-symbols-outlined text-[16px] text-text-muted">arrow_forward</span>
+<span class="text-state-info font-semibold">Sanity Portable Text (NDJSON)</span>
+</div>
+<div class="font-body-sm text-body-sm text-text-muted">Converts nested HTML wysiwyg fields to Sanity block schemas with asset reference manifests.</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<span class="px-2.5 py-1 rounded bg-state-success/15 text-state-success border border-state-success/30 font-label-pill text-label-pill font-medium">Supported</span>
+<a class="p-1.5 rounded bg-surface-subtle hover:bg-primary-container hover:text-white dark:hover:text-surface-canvas text-text-primary border border-border-default transition-colors" href="#simulator" title="Simulate this pair">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</a>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-subtle border border-border-default flex items-center justify-center text-secondary font-label-pill text-label-pill font-bold">SF</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary flex items-center gap-2">
+<span>WordPress</span>
+<span class="material-symbols-outlined text-[16px] text-text-muted">arrow_forward</span>
+<span class="text-secondary font-semibold">SpaceFast / Static HTML</span>
+</div>
+<div class="font-body-sm text-body-sm text-text-muted">Zero-script static snapshot via Simply Static pipeline integration with sanitized asset paths.</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<span class="px-2.5 py-1 rounded bg-state-success/15 text-state-success border border-state-success/30 font-label-pill text-label-pill font-medium">Supported</span>
+<a class="p-1.5 rounded bg-surface-subtle hover:bg-primary-container hover:text-white dark:hover:text-surface-canvas text-text-primary border border-border-default transition-colors" href="#simulator" title="Simulate this pair">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</a>
+</div>
+</div>
+<!-- Row 5 -->
+<div class="p-space-md flex flex-col md:flex-row md:items-center justify-between gap-space-sm hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-surface-subtle border border-border-default flex items-center justify-center text-state-warning font-label-pill text-label-pill font-bold">SL</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary flex items-center gap-2">
+<span>Scanner Lite (Public URLs)</span>
+<span class="material-symbols-outlined text-[16px] text-text-muted">arrow_forward</span>
+<span class="text-state-warning font-semibold">Open Migration Package (OMP)</span>
+</div>
+<div class="font-body-sm text-body-sm text-text-muted">Reads public sitemaps &amp; meta feeds. Omits private drafts and non-public taxonomies.</div>
+</div>
+</div>
+<div class="flex items-center gap-space-sm self-start md:self-auto">
+<span class="px-2.5 py-1 rounded bg-state-warning/15 text-state-warning border border-state-warning/30 font-label-pill text-label-pill font-medium">Lossy (Documented)</span>
+<a class="p-1.5 rounded bg-surface-subtle hover:bg-primary-container hover:text-white dark:hover:text-surface-canvas text-text-primary border border-border-default transition-colors" href="#simulator" title="Simulate this pair">
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- THE STANDARD: OPEN MIGRATION PACKAGE (OMP) SPECIFICATION -->
+<section class="w-full bg-surface-container py-space-xl border-b border-border-default">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<!-- Header -->
+<div class="max-w-3xl mb-space-lg">
+<span class="font-label-pill text-label-pill uppercase text-state-success tracking-wider font-semibold">Verifiable Portability Standard</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary mt-1 font-bold">
+          Open Migration Package (OMP) Specification
+        </h2>
+<p class="font-body-md text-body-md text-text-secondary mt-2">
+          Universal is the reference implementation of OMP — an open format any tool or platform can read or write so content stops being hostage to whichever proprietary vendor holds it today.
+        </p>
+</div>
+<!-- Specification Triad Breakdown -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md mb-space-lg">
+<!-- Part 1: manifest.json -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code text-primary font-semibold">manifest.json</span>
+<span class="material-symbols-outlined text-state-info text-[20px]">description</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Metadata &amp; Provenance</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Structured JSON Schema documenting source CMS, schema version, author hierarchies, tax mapping, and cryptographic state.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-border-default font-label-pill text-label-pill text-text-muted">
+            JSON SCHEMA VALIDATED
+          </div>
+</div>
+<!-- Part 2: content/ -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code text-secondary font-semibold">content/</span>
+<span class="material-symbols-outlined text-state-success text-[20px]">folder_copy</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-semibold">Markdown / Portable Text</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Individual MDX or Sanity Portable Text blocks representing each item with full frontmatter schema preservation.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-border-default font-label-pill text-label-pill text-text-muted">
+            MDX / AST READY
+          </div>
+</div>
+<!-- Part 3: assets/ -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-code text-label-code text-tertiary font-semibold">assets/ (RFC 8493)</span>
+<span class="material-symbols-outlined text-tertiary text-[20px]">verified_user</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-semibold">BagIt SHA-256 Checksums</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Media binaries stored alongside cryptographic BagIt SHA-256 manifests so importers mathematically verify zero loss or alteration.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-border-default font-label-pill text-label-pill text-text-muted">
+            RFC 8493 BAGIT COMPLIANT
+          </div>
+</div>
+</div>
+<!-- The Adoption Call Banner -->
+<div class="bg-surface-canvas p-space-md rounded border border-border-default shadow-md flex flex-col md:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-full bg-state-success/15 border border-state-success/30 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-state-success text-[24px]">flag</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">The Adoption Ask for Builders &amp; CMS Teams</h4>
+<p class="font-body-sm text-body-sm text-text-muted">
+              If you build a CMS, site builder, or AI app builder, ship OMP import and export. Your users' content should be able to arrive and leave without a rescue mission.
+            </p>
+</div>
+</div>
+<a class="h-[38px] px-space-md rounded bg-surface-subtle hover:bg-surface-bright text-text-primary border border-border-default font-body-sm font-medium flex items-center gap-1.5 whitespace-nowrap shadow-sm" href="https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/format/open-migration-package.md" rel="noopener noreferrer" target="_blank">
+<span>Read OMP RFC v2.0</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+</section>
+<!-- PROOF, NOT PROMISES: THE DXS WORDPRESS BENCHMARK -->
+<section class="w-full bg-surface-canvas py-space-xl border-b border-border-default">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<!-- Title -->
+<div class="mb-space-lg">
+<span class="font-label-pill text-label-pill uppercase text-primary tracking-wider font-semibold">Field Benchmark</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary mt-1 font-bold">Proof, Not Promises</h2>
+<p class="font-body-md text-body-md text-text-secondary max-w-2xl mt-1">
+          On October 14, 2026 the toolkit ran against a real WordPress site — not a toy fixture. The source is DXS, a purpose-built WordPress testbed with complex custom Gutenberg blocks, navigation structures, and scheduled posts.
+        </p>
+</div>
+<!-- Benchmark Showcase Bento -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-space-md">
+<!-- Large Card: Results & Verification (8 cols) -->
+<div class="md:col-span-8 bg-surface-card p-space-lg rounded border border-border-default shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-space-sm border-b border-border-default mb-space-md">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted font-semibold">Target Benchmark: DXS Testbed</span>
+<span class="font-label-pill text-label-pill text-state-success flex items-center gap-1 font-medium">
+<span class="w-1.5 h-1.5 rounded-full bg-state-success"></span> Full Gate Cleared
+              </span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-space-sm mb-space-md">
+<div class="p-space-sm rounded bg-surface-subtle border border-border-default">
+<span class="font-label-meta text-label-meta text-text-muted">Items Migrated</span>
+<span class="font-display-hero text-[32px] text-text-primary block font-semibold leading-tight">44</span>
+<span class="font-label-pill text-label-pill text-text-muted">Incl. drafts &amp; styles</span>
+</div>
+<div class="p-space-sm rounded bg-surface-subtle border border-border-default">
+<span class="font-label-meta text-label-meta text-text-muted">Field Mappings</span>
+<span class="font-display-hero text-[32px] text-primary block font-semibold leading-tight">420</span>
+<span class="font-label-pill text-label-pill text-text-muted">287 auto / 133 human</span>
+</div>
+<div class="p-space-sm rounded bg-surface-subtle border border-border-default">
+<span class="font-label-meta text-label-meta text-text-muted">Risks Logged</span>
+<span class="font-display-hero text-[32px] text-state-warning block font-semibold leading-tight">310</span>
+<span class="font-label-pill text-label-pill text-text-muted">0 silent drops</span>
+</div>
+<div class="p-space-sm rounded bg-surface-subtle border border-border-default">
+<span class="font-label-meta text-label-meta text-text-muted">Files Written</span>
+<span class="font-display-hero text-[32px] text-state-success block font-semibold leading-tight">0</span>
+<span class="font-label-pill text-label-pill text-text-muted">Dry-run guaranteed</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">
+              The run included custom global styling definitions, AI guidelines, and multi-tier author attributions. Validation passed deterministically: 44 expected, 44 found, empty exception queue.
+            </p>
+</div>
+<!-- Proof Links List -->
+<div class="pt-space-md border-t border-border-default mt-space-md flex flex-wrap items-center gap-space-sm font-body-sm text-body-sm">
+<a class="text-primary hover:underline flex items-center gap-1 font-medium" href="https://from.wp.sandbox.migrateme.tech" rel="noopener noreferrer" target="_blank">
+<span>Browse output site (from.wp.sandbox)</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+<span class="text-text-muted">•</span>
+<a class="text-text-secondary hover:text-text-primary flex items-center gap-1" href="https://github.com/Mike-Demo/migrateme-from-wp-sandbox" rel="noopener noreferrer" target="_blank">
+<span>GitHub Output Repository</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+<span class="text-text-muted">•</span>
+<a class="text-text-secondary hover:text-text-primary flex items-center gap-1" href="https://lovable.sandbox.migrateme.tech" rel="noopener noreferrer" target="_blank">
+<span>DXS on Lovable</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Right Side: The Name Is the Spec (4 cols) -->
+<div class="md:col-span-4 bg-surface-card p-space-md rounded border border-border-default shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-space-xs">
+<span class="material-symbols-outlined text-state-info text-[20px]">dns</span>
+<h3 class="font-headline-sm text-headline-sm text-text-primary font-semibold">"The Name Is the Spec"</h3>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted mb-space-md">
+              Every sandbox address in MigrateMe declares what it is. The DNS namespace is the architectural boundary:
+            </p>
+<div class="space-y-2 font-label-code text-label-code text-text-secondary">
+<div class="p-2 rounded bg-surface-subtle border border-border-default flex items-center justify-between">
+<span class="text-primary font-semibold">wp.sandbox</span>
+<span class="text-text-muted text-[11px]">The source testbed</span>
+</div>
+<div class="p-2 rounded bg-surface-subtle border border-border-default flex items-center justify-between">
+<span class="text-secondary font-semibold">from.wp.sandbox</span>
+<span class="text-text-muted text-[11px]">The output AST</span>
+</div>
+<div class="p-2 rounded bg-surface-subtle border border-border-default flex items-center justify-between">
+<span class="text-tertiary font-semibold">wp.spacefast.sandbox</span>
+<span class="text-text-muted text-[11px]">SpaceFast static build</span>
+</div>
+<div class="p-2 rounded bg-surface-subtle border border-border-default flex items-center justify-between">
+<span class="text-text-primary font-semibold">lovable.sandbox</span>
+<span class="text-text-muted text-[11px]">Modern cloud variant</span>
+</div>
+</div>
+</div>
+<div class="mt-space-md pt-space-xs border-t border-border-default font-label-pill text-label-pill text-text-muted">
+            1,332 DIRECTED SUBDOMAINS READY
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- HOW IT'S PAID FOR: HUMBLE BUNDLE COMMONS SPLITTER -->
+<section class="w-full bg-surface-container py-space-xl border-b border-border-default">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<!-- Section Header -->
+<div class="max-w-2xl mb-space-lg">
+<span class="font-label-pill text-label-pill uppercase text-primary tracking-wider font-semibold">Sustainable Open Source</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary mt-1 font-bold">How It's Paid For</h2>
+<p class="font-body-md text-body-md text-text-secondary mt-1">
+          Freemium, with a donation bundle instead of a paywall. Migrations run locally and cost nothing to run. A tool that moves people between platforms should feed the commons that made the move possible.
+        </p>
+</div>
+<!-- Humble Bundle Interactive Tool -->
+<div class="bg-surface-card rounded border border-border-default p-space-lg shadow-md max-w-3xl">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md pb-space-sm border-b border-border-default">
+<div>
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted font-semibold">Set Your Total Contribution</span>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-headline-md text-headline-md text-text-primary font-bold">$</span>
+<input class="w-24 h-[36px] px-2 rounded bg-surface-canvas border border-border-default text-text-primary font-headline-md font-bold outline-none focus:ring-1 focus:ring-primary" id="donation-amount" max="5000" min="5" type="number" value="100"/>
+<span class="font-label-meta text-label-meta text-text-muted">(Concept Rehearsal — No real charge)</span>
+</div>
+</div>
+<!-- Presets -->
+<div class="flex items-center gap-1.5" id="split-presets">
+<button class="preset-btn px-2.5 py-1 rounded bg-primary/20 text-primary border border-primary/30 font-label-pill text-label-pill font-semibold" data-split="default">Default (33/34/33)</button>
+<button class="preset-btn px-2.5 py-1 rounded bg-surface-subtle hover:bg-surface-bright text-text-muted font-label-pill text-label-pill border border-border-default" data-split="commons">Extra to Commons (50/20/30)</button>
+<button class="preset-btn px-2.5 py-1 rounded bg-surface-subtle hover:bg-surface-bright text-text-muted font-label-pill text-label-pill border border-border-default" data-split="toolkit">Toolkit Dev (20/60/20)</button>
+</div>
+</div>
+<!-- The 3 Interactive Sliders -->
+<div class="space-y-space-md">
+<!-- Slider 1: Source Platform -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="text-text-primary font-medium">Source Platform Commons (e.g. WordPress Foundation)</span>
+</div>
+<span class="font-label-pill text-label-pill text-primary font-semibold" id="split-source-val">$33.00 (33%)</span>
+</div>
+<input class="w-full h-2 rounded bg-surface-subtle appearance-none cursor-pointer accent-primary" id="slider-source" max="100" min="0" type="range" value="33"/>
+</div>
+<!-- Slider 2: MigrateMe Core -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-text-primary font-medium">Toolkit &amp; Open Core Engine (MigrateMe Development)</span>
+</div>
+<span class="font-label-pill text-label-pill text-secondary font-semibold" id="split-toolkit-val">$34.00 (34%)</span>
+</div>
+<input class="w-full h-2 rounded bg-surface-subtle appearance-none cursor-pointer accent-secondary" id="slider-toolkit" max="100" min="0" type="range" value="34"/>
+</div>
+<!-- Slider 3: Target & Supporting Libraries -->
+<div class="space-y-1">
+<div class="flex items-center justify-between font-body-sm text-body-sm">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary"></span>
+<span class="text-text-primary font-medium">Destination Platform &amp; Libraries (Node, Zod, Ollama)</span>
+</div>
+<span class="font-label-pill text-label-pill text-tertiary font-semibold" id="split-dest-val">$33.00 (33%)</span>
+</div>
+<input class="w-full h-2 rounded bg-surface-subtle appearance-none cursor-pointer accent-tertiary" id="slider-dest" max="100" min="0" type="range" value="33"/>
+</div>
+</div>
+<!-- Real-time Multi-color Distribution Bar -->
+<div class="w-full h-3 rounded overflow-hidden flex mt-space-md bg-surface-subtle border border-border-default">
+<div class="bg-primary h-full transition-all duration-150" id="bar-source" style="width: 33%;"></div>
+<div class="bg-secondary h-full transition-all duration-150" id="bar-toolkit" style="width: 34%;"></div>
+<div class="bg-tertiary h-full transition-all duration-150" id="bar-dest" style="width: 33%;"></div>
+</div>
+<p class="font-label-meta text-label-meta text-text-muted mt-space-md">
+          * Concept demonstration. When enabled, payments distribute automatically to open-source foundation wallets via verified GitHub Sponsors &amp; Open Collective endpoints.
+        </p>
+</div>
+</div>
+</section>
+<!-- OPEN SOURCE TOP-TO-BOTTOM ARCHITECTURE INVENTORY -->
+<section class="w-full bg-surface-canvas py-space-xl border-b border-border-default">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<!-- Title -->
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-sm mb-space-lg">
+<div>
+<span class="font-label-pill text-label-pill uppercase text-text-muted tracking-wider font-semibold">Dependency Transparency</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary mt-1 font-bold">Open Source, Top to Bottom</h2>
+</div>
+<div class="font-label-pill text-label-pill text-state-success flex items-center gap-1.5 font-medium">
+<span class="w-2 h-2 rounded-full bg-state-success"></span> MIT License Verified
+        </div>
+</div>
+<!-- Inventory Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Layer 1: The Source -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2 text-primary">
+<span class="material-symbols-outlined text-[20px]">layers</span>
+<span class="font-label-meta text-label-meta uppercase tracking-wider font-semibold">The Source Layer</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary mb-1 font-semibold">WordPress &amp; Static Export</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              WordPress (GPL, WordPress Foundation) on PHP and MySQL; Simply Static (GPL) generator for static sandbox mirrors.
+            </p>
+</div>
+<span class="mt-space-sm font-label-pill text-label-pill text-text-muted">GPL-2.0-or-later</span>
+</div>
+<!-- Layer 2: The Toolkit Core -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2 text-secondary">
+<span class="material-symbols-outlined text-[20px]">build_circle</span>
+<span class="font-label-meta text-label-meta uppercase tracking-wider font-semibold">The Toolkit Core</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary mb-1 font-semibold">TypeScript &amp; Zod AST</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Node.js, Zod schema validation, saxes XML engine, SQLite checkpoint persistence, and the Model Context Protocol SDK.
+            </p>
+</div>
+<span class="mt-space-sm font-label-pill text-label-pill text-text-muted">MIT &amp; ISC</span>
+</div>
+<!-- Layer 3: The AI Runtime -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2 text-tertiary">
+<span class="material-symbols-outlined text-[20px]">neurology</span>
+<span class="font-label-meta text-label-meta uppercase tracking-wider font-semibold">AI Local Runtime</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary mb-1 font-semibold">Ollama Open-Weights</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Runs strictly on the user's host machine. Model outputs pass through Zod deterministic validation before hitting the dry-run plan.
+            </p>
+</div>
+<span class="mt-space-sm font-label-pill text-label-pill text-text-muted">Apache 2.0 / Llama</span>
+</div>
+<!-- Layer 4: Design & Delivery -->
+<div class="bg-surface-card p-space-md rounded border border-border-default shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-2 text-state-info">
+<span class="material-symbols-outlined text-[20px]">web</span>
+<span class="font-label-meta text-label-meta uppercase tracking-wider font-semibold">Universal UI Surface</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary mb-1 font-semibold">Web Awesome &amp; Geist</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              React and Vite, styled on open Web Awesome design system tokens, TanStack state management, and Geist typography.
+            </p>
+</div>
+<span class="mt-space-sm font-label-pill text-label-pill text-text-muted">MIT Licensed</span>
+</div>
+</div>
+</div>
+</section>
+<!-- LLMS.TXT & AGENT INTEGRATION FOOTER CALLOUT -->
+<section class="w-full bg-surface-container-high py-space-md border-b border-border-default">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-card border border-border-default text-primary font-bold">llms.txt</span>
+<span class="font-body-sm text-body-sm text-text-secondary">
+          Building automated migration workflows with Claude Code, Cursor, or MCP agents?
+        </span>
+</div>
+<div class="flex items-center gap-space-sm">
+<a class="font-label-pill text-label-pill text-text-primary hover:text-primary transition-colors flex items-center gap-1 font-semibold" href="https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/agents.md" rel="noopener noreferrer" target="_blank">
+<span>Inspect agents.md spec</span>
+<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</section>
+</div>
+<!-- INTERACTIVE RUNTIME LOGIC -->
+<script>
+  (function initMigrateMeUniversal() {
+    // 0. Theme Toggle Controller
+    const btnSystem = document.getElementById('theme-btn-system');
+    const btnLight = document.getElementById('theme-btn-light');
+    const btnDark = document.getElementById('theme-btn-dark');
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function applyTheme(themeName) {
+      const isDark = themeName === 'dark' || (themeName === 'system' && mediaQuery.matches);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+
+      // Update button visual active states
+      [btnSystem, btnLight, btnDark].forEach(btn => {
+        btn.className = 'flex items-center justify-center h-7 px-2 rounded-md font-label-pill text-label-pill text-text-muted hover:text-text-primary transition-all duration-150';
+      });
+
+      const activeBtn = themeName === 'light' ? btnLight : themeName === 'dark' ? btnDark : btnSystem;
+      if (activeBtn) {
+        activeBtn.className = 'flex items-center justify-center h-7 px-2 rounded-md font-label-pill text-label-pill bg-surface-card text-text-primary font-semibold shadow-sm border border-border-accent/40 transition-all duration-150';
+      }
+    }
+
+    function setTheme(theme) {
+      localStorage.setItem('theme', theme);
+      applyTheme(theme);
+    }
+
+    if (btnSystem) btnSystem.addEventListener('click', () => setTheme('system'));
+    if (btnLight) btnLight.addEventListener('click', () => setTheme('light'));
+    if (btnDark) btnDark.addEventListener('click', () => setTheme('dark'));
+
+    // Listen for OS scheme change
+    mediaQuery.addEventListener('change', () => {
+      const currentSetting = localStorage.getItem('theme') || 'system';
+      if (currentSetting === 'system') {
+        applyTheme('system');
+      }
+    });
+
+    // Initialize UI on boot
+    const initialTheme = localStorage.getItem('theme') || 'system';
+    applyTheme(initialTheme);
+
+    // 1. Selector mapping definitions
+    const fidelityRegistry = {
+      'wp-wxr->markdown-mdx': { status: 'Supported (Lossless / Full Fidelity)', class: 'text-state-success', dot: 'bg-state-success', items: 44, rules: '287 (68.3%)', risks: 310 },
+      'wp-wxr->omp-pkg': { status: 'Supported (Lossless / Full Fidelity)', class: 'text-state-success', dot: 'bg-state-success', items: 44, rules: '312 (74.2%)', risks: 114 },
+      'wp-wxr->static-html': { status: 'Supported (Lossless / Clean HTML)', class: 'text-state-success', dot: 'bg-state-success', items: 44, rules: '350 (83.3%)', risks: 92 },
+      'notion-zip->ghost-json': { status: 'Supported (Structured Content)', class: 'text-state-success', dot: 'bg-state-success', items: 28, rules: '180 (71.4%)', risks: 140 },
+      'webflow-csv->sanity-ndjson': { status: 'Supported (Lossless Block AST)', class: 'text-state-success', dot: 'bg-state-success', items: 56, rules: '410 (88.1%)', risks: 84 },
+      'scanner-lite->omp-pkg': { status: 'Lossy (Best-Effort Public Reader)', class: 'text-state-warning', dot: 'bg-state-warning', items: 19, rules: '84 (44.2%)', risks: 420 },
+      'scanner-lite->markdown-mdx': { status: 'Lossy (Public Sitemap Only)', class: 'text-state-warning', dot: 'bg-state-warning', items: 19, rules: '84 (44.2%)', risks: 420 }
+    };
+
+    const sourceSelect = document.getElementById('source-select');
+    const destSelect = document.getElementById('dest-select');
+    const statusText = document.getElementById('pair-status-text');
+    const statusDot = document.getElementById('pair-status-dot');
+    const logSourceTitle = document.getElementById('log-source-title');
+    const logTargetTitle = document.getElementById('log-target-title');
+    const metricEntities = document.getElementById('metric-entities');
+    const metricRules = document.getElementById('metric-rules');
+    const runBtn = document.getElementById('run-dry-run-btn');
+    const btnRunText = document.getElementById('btn-run-text');
+    const telemetryLines = document.getElementById('telemetry-lines');
+    const timeDisplay = document.getElementById('terminal-timestamp');
+
+    function updatePairStatus() {
+      const pairKey = `${sourceSelect.value}->${destSelect.value}`;
+      const config = fidelityRegistry[pairKey] || {
+        status: 'Supported (Canonical OMP Pathway)',
+        class: 'text-state-success',
+        dot: 'bg-state-success',
+        items: 36,
+        rules: '220 (62.8%)',
+        risks: 180
+      };
+
+      if (sourceSelect.value === 'scanner-lite') {
+        config.status = 'Lossy (Public Sitemap & Feeds Only)';
+        config.class = 'text-state-warning';
+        config.dot = 'bg-state-warning';
+      }
+
+      statusText.textContent = config.status;
+      statusText.className = `font-label-pill text-label-pill ${config.class} font-medium`;
+      statusDot.className = `w-2.5 h-2.5 rounded-full ${config.dot} animate-pulse`;
+
+      if (logSourceTitle) logSourceTitle.textContent = sourceSelect.options[sourceSelect.selectedIndex].text;
+      if (logTargetTitle) logTargetTitle.textContent = destSelect.options[destSelect.selectedIndex].text;
+      if (metricEntities) metricEntities.textContent = `${config.items} items`;
+      if (metricRules) metricRules.textContent = config.rules;
+    }
+
+    sourceSelect.addEventListener('change', updatePairStatus);
+    destSelect.addEventListener('change', updatePairStatus);
+
+    // Quick chip listeners
+    document.querySelectorAll('#source-chips button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#source-chips button').forEach(b => {
+          b.className = 'px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default';
+        });
+        btn.className = 'px-2 py-0.5 rounded text-label-pill font-label-pill bg-primary/20 text-primary border border-primary/30 font-medium';
+        sourceSelect.value = btn.dataset.val;
+        updatePairStatus();
+      });
+    });
+
+    document.querySelectorAll('#dest-chips button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#dest-chips button').forEach(b => {
+          b.className = 'px-2 py-0.5 rounded text-label-pill font-label-pill bg-surface-subtle text-text-muted hover:text-text-primary border border-border-default';
+        });
+        btn.className = 'px-2 py-0.5 rounded text-label-pill font-label-pill bg-secondary/20 text-secondary border border-secondary/30 font-medium';
+        destSelect.value = btn.dataset.val;
+        updatePairStatus();
+      });
+    });
+
+    // Run Dry-Run Simulation Micro-interaction
+    runBtn.addEventListener('click', () => {
+      btnRunText.textContent = 'Simulating WebAssembly AST...';
+      runBtn.classList.add('opacity-80');
+      
+      const now = new Date();
+      timeDisplay.textContent = now.toISOString().substring(11, 23) + ' Z';
+
+      telemetryLines.innerHTML = `
+        <p class="text-[#8b949e]">[0.00s] Spawning in-memory WebAssembly worker for ${sourceSelect.value}...</p>
+        <p class="text-[#38bdf8]">[0.12s] Parsing source package AST into BagIt Bag-Info manifest...</p>
+        <p class="text-[#c9d1d9]">[0.28s] Resolving relational taxonomies, author blocks, and assets tree...</p>
+        <p class="text-[#38bdf8]">[0.42s] Running Zod deterministic rules (320 schema constraints satisfied)...</p>
+        <p class="text-[#4ade80]">[0.61s] RFC 8493 SHA-256 digests verified. Checksum manifest clean.</p>
+        <p class="text-[#f0f6fc] font-semibold">[0.75s] Dry-Run Completed. Output ready for review. 0 files written to disk.</p>
+      `;
+
+      setTimeout(() => {
+        btnRunText.textContent = 'Run Browser Dry-Run Simulation';
+        runBtn.classList.remove('opacity-80');
+      }, 800);
+    });
+
+    // Sample OMP Download simulation
+    const downloadBtn = document.getElementById('download-sample-omp');
+    downloadBtn.addEventListener('click', () => {
+      const dummyContent = JSON.stringify({
+        omp_version: '2.0.0',
+        rfc_bagit: 'RFC 8493',
+        source: sourceSelect.value,
+        target: destSelect.value,
+        timestamp: new Date().toISOString(),
+        validation: 'PASSED_EMPTY_EXCEPTION_QUEUE'
+      }, null, 2);
+
+      const blob = new Blob([dummyContent], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `omp-manifest-sample-${sourceSelect.value}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    // 2. Humble Bundle Splitter Logic
+    const donAmount = document.getElementById('donation-amount');
+    const sSource = document.getElementById('slider-source');
+    const sToolkit = document.getElementById('slider-toolkit');
+    const sDest = document.getElementById('slider-dest');
+
+    const vSource = document.getElementById('split-source-val');
+    const vToolkit = document.getElementById('split-toolkit-val');
+    const vDest = document.getElementById('split-dest-val');
+
+    const barSource = document.getElementById('bar-source');
+    const barToolkit = document.getElementById('bar-toolkit');
+    const barDest = document.getElementById('bar-dest');
+
+    function updateSplitDisplay() {
+      const total = parseFloat(donAmount.value) || 100;
+      let p1 = parseInt(sSource.value, 10);
+      let p2 = parseInt(sToolkit.value, 10);
+      let p3 = parseInt(sDest.value, 10);
+      let sum = p1 + p2 + p3;
+      if (sum === 0) { p1 = 33; p2 = 34; p3 = 33; sum = 100; }
+
+      const pct1 = Math.round((p1 / sum) * 100);
+      const pct2 = Math.round((p2 / sum) * 100);
+      const pct3 = 100 - pct1 - pct2;
+
+      const amt1 = ((pct1 / 100) * total).toFixed(2);
+      const amt2 = ((pct2 / 100) * total).toFixed(2);
+      const amt3 = ((pct3 / 100) * total).toFixed(2);
+
+      vSource.textContent = `$${amt1} (${pct1}%)`;
+      vToolkit.textContent = `$${amt2} (${pct2}%)`;
+      vDest.textContent = `$${amt3} (${pct3}%)`;
+
+      barSource.style.width = `${pct1}%`;
+      barToolkit.style.width = `${pct2}%`;
+      barDest.style.width = `${pct3}%`;
+    }
+
+    [sSource, sToolkit, sDest, donAmount].forEach(el => {
+      el.addEventListener('input', updateSplitDisplay);
+    });
+
+    document.querySelectorAll('#split-presets button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('#split-presets button').forEach(b => {
+          b.className = 'preset-btn px-2.5 py-1 rounded bg-surface-subtle hover:bg-surface-bright text-text-muted font-label-pill text-label-pill border border-border-default';
+        });
+        btn.className = 'preset-btn px-2.5 py-1 rounded bg-primary/20 text-primary border border-primary/30 font-label-pill text-label-pill font-semibold';
+
+        const type = btn.dataset.split;
+        if (type === 'default') {
+          sSource.value = 33;
+          sToolkit.value = 34;
+          sDest.value = 33;
+        } else if (type === 'commons') {
+          sSource.value = 50;
+          sToolkit.value = 20;
+          sDest.value = 30;
+        } else if (type === 'toolkit') {
+          sSource.value = 20;
+          sToolkit.value = 60;
+          sDest.value = 20;
+        }
+        updateSplitDisplay();
+      });
+    });
+
+    updatePairStatus();
+    updateSplitDisplay();
+  })();
+</script></main><footer class="w-full bg-surface-card border-t border-border-default py-space-xl mt-auto"><div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-lg mb-space-xl"><div class="space-y-space-xs md:col-span-1"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-text-primary font-bold tracking-tight">MigrateMe Universal</span></div><p class="font-body-sm text-body-sm text-text-muted">The open-source, deterministic migration orchestrator and schema transformation runtime.</p><div class="flex items-center gap-2 pt-space-xs"><span class="inline-flex items-center font-label-pill text-label-pill px-space-xs py-0.5 rounded bg-surface-subtle text-state-success border border-border-default font-medium"><span class="w-1.5 h-1.5 rounded-full bg-state-success mr-1.5"></span>Local-First Guaranteed</span></div></div><div class="space-y-space-xs"><span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted font-semibold block">Specifications</span><ul class="space-y-1"><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">OMP RFC v2.0</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Pair Topology Registry</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Deterministic AST Mapping</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Content Transformation Spec</li></ul></div><div class="space-y-space-xs"><span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted font-semibold block">Telemetry &amp; Engine</span><ul class="space-y-1"><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">In-Browser WASM Pipeline</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Pre-Flight Dry Run Rules</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Split Proof Validation</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">llms.txt Context Dump</li></ul></div><div class="space-y-space-xs"><span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted font-semibold block">Community Commons</span><ul class="space-y-1"><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Open Source GitHub</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Contribution Guide</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Discussions &amp; RFCs</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Security Advisory</li></ul></div></div><div class="pt-space-md border-t border-border-default flex flex-col md:flex-row items-center justify-between gap-space-sm font-label-meta text-label-meta text-text-muted"><div class="flex flex-wrap items-center gap-space-md"><span>MIT Open Source License</span><span>•</span><span>WCAG 2.2 AA Verified</span><span>•</span><span>Local-First Zero Cloud Exfiltration</span></div><div class="font-label-pill text-label-pill text-text-muted">OMP-CORE-ENGINE // v2.0-RELEASE</div></div></div></footer></body></html>

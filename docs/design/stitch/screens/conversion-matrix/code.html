@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><title>MigrateMe Universal</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-subtle":"#21262D","surface-card":"#161B22","surface-bright":"#353940","on-secondary-fixed":"#002105","primary-fixed":"#d3e4ff","on-tertiary-fixed-variant":"#004493","surface-container-highest":"#31353c","state-danger":"#DC3146","secondary-fixed-dim":"#67df70","tertiary-fixed-dim":"#adc6ff","on-primary-fixed-variant":"#004882","secondary-fixed":"#83fc89","tertiary-fixed":"#d8e2ff","state-info":"#58A6FF","state-warning":"#FAC22B","on-primary":"#00315c","text-secondary":"#C9D1D9","surface-container":"#1c2026","on-error":"#690005","surface-container-low":"#181c22","primary-container":"#58a6ff","code-surface":"#090D12","tertiary-container":"#71a2ff","surface-container-high":"#262a31","inverse-on-surface":"#2d3137","error":"#ffb4ab","on-tertiary":"#002e68","background":"#10141a","border-muted":"#21262D","on-surface":"#dfe2eb","text-muted":"#8B949E","primary":"#a2c9ff","secondary":"#67df70","on-primary-fixed":"#001c38","on-secondary-fixed-variant":"#005317","text-primary":"#F0F6FC","secondary-container":"#27a640","state-success":"#3FB950","border-accent":"#58A6FF","surface-tint":"#a2c9ff","surface-variant":"#31353c","surface":"#10141a","surface-canvas":"#0D1117","outline-variant":"#414752","on-secondary-container":"#00320a","on-surface-variant":"#c0c7d4","inverse-primary":"#0060aa","primary-fixed-dim":"#a2c9ff","surface-dim":"#10141a","on-tertiary-container":"#003779","on-tertiary-fixed":"#001a41","tertiary":"#adc6ff","on-primary-container":"#003a6b","on-secondary":"#00390d","outline":"#8b919d","error-container":"#93000a","inverse-surface":"#dfe2eb","on-background":"#dfe2eb","surface-container-lowest":"#0a0e14","on-error-container":"#ffdad6","border-default":"#30363D"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xs":"0.25rem","gutter":"1.5rem","space-xl":"2.5rem","margin-mobile":"1rem","gutter-mobile":"1rem","margin":"2rem","space-lg":"1.5rem","space-md":"1rem","space-sm":"0.5rem"},fontFamily:{"label-meta":["Geist"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display-hero":["Geist"],"label-pill":["JetBrains Mono"],"display-hero-mobile":["Geist"],"body-lg":["Geist"],"body-md":["Geist"],"headline-md":["Geist"],"body-sm":["Geist"],"headline-lg":["Geist"],"label-code":["JetBrains Mono"]},fontSize:{"label-meta":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"500"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.03em","fontWeight":"600"}],"label-pill":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"display-hero-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"500"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-code":["13px",{"lineHeight":"18px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col"><header class="fixed top-0 w-full z-50 bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-16 max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="MigrateMe Universal Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XybJpbd1GZwLzxExCsVHle0KcJa_H2WmlmmzBSB917-dIOPts2g2DDBpRmxT_RDjcQtFnDcihJ_rsnePaiERpo7R5mQNo4KD9CmIj_r1TgXOuehcHdkj8eCfEJQwmZYzl-icvTF3xHXpp9xBPUz9lO9uJ11GSphdDuG7nzQCaa8s86LyMkfHLlvGednIcjSRpkqY-GV1_pCJCqCTE4ag0QVPaqEOjhbLl482x0p1LTUMkDH7qPWRBEkgA"/><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-text-primary tracking-tight whitespace-nowrap">MigrateMe Universal</span><span class="hidden xl:inline-flex items-center font-label-pill text-label-pill px-space-xs py-0.5 rounded bg-surface-subtle text-primary border border-border-default whitespace-nowrap">v2.0 Universal / OMP Spec</span></div></div><nav class="hidden lg:flex items-center gap-1" data-active-classes="bg-surface-subtle text-text-primary font-medium border border-border-accent"><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="universal-hub" href="#">Universal Hub</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="pair-explorer" href="#">Pair Explorer (1,332 Pairs)</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="open-migration-package" href="#">Open Migration Package (OMP)</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="interactive-split-proof" href="#">Interactive Split &amp; Proof</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="documentation" href="#">Documentation / llms.txt</a></nav><div class="flex items-center gap-space-sm"><a class="inline-flex items-center gap-1.5 px-space-md h-[38px] rounded bg-surface-card hover:bg-primary-container text-text-primary hover:text-surface-canvas font-body-sm text-body-sm border border-border-accent transition-colors shadow-sm font-medium" data-path="start-dry-run" href="#"><span class="material-symbols-outlined text-[18px]">play_arrow</span><span>Start Dry Run</span></a><a aria-label="GitHub Repository" class="p-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-subtle transition-colors flex items-center justify-center" href="https://github.com" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[20px]">code</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface-canvas flex-1"><div class="flex flex-col w-full">
+<!-- Top Global Sub-Bar / Canonical Architecture Announcement -->
+<div class="w-full bg-surface-container-low border-b border-border-muted py-space-xs px-margin-mobile md:px-gutter">
+<div class="max-w-[72rem] mx-auto flex flex-col md:flex-row items-center justify-between gap-space-xs text-text-muted font-label-meta text-label-meta">
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center font-label-pill text-label-pill px-space-xs py-0.5 rounded bg-surface-card text-state-info border border-border-default">
+          RFC 8493 COMPLIANT
+        </span>
+<span class="text-text-secondary">Canonical Hub Topology: Every pairing transforms via Intermediate Schema (AST-v2)</span>
+</div>
+<div class="flex items-center gap-space-sm font-label-pill text-label-pill">
+<span class="flex items-center gap-1 text-state-success">
+<span class="w-1.5 h-1.5 rounded-full bg-state-success animate-pulse"></span>
+          WASM PIPELINE READY
+        </span>
+<span class="text-text-muted">•</span>
+<span class="text-text-secondary">LOCAL REPO RUNTIME</span>
+</div>
+</div>
+</div>
+<!-- Header & Narrative Context -->
+<section class="w-full bg-surface-canvas pt-space-lg pb-space-md px-margin-mobile md:px-gutter border-b border-border-muted">
+<div class="max-w-[72rem] mx-auto space-y-space-md">
+<!-- Breadcrumb & Direct Permutation Counter -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-2 font-label-meta text-label-meta text-text-muted">
+<a class="hover:text-primary transition-colors" href="#">Universal Hub</a>
+<span>/</span>
+<span class="text-text-primary font-medium">Conversion Matrix</span>
+<span>/</span>
+<span class="font-label-pill text-label-pill text-state-info px-1.5 py-0.5 bg-surface-subtle rounded">1,332 Direct Pairs</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-pill text-label-pill text-text-muted">HOSTED DOMAIN RUNTIME:</span>
+<code class="font-label-code text-label-code bg-code-surface px-2 py-0.5 rounded text-primary border border-border-muted">universal.migrateme.tech</code>
+</div>
+</div>
+<!-- Main Headline and Editorial Explanation -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<div class="lg:col-span-8 space-y-space-xs">
+<h1 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Choose a conversion</h1>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-3xl leading-relaxed">
+            Pick a source and a destination below. Every conversion runs through one canonical format, parses real exports, and produces a ZIP with the converted files, a manifest, and a report naming every field that was mapped, defaulted, or dropped.
+          </p>
+<p class="font-body-md text-body-md text-text-muted max-w-3xl">
+            Headline platforms (Firecrawl target list) as rows and columns. Status is shown as icon and text: <span class="text-state-success font-medium">✓ Supported</span>, <span class="text-state-warning font-medium">Δ Lossy</span>, <span class="text-state-info font-medium">○ Planned</span> — never by colour alone. Format connectors (WXR, CSV, JSON, Markdown, Ghost, OMP) are listed separately below the matrix as hub plumbing.
+          </p>
+</div>
+<!-- Quick Summary Stats Card -->
+<div class="lg:col-span-4 bg-surface-card border border-border-default p-space-md rounded shadow-sm space-y-space-xs">
+<div class="flex items-center justify-between text-text-muted font-label-meta text-label-meta">
+<span>ENGINE REGISTRY STATE</span>
+<span class="text-state-success font-label-pill text-label-pill">ONLINE</span>
+</div>
+<div class="grid grid-cols-3 gap-2 pt-1 border-t border-border-muted text-center">
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary">36</div>
+<div class="font-label-pill text-label-pill text-text-muted">Sources</div>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-text-primary">37</div>
+<div class="font-label-pill text-label-pill text-text-muted">Targets</div>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-primary">1,332</div>
+<div class="font-label-pill text-label-pill text-text-muted">Routes</div>
+</div>
+</div>
+<div class="pt-2 text-text-muted font-body-sm text-body-sm border-t border-border-muted flex items-center justify-between">
+<span>Deterministic Schema:</span>
+<span class="text-text-primary font-label-code text-label-code">AST-OMP-v2.1</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Controls & Status Legend Bar -->
+<section class="sticky top-16 z-40 w-full bg-surface-canvas/95 backdrop-blur-md border-b border-border-default py-space-sm px-margin-mobile md:px-gutter">
+<div class="max-w-[72rem] mx-auto flex flex-col md:flex-row items-center justify-between gap-space-sm">
+<!-- Accessible Legend -->
+<div class="flex flex-wrap items-center gap-space-sm w-full md:w-auto">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted">Fidelity Status:</span>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#102416] border border-[#27a640]/50 text-state-success font-label-pill text-label-pill">
+<span class="font-bold">✓</span>
+<span>Supported (Zero Loss)</span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-[#2c1f0b] border border-[#fac22b]/50 text-state-warning font-label-pill text-label-pill">
+<span class="font-bold">Δ</span>
+<span>Lossy (Disclosed)</span>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded bg-surface-card border border-border-default text-text-muted font-label-pill text-label-pill">
+<span class="font-bold">○</span>
+<span>Planned</span>
+</div>
+</div>
+<!-- Search, Density & Matrix Controls -->
+<div class="flex items-center gap-space-xs w-full md:w-auto justify-end">
+<!-- Platform Search -->
+<div class="relative flex-1 md:w-56">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-text-muted">search</span>
+<input aria-label="Filter matrix platforms" class="w-full h-8 pl-8 pr-2.5 bg-code-surface border border-border-default rounded font-body-sm text-body-sm text-text-primary placeholder:text-text-muted focus:border-border-accent focus:outline-none" id="matrix-search" placeholder="Filter source / target..." type="text"/>
+</div>
+<!-- Density Toggle -->
+<div class="hidden sm:flex items-center bg-surface-card border border-border-default rounded p-0.5">
+<button class="px-2 py-1 font-label-pill text-label-pill rounded bg-surface-subtle text-text-primary" id="btn-density-comfortable" title="Comfortable spacing">
+            Comfortable
+          </button>
+<button class="px-2 py-1 font-label-pill text-label-pill rounded text-text-muted hover:text-text-primary" id="btn-density-compact" title="Compact high-density spacing">
+            Compact
+          </button>
+</div>
+<!-- Export Spec -->
+<button class="inline-flex items-center gap-1.5 h-8 px-2.5 rounded bg-surface-card border border-border-default hover:border-border-accent text-text-secondary hover:text-text-primary font-label-pill text-label-pill transition-colors" id="btn-export-spec">
+<span class="material-symbols-outlined text-[15px]">download</span>
+<span>Spec JSON</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Main Grid Matrix Stage -->
+<section class="w-full bg-surface-canvas px-margin-mobile md:px-gutter py-space-md">
+<div class="max-w-[72rem] mx-auto space-y-space-sm">
+<!-- Interactive Grid Table Box -->
+<div class="bg-surface-card border border-border-default rounded shadow-md overflow-hidden flex flex-col">
+<!-- Table Scroll Container with Custom Styling -->
+<div class="overflow-x-auto overflow-y-auto max-h-[640px] relative">
+<table class="w-full border-collapse text-left select-none text-body-sm font-body-sm min-w-[1340px]" id="matrix-table">
+<!-- Table Header: Destinations -->
+<thead class="sticky top-0 z-30 bg-surface-canvas shadow-[0_1px_0_0_#30363D]">
+<tr>
+<!-- Top-Left Axis Label -->
+<th class="sticky left-0 z-40 bg-surface-canvas p-space-sm border-r border-b border-border-default min-w-[170px] w-[170px]" scope="col">
+<div class="flex flex-col">
+<span class="font-label-meta text-label-meta text-text-muted uppercase tracking-wider flex items-center justify-between">
+<span>Source ↓</span>
+<span>Target →</span>
+</span>
+<span class="font-label-pill text-label-pill text-text-secondary mt-0.5">18 Key Platforms</span>
+</div>
+</th>
+<!-- Destination Columns (Header) -->
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Replit</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">AI builder</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Lovable</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">AI builder</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Bolt.new</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">AI builder</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[105px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">v0 Vercel</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">AI builder</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Bubble</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Hosted builder</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Softr</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Hosted builder</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Glide</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Hosted builder</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[110px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">AppSheet</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Google</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Adalo</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Hosted builder</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">DronaHQ</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Low-code</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[110px] bg-surface-subtle/40" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-primary">WordPress</div>
+<div class="font-label-pill text-[10px] text-primary/80 font-normal">CMS • 58.6%</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[110px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">WP.com</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Hosted CMS</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Shopify</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">CMS • 7.8%</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Wix</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">CMS • 6.1%</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[105px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Squarespace</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Hosted CMS</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[105px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Webflow</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Visual Dev</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[100px]" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-text-primary">Ghost</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Independent</div>
+</th>
+<th class="p-2 border-b border-r border-border-muted text-center font-medium text-text-secondary min-w-[110px] bg-surface-subtle/50" scope="col">
+<div class="font-headline-sm text-[13px] leading-tight text-state-success">Markdown/MDX</div>
+<div class="font-label-pill text-[10px] text-text-muted font-normal">Canonical AST</div>
+</th>
+</tr>
+</thead>
+<!-- Table Rows: Source Platforms -->
+<tbody class="divide-y divide-border-muted">
+<!-- 1. Replit -->
+<tr class="hover:bg-surface-subtle/25 transition-colors group">
+<th class="sticky left-0 z-20 bg-surface-card group-hover:bg-surface-subtle p-2 border-r border-border-default font-normal" scope="row">
+<div class="font-headline-sm text-[13px] text-text-primary">Replit</div>
+<div class="font-label-pill text-[10px] text-text-muted">AI builder</div>
+</th>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default hover:border-border-accent" data-source="Replit" data-status="planned" data-target="Replit">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Lovable">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Bolt.new">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="v0 Vercel">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Bubble">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Softr">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Glide">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="AppSheet">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Adalo">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="DronaHQ">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/30"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="WordPress">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="WP.com">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Shopify">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Wix">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Squarespace">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Webflow">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Replit" data-status="lossy" data-target="Ghost">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/40"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Replit" data-status="supported" data-target="Markdown/MDX">✓ Supported</button></td>
+</tr>
+<!-- 2. Lovable -->
+<tr class="hover:bg-surface-subtle/25 transition-colors group">
+<th class="sticky left-0 z-20 bg-surface-card group-hover:bg-surface-subtle p-2 border-r border-border-default font-normal" scope="row">
+<div class="font-headline-sm text-[13px] text-text-primary">Lovable</div>
+<div class="font-label-pill text-[10px] text-text-muted">AI builder</div>
+</th>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Replit">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default hover:border-border-accent" data-source="Lovable" data-status="planned" data-target="Lovable">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Bolt.new">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="v0 Vercel">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Bubble">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Softr">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Glide">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="AppSheet">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Adalo">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="DronaHQ">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/30"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="WordPress">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="WP.com">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Shopify">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Wix">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Squarespace">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Webflow">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Lovable" data-status="lossy" data-target="Ghost">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/40"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Lovable" data-status="supported" data-target="Markdown/MDX">✓ Supported</button></td>
+</tr>
+<!-- 3. Bolt.new -->
+<tr class="hover:bg-surface-subtle/25 transition-colors group">
+<th class="sticky left-0 z-20 bg-surface-card group-hover:bg-surface-subtle p-2 border-r border-border-default font-normal" scope="row">
+<div class="font-headline-sm text-[13px] text-text-primary">Bolt.new</div>
+<div class="font-label-pill text-[10px] text-text-muted">AI builder</div>
+</th>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Replit">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Lovable">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default hover:border-border-accent" data-source="Bolt.new" data-status="planned" data-target="Bolt.new">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="v0 Vercel">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Bubble">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Softr">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Glide">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="AppSheet">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Adalo">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="DronaHQ">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/30"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="WordPress">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="WP.com">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Shopify">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Wix">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Squarespace">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Webflow">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Bolt.new" data-status="lossy" data-target="Ghost">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/40"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Bolt.new" data-status="supported" data-target="Markdown/MDX">✓ Supported</button></td>
+</tr>
+<!-- 4. Softr -->
+<tr class="hover:bg-surface-subtle/25 transition-colors group">
+<th class="sticky left-0 z-20 bg-surface-card group-hover:bg-surface-subtle p-2 border-r border-border-default font-normal" scope="row">
+<div class="font-headline-sm text-[13px] text-text-primary">Softr</div>
+<div class="font-label-pill text-[10px] text-text-muted">Hosted builder</div>
+</th>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Replit">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Lovable">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Bolt.new">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="v0 Vercel">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Bubble">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default hover:border-border-accent" data-source="Softr" data-status="planned" data-target="Softr">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell active-demo w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/20 ring-1 ring-[#fac22b] font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Glide">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="AppSheet">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Adalo">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="DronaHQ">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/30"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="WordPress">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="WP.com">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Shopify">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Wix">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Squarespace">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Webflow">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Softr" data-status="lossy" data-target="Ghost">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/40"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Softr" data-status="supported" data-target="Markdown/MDX">✓ Supported</button></td>
+</tr>
+<!-- 5. WordPress (Core Benchmark) -->
+<tr class="hover:bg-surface-subtle/25 transition-colors group bg-surface-subtle/20">
+<th class="sticky left-0 z-20 bg-surface-card group-hover:bg-surface-subtle p-2 border-r border-border-default font-normal" scope="row">
+<div class="font-headline-sm text-[13px] text-primary flex items-center gap-1">
+<span>WordPress</span>
+<span class="w-1.5 h-1.5 rounded-full bg-state-success"></span>
+</div>
+<div class="font-label-pill text-[10px] text-text-muted">CMS • 58.6%</div>
+</th>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="Replit">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="Lovable">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="Bolt.new">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="v0 Vercel">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="Bubble">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="Softr">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="Glide">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="AppSheet">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="Adalo">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="DronaHQ">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/30"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default hover:border-border-accent" data-source="WordPress" data-status="planned" data-target="WordPress">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="WordPress" data-status="supported" data-target="WP.com">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="Shopify">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="WordPress" data-status="lossy" data-target="Wix">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="WordPress" data-status="supported" data-target="Squarespace">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="WordPress" data-status="supported" data-target="Webflow">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="WordPress" data-status="supported" data-target="Ghost">✓ Supported</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/50"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/20 hover:bg-[#27a640]/30 border-2 border-state-success font-label-pill text-[11px] font-semibold" data-source="WordPress" data-status="supported" data-target="Markdown/MDX">✓ Supported</button></td>
+</tr>
+<!-- 6. Shopify -->
+<tr class="hover:bg-surface-subtle/25 transition-colors group">
+<th class="sticky left-0 z-20 bg-surface-card group-hover:bg-surface-subtle p-2 border-r border-border-default font-normal" scope="row">
+<div class="font-headline-sm text-[13px] text-text-primary">Shopify</div>
+<div class="font-label-pill text-[10px] text-text-muted">CMS • 7.8%</div>
+</th>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Replit">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Lovable">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Bolt.new">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="v0 Vercel">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Bubble">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Softr">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Glide">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="AppSheet">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Adalo">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="DronaHQ">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/30"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="WordPress">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="WP.com">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default hover:border-border-accent" data-source="Shopify" data-status="planned" data-target="Shopify">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Wix">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Squarespace">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Shopify" data-status="supported" data-target="Webflow">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Shopify" data-status="lossy" data-target="Ghost">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/40"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Shopify" data-status="supported" data-target="Markdown/MDX">✓ Supported</button></td>
+</tr>
+<!-- 7. Wix -->
+<tr class="hover:bg-surface-subtle/25 transition-colors group">
+<th class="sticky left-0 z-20 bg-surface-card group-hover:bg-surface-subtle p-2 border-r border-border-default font-normal" scope="row">
+<div class="font-headline-sm text-[13px] text-text-primary">Wix</div>
+<div class="font-label-pill text-[10px] text-text-muted">CMS • 6.1%</div>
+</th>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default" data-source="Wix" data-status="planned" data-target="Replit">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default" data-source="Wix" data-status="planned" data-target="Lovable">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default" data-source="Wix" data-status="planned" data-target="Bolt.new">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default" data-source="Wix" data-status="planned" data-target="v0 Vercel">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default" data-source="Wix" data-status="planned" data-target="Bubble">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="Softr">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="Glide">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="AppSheet">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="Adalo">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="DronaHQ">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/30"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="WordPress">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="WP.com">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="Shopify">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default hover:border-border-accent" data-source="Wix" data-status="planned" data-target="Wix">○ Planned</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="Squarespace">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="Webflow">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Wix" data-status="lossy" data-target="Ghost">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/40"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Wix" data-status="supported" data-target="Markdown/MDX">✓ Supported</button></td>
+</tr>
+<!-- 8. Ghost CMS -->
+<tr class="hover:bg-surface-subtle/25 transition-colors group">
+<th class="sticky left-0 z-20 bg-surface-card group-hover:bg-surface-subtle p-2 border-r border-border-default font-normal" scope="row">
+<div class="font-headline-sm text-[13px] text-text-primary">Ghost CMS</div>
+<div class="font-label-pill text-[10px] text-text-muted">Node / JSON</div>
+</th>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Replit">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Lovable">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Bolt.new">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="v0 Vercel">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Bubble">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Softr">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Glide">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="AppSheet">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Adalo">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="DronaHQ">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/30"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Ghost" data-status="supported" data-target="WordPress">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Ghost" data-status="supported" data-target="WP.com">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Shopify">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Wix">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="Ghost" data-status="lossy" data-target="Squarespace">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Ghost" data-status="supported" data-target="Webflow">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-text-muted hover:text-text-primary bg-surface-subtle font-label-pill text-[11px] border border-border-default hover:border-border-accent" data-source="Ghost" data-status="planned" data-target="Ghost">○ Planned</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/40"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="Ghost" data-status="supported" data-target="Markdown/MDX">✓ Supported</button></td>
+</tr>
+<!-- 9. Open Migration Package (BagIt RFC 8493) -->
+<tr class="hover:bg-surface-subtle/25 transition-colors group bg-surface-subtle/30">
+<th class="sticky left-0 z-20 bg-surface-card group-hover:bg-surface-subtle p-2 border-r border-border-default font-normal" scope="row">
+<div class="font-headline-sm text-[13px] text-state-info flex items-center gap-1">
+<span>OMP Archive</span>
+<span class="w-1.5 h-1.5 rounded-full bg-state-info"></span>
+</div>
+<div class="font-label-pill text-[10px] text-text-muted">RFC 8493 BagIt</div>
+</th>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Replit">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Lovable">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Bolt.new">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="v0 Vercel">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="OMP Archive" data-status="lossy" data-target="Bubble">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Softr">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Glide">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="OMP Archive" data-status="lossy" data-target="AppSheet">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="OMP Archive" data-status="lossy" data-target="Adalo">Δ Lossy</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-[#e0a020] bg-[#fac22b]/10 hover:bg-[#fac22b]/20 border border-[#fac22b]/30 font-label-pill text-[11px]" data-source="OMP Archive" data-status="lossy" data-target="DronaHQ">Δ Lossy</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/30"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="WordPress">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="WP.com">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Shopify">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Wix">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Squarespace">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Webflow">✓ Supported</button></td>
+<td class="p-1.5 text-center"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/15 hover:bg-[#27a640]/25 border border-[#27a640]/40 font-label-pill text-[11px]" data-source="OMP Archive" data-status="supported" data-target="Ghost">✓ Supported</button></td>
+<td class="p-1.5 text-center bg-surface-subtle/40"><button class="matrix-cell w-full py-1.5 px-1 rounded text-state-success bg-[#27a640]/25 hover:bg-[#27a640]/35 border border-state-success font-label-pill text-[11px] font-semibold" data-source="OMP Archive" data-status="supported" data-target="Markdown/MDX">✓ Supported</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Matrix Sub-footer status count bar -->
+<div class="px-space-md py-space-xs bg-surface-container-low border-t border-border-default flex flex-wrap items-center justify-between text-text-muted font-label-meta text-label-meta">
+<div class="flex items-center gap-space-sm">
+<span>Showing top 18 active routes</span>
+<span>•</span>
+<span class="text-text-secondary">Click any conversion cell to inspect field loss, manifest diffs, or download the BagIt test fixture.</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-pill text-label-pill text-text-muted">Active Cell Coordinates:</span>
+<code class="font-label-code text-label-code text-primary bg-code-surface px-1.5 py-0.5 rounded border border-border-muted" id="active-coords-pill">WordPress → Markdown/MDX</code>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Pair Inspector Card (Dynamic drawer based on selection) -->
+<section class="w-full bg-surface-canvas px-margin-mobile md:px-gutter py-space-sm">
+<div class="max-w-[72rem] mx-auto">
+<div class="bg-surface-card border-2 border-border-accent rounded p-space-md shadow-lg space-y-space-md transition-all" id="inspector-card">
+<!-- Inspector Top Row -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm border-b border-border-default pb-space-sm">
+<div class="space-y-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted">Target Directed Route:</span>
+<span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-[#102416] text-state-success border border-[#27a640]/50 font-semibold" id="inspector-status-badge">
+                ✓ SUPPORTED CANONICAL
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-text-primary" id="inspector-route-name">
+                WordPress <span class="text-text-muted">→</span> Markdown / MDX
+              </h2>
+<a class="font-label-code text-label-code text-primary hover:underline flex items-center gap-1 bg-surface-subtle px-2 py-0.5 rounded border border-border-default" href="#" id="inspector-direct-link">
+<span>wordpress.to.markdown.migrateme.tech</span>
+<span class="material-symbols-outlined text-[14px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Inspector Action Group -->
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="inline-flex items-center gap-1.5 h-[38px] px-space-md rounded bg-surface-card hover:bg-primary-container text-text-primary hover:text-surface-canvas font-body-sm text-body-sm border border-border-accent transition-colors font-medium">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+<span>Run 30s WASM Dry Run</span>
+</button>
+<button class="inline-flex items-center gap-1.5 h-[38px] px-space-sm rounded bg-surface-subtle hover:bg-surface-bright text-text-secondary hover:text-text-primary font-body-sm text-body-sm border border-border-default transition-colors">
+<span class="material-symbols-outlined text-[18px]">terminal</span>
+<span>CLI Spec</span>
+</button>
+<button class="inline-flex items-center gap-1.5 h-[38px] px-space-sm rounded bg-surface-subtle hover:bg-surface-bright text-text-secondary hover:text-text-primary font-body-sm text-body-sm border border-border-default transition-colors">
+<span class="material-symbols-outlined text-[18px]">menu_book</span>
+<span>Field Diff RFC</span>
+</button>
+</div>
+</div>
+<!-- Inspector Diff Data Metrics Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Column 1: Kept Intact -->
+<div class="bg-surface-canvas border border-border-muted p-space-sm rounded space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-meta text-label-meta text-state-success flex items-center gap-1.5 uppercase font-medium">
+<span class="material-symbols-outlined text-[16px]">check_circle</span> Kept Fully Intact
+              </span>
+<span class="font-label-pill text-label-pill text-text-muted">18 / 19 entities</span>
+</div>
+<ul class="space-y-1 font-body-sm text-body-sm text-text-secondary" id="inspector-kept-list">
+<li class="flex items-center gap-2 font-label-code text-label-code"><span class="text-state-success">•</span> post_content → Markdown / Frontmatter</li>
+<li class="flex items-center gap-2 font-label-code text-label-code"><span class="text-state-success">•</span> wp:attachments → BagIt payload media/</li>
+<li class="flex items-center gap-2 font-label-code text-label-code"><span class="text-state-success">•</span> authors, slugs, categories, tags</li>
+<li class="flex items-center gap-2 font-label-code text-label-code"><span class="text-state-success">•</span> Gutenberg block comment markup AST</li>
+</ul>
+</div>
+<!-- Column 2: Disclosed Loss -->
+<div class="bg-surface-canvas border border-border-muted p-space-sm rounded space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-meta text-label-meta text-state-warning flex items-center gap-1.5 uppercase font-medium">
+<span class="material-symbols-outlined text-[16px]">warning</span> Disclosed Field Loss
+              </span>
+<span class="font-label-pill text-label-pill text-state-warning">1 dropped (Harmless)</span>
+</div>
+<ul class="space-y-1 font-body-sm text-body-sm text-text-muted" id="inspector-dropped-list">
+<li class="flex items-center gap-2 font-label-code text-label-code text-text-secondary"><span class="text-state-warning">•</span> wp_transients / ephemeral cache tokens</li>
+<li class="flex items-center gap-2 font-label-code text-label-code text-text-muted"><span class="text-state-warning">•</span> Plugin-specific proprietary serialized blobs</li>
+<li class="flex items-center gap-2 font-label-code text-label-code text-text-muted"><span class="text-state-warning">•</span> Session cookies &amp; login nonces</li>
+</ul>
+</div>
+<!-- Column 3: Transformation Manifest Output -->
+<div class="bg-surface-canvas border border-border-muted p-space-sm rounded space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-label-meta text-label-meta text-text-muted uppercase font-medium">Deterministic Manifest</span>
+<span class="font-label-pill text-label-pill text-primary">ZIP + BagIt</span>
+</div>
+<div class="bg-code-surface p-2 rounded border border-border-muted font-label-code text-[11px] text-text-secondary leading-snug">
+<span class="text-text-muted">// manifest-report.json</span><br/>
+              {<br/>
+                <span class="text-primary">"canonical_engine"</span>: <span class="text-[#fac22b]">"AST-OMP-v2.1"</span>,<br/>
+                <span class="text-primary">"records_processed"</span>: 2480,<br/>
+                <span class="text-primary">"checksum_algorithm"</span>: <span class="text-state-success">"sha512"</span>,<br/>
+                <span class="text-primary">"fidelity_score"</span>: 0.994<br/>
+              }
+            </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Format Connectors & Hub Plumbing Section -->
+<section class="w-full bg-surface-canvas px-margin-mobile md:px-gutter py-space-xl border-t border-border-muted mt-space-md">
+<div class="max-w-[72rem] mx-auto space-y-space-lg">
+<div class="space-y-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted">Hub Architectural Foundations</span>
+<span class="font-label-pill text-label-pill text-state-info bg-surface-subtle px-1.5 py-0.5 rounded">6 Ingestors / Emitters</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Format Connectors &amp; Hub Plumbing</h2>
+<p class="font-body-md text-body-md text-text-secondary max-w-3xl">
+          Format connectors (WXR, CSV, JSON, Markdown, Ghost, OMP) are listed separately below the matrix as hub plumbing. Every source adapter normalizes platform quirks into these canonical low-level streaming emitters.
+        </p>
+</div>
+<!-- Connector Cards Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-space-md">
+<!-- Connector 1 -->
+<div class="bg-surface-card border border-border-default hover:border-border-accent p-space-md rounded transition-colors space-y-space-xs flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-state-success bg-[#27a640]/10 border border-[#27a640]/30 px-1.5 py-0.5 rounded">STREAMING XML</span>
+<span class="font-label-code text-label-code text-text-muted">0.18 ms/item</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">WordPress WXR Ingestor</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Built on a memory-capped streaming SAX parser. Ingests exports exceeding 4GB without browser heap exhaustion, resolving CDATA chunks and attachment URLs.
+            </p>
+</div>
+<div class="pt-2 border-t border-border-muted flex items-center justify-between text-text-secondary font-label-meta text-label-meta">
+<span>RFC Specs: WXR 1.2</span>
+<span class="text-primary hover:underline cursor-pointer">Inspect parser →</span>
+</div>
+</div>
+<!-- Connector 2 -->
+<div class="bg-surface-card border border-border-default hover:border-border-accent p-space-md rounded transition-colors space-y-space-xs flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-primary bg-primary/10 border border-primary/30 px-1.5 py-0.5 rounded">AST MDX RUNTIME</span>
+<span class="font-label-code text-label-code text-text-muted">Lossless</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Markdown / MDX Tree</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Unified AST pipeline converting rich visual blocks, callouts, tables, and frontmatter. Serializes clean Markdown files ready for Astro, Next.js, or Hugo.
+            </p>
+</div>
+<div class="pt-2 border-t border-border-muted flex items-center justify-between text-text-secondary font-label-meta text-label-meta">
+<span>Unified.js / Remark AST</span>
+<span class="text-primary hover:underline cursor-pointer">Inspect parser →</span>
+</div>
+</div>
+<!-- Connector 3 -->
+<div class="bg-surface-card border border-border-default hover:border-border-accent p-space-md rounded transition-colors space-y-space-xs flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-state-info bg-surface-subtle border border-border-default px-1.5 py-0.5 rounded">ARCHIVAL SPEC</span>
+<span class="font-label-code text-label-code text-state-info">RFC 8493</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Open Migration Package (OMP)</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              The universal standard archive format. Emits BagIt standard checksum manifests (<code class="font-label-code text-[11px]">manifest-sha512.txt</code>), zero-loss raw media assets, and JSON schema metadata.
+            </p>
+</div>
+<div class="pt-2 border-t border-border-muted flex items-center justify-between text-text-secondary font-label-meta text-label-meta">
+<span>BagIt Library RFC 8493</span>
+<span class="text-primary hover:underline cursor-pointer">Inspect parser →</span>
+</div>
+</div>
+<!-- Connector 4 -->
+<div class="bg-surface-card border border-border-default hover:border-border-accent p-space-md rounded transition-colors space-y-space-xs flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-state-warning bg-[#fac22b]/10 border border-[#fac22b]/30 px-1.5 py-0.5 rounded">NDJSON COMPILER</span>
+<span class="font-label-code text-label-code text-text-muted">Relational</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Portable Text NDJSON</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Transforms nested JSON arrays, document reference graphs, and Sanity block content structures into streaming newline-delimited payloads.
+            </p>
+</div>
+<div class="pt-2 border-t border-border-muted flex items-center justify-between text-text-secondary font-label-meta text-label-meta">
+<span>Headless Content Schema</span>
+<span class="text-primary hover:underline cursor-pointer">Inspect parser →</span>
+</div>
+</div>
+<!-- Connector 5 -->
+<div class="bg-surface-card border border-border-default hover:border-border-accent p-space-md rounded transition-colors space-y-space-xs flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-text-secondary bg-surface-subtle border border-border-default px-1.5 py-0.5 rounded">RELATIONAL CSV</span>
+<span class="font-label-code text-label-code text-text-muted">Multi-table</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">CSV Table Ingestor</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              De-normalizes multi-table exports from Webflow CMS, Shopify products, or Notion databases into flattened atomic records with relational foreign keys.
+            </p>
+</div>
+<div class="pt-2 border-t border-border-muted flex items-center justify-between text-text-secondary font-label-meta text-label-meta">
+<span>RFC 4180 / Type Inferrer</span>
+<span class="text-primary hover:underline cursor-pointer">Inspect parser →</span>
+</div>
+</div>
+<!-- Connector 6 -->
+<div class="bg-surface-card border border-border-default hover:border-border-accent p-space-md rounded transition-colors space-y-space-xs flex flex-col justify-between">
+<div class="space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-pill text-label-pill text-state-info bg-surface-subtle border border-border-default px-1.5 py-0.5 rounded">FALLBACK CRAWLER</span>
+<span class="font-label-code text-label-code text-state-info">Firecrawl Lite</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary">Scanner Lite (Public Ingest)</h3>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Fallback connector for platforms without an admin data export button. Extracts structured metadata, OpenGraph tags, JSON-LD, and sitemaps via public DOM crawls.
+            </p>
+</div>
+<div class="pt-2 border-t border-border-muted flex items-center justify-between text-text-secondary font-label-meta text-label-meta">
+<span>JSON-LD / Microdata Map</span>
+<span class="text-primary hover:underline cursor-pointer">Inspect parser →</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript for Matrix Interaction, Search & Inspector Updates -->
+<script>
+    (function initMatrixWorkbench() {
+      const searchInput = document.getElementById('matrix-search');
+      const table = document.getElementById('matrix-table');
+      const cells = document.querySelectorAll('.matrix-cell');
+      const densityComfortable = document.getElementById('btn-density-comfortable');
+      const densityCompact = document.getElementById('btn-density-compact');
+      const activeCoordsPill = document.getElementById('active-coords-pill');
+      
+      const inspectorRouteName = document.getElementById('inspector-route-name');
+      const inspectorDirectLink = document.getElementById('inspector-direct-link');
+      const inspectorStatusBadge = document.getElementById('inspector-status-badge');
+      const inspectorKeptList = document.getElementById('inspector-kept-list');
+      const inspectorDroppedList = document.getElementById('inspector-dropped-list');
+      const btnExportSpec = document.getElementById('btn-export-spec');
+
+      // Database mock details for pairs
+      const pairMeta = {
+        supported: {
+          badgeClass: 'bg-[#102416] text-state-success border border-[#27a640]/50',
+          badgeText: '✓ SUPPORTED CANONICAL',
+          kept: [
+            'All text blocks, rich formatting, headers & slugs',
+            'Full image media tree verified with SHA-512 BagIt checksums',
+            'Relational entity mappings & tag taxonomies',
+            'Publish timestamps, canonical URLs, and authored metadata'
+          ],
+          dropped: [
+            'Transient system caches and expired nonce tokens',
+            'Platform-specific proprietary session cookies'
+          ]
+        },
+        lossy: {
+          badgeClass: 'bg-[#2c1f0b] text-[#fac22b] border border-[#fac22b]/50',
+          badgeText: 'Δ LOSSY (DOCUMENTED TRANSFORMS)',
+          kept: [
+            'Core content text, headers, and standard image assets',
+            'Normalized markdown body and frontmatter',
+            'Author names and public publish dates'
+          ],
+          dropped: [
+            'Custom reactive frontend widget behaviors',
+            'Proprietary layout auto-responsive grid code',
+            'Database schema foreign triggers & webhooks'
+          ]
+        },
+        planned: {
+          badgeClass: 'bg-surface-subtle text-text-muted border border-border-default',
+          badgeText: '○ PLANNED ROADMAP CONNECTOR',
+          kept: [
+            'Planned RFC parsing specification drafted',
+            'Awaiting AST mapping contributor signoff'
+          ],
+          dropped: [
+            'Direct execution dry-run currently in developer staging'
+          ]
+        }
+      };
+
+      // Matrix Cell Clicks
+      cells.forEach(cell => {
+        cell.addEventListener('click', () => {
+          cells.forEach(c => c.classList.remove('ring-2', 'ring-border-accent', 'border-border-accent'));
+          cell.classList.add('ring-2', 'ring-border-accent');
+
+          const source = cell.dataset.source;
+          const target = cell.dataset.target;
+          const status = cell.dataset.status || 'lossy';
+
+          // Format clean domain slug
+          const slugSource = source.toLowerCase().replace(/[^a-z0-9]/g, '');
+          const slugTarget = target.toLowerCase().replace(/[^a-z0-9]/g, '');
+          const subDomain = slugSource + '.to.' + slugTarget + '.migrateme.tech';
+
+          // Update Inspector UI
+          inspectorRouteName.innerHTML = source + ' <span class="text-text-muted">→</span> ' + target;
+          inspectorDirectLink.innerHTML = '<span>' + subDomain + '</span><span class="material-symbols-outlined text-[14px]">open_in_new</span>';
+          inspectorDirectLink.setAttribute('href', 'https://' + subDomain);
+          activeCoordsPill.textContent = source + ' → ' + target;
+
+          const meta = pairMeta[status] || pairMeta.lossy;
+          inspectorStatusBadge.className = 'font-label-pill text-label-pill px-2 py-0.5 rounded font-semibold ' + meta.badgeClass;
+          inspectorStatusBadge.textContent = meta.badgeText;
+
+          // Render Kept List
+          inspectorKeptList.innerHTML = meta.kept.map(item => 
+            '<li class="flex items-center gap-2 font-label-code text-label-code"><span class="text-state-success">•</span> ' + item + '</li>'
+          ).join('');
+
+          // Render Dropped List
+          inspectorDroppedList.innerHTML = meta.dropped.map(item => 
+            '<li class="flex items-center gap-2 font-label-code text-label-code text-text-secondary"><span class="text-state-warning">•</span> ' + item + '</li>'
+          ).join('');
+        });
+      });
+
+      // Filter Matrix by Platform Name
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase().trim();
+        const rows = table.querySelectorAll('tbody tr');
+
+        rows.forEach(row => {
+          const rowLabel = row.querySelector('th').textContent.toLowerCase();
+          if (!query || rowLabel.includes(query)) {
+            row.style.display = '';
+          } else {
+            row.style.display = 'none';
+          }
+        });
+      });
+
+      // Density Switching
+      densityComfortable.addEventListener('click', () => {
+        cells.forEach(c => {
+          c.classList.remove('py-0.5', 'text-[10px]');
+          c.classList.add('py-1.5', 'text-[11px]');
+        });
+        densityComfortable.className = 'px-2 py-1 font-label-pill text-label-pill rounded bg-surface-subtle text-text-primary';
+        densityCompact.className = 'px-2 py-1 font-label-pill text-label-pill rounded text-text-muted hover:text-text-primary';
+      });
+
+      densityCompact.addEventListener('click', () => {
+        cells.forEach(c => {
+          c.classList.remove('py-1.5', 'text-[11px]');
+          c.classList.add('py-0.5', 'text-[10px]');
+        });
+        densityCompact.className = 'px-2 py-1 font-label-pill text-label-pill rounded bg-surface-subtle text-text-primary';
+        densityComfortable.className = 'px-2 py-1 font-label-pill text-label-pill rounded text-text-muted hover:text-text-primary';
+      });
+
+      // Export Spec mock download
+      btnExportSpec.addEventListener('click', () => {
+        const specData = {
+          version: "2.1.0-universal",
+          specification: "RFC-8493-OMP",
+          total_permutations: 1332,
+          canonical_ast: "MigrateMe-AST-v2",
+          timestamp: new Date().toISOString()
+        };
+        const blob = new Blob([JSON.stringify(specData, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'migrateme-matrix-spec.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      });
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-card shadow-[0_-1px_0_0_rgba(48,54,61,0.5)] py-space-xl mt-auto"><div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-lg mb-space-xl"><div class="space-y-space-xs md:col-span-1"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-text-primary tracking-tight">MigrateMe Universal</span></div><p class="font-body-sm text-body-sm text-text-muted">The open-source, deterministic migration orchestrator and schema transformation runtime.</p><div class="flex items-center gap-2 pt-space-xs"><span class="inline-flex items-center font-label-pill text-label-pill px-space-xs py-0.5 rounded bg-surface-subtle text-state-success border border-border-default"><span class="w-1.5 h-1.5 rounded-full bg-state-success mr-1.5"></span>Local-First Guaranteed</span></div></div><div class="space-y-space-xs"><span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted block">Specifications</span><ul class="space-y-1"><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">OMP RFC v2.0</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Pair Topology Registry</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Deterministic AST Mapping</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Content Transformation Spec</li></ul></div><div class="space-y-space-xs"><span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted block">Telemetry &amp; Engine</span><ul class="space-y-1"><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">In-Browser WASM Pipeline</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Pre-Flight Dry Run Rules</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Split Proof Validation</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">llms.txt Context Dump</li></ul></div><div class="space-y-space-xs"><span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted block">Community Commons</span><ul class="space-y-1"><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Open Source GitHub</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Contribution Guide</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Discussions &amp; RFCs</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Security Advisory</li></ul></div></div><div class="pt-space-md border-t border-border-muted flex flex-col md:flex-row items-center justify-between gap-space-sm font-label-meta text-label-meta text-text-muted"><div class="flex flex-wrap items-center gap-space-md"><span>MIT Open Source License</span><span>•</span><span>WCAG 2.2 AA Verified</span><span>•</span><span>Local-First Zero Cloud Exfiltration</span></div><div class="font-label-pill text-label-pill text-text-muted">OMP-CORE-ENGINE // v2.0-RELEASE</div></div></div></footer></body></html>

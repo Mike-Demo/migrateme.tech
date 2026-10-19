@@ -1,0 +1,1713 @@
+<!DOCTYPE html><html class="dark" lang="en" __gcrremoteframetoken="d6cae7ac156e88d2379778b21760c529"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><title>MigrateMe Universal</title><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-subtle":"#21262D","surface-card":"#161B22","surface-bright":"#353940","on-secondary-fixed":"#002105","primary-fixed":"#d3e4ff","on-tertiary-fixed-variant":"#004493","surface-container-highest":"#31353c","state-danger":"#DC3146","secondary-fixed-dim":"#67df70","tertiary-fixed-dim":"#adc6ff","on-primary-fixed-variant":"#004882","secondary-fixed":"#83fc89","tertiary-fixed":"#d8e2ff","state-info":"#58A6FF","state-warning":"#FAC22B","on-primary":"#00315c","text-secondary":"#C9D1D9","surface-container":"#1c2026","on-error":"#690005","surface-container-low":"#181c22","primary-container":"#58a6ff","code-surface":"#090D12","tertiary-container":"#71a2ff","surface-container-high":"#262a31","inverse-on-surface":"#2d3137","error":"#ffb4ab","on-tertiary":"#002e68","background":"#10141a","border-muted":"#21262D","on-surface":"#dfe2eb","text-muted":"#8B949E","primary":"#a2c9ff","secondary":"#67df70","on-primary-fixed":"#001c38","on-secondary-fixed-variant":"#005317","text-primary":"#F0F6FC","secondary-container":"#27a640","state-success":"#3FB950","border-accent":"#58A6FF","surface-tint":"#a2c9ff","surface-variant":"#31353c","surface":"#10141a","surface-canvas":"#0D1117","outline-variant":"#414752","on-secondary-container":"#00320a","on-surface-variant":"#c0c7d4","inverse-primary":"#0060aa","primary-fixed-dim":"#a2c9ff","surface-dim":"#10141a","on-tertiary-container":"#003779","on-tertiary-fixed":"#001a41","tertiary":"#adc6ff","on-primary-container":"#003a6b","on-secondary":"#00390d","outline":"#8b919d","error-container":"#93000a","inverse-surface":"#dfe2eb","on-background":"#dfe2eb","surface-container-lowest":"#0a0e14","on-error-container":"#ffdad6","border-default":"#30363D"},borderRadius:{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},spacing:{"space-xs":"0.25rem","gutter":"1.5rem","space-xl":"2.5rem","margin-mobile":"1rem","gutter-mobile":"1rem","margin":"2rem","space-lg":"1.5rem","space-md":"1rem","space-sm":"0.5rem"},fontFamily:{"label-meta":["Geist"],"headline-sm":["Geist"],"headline-lg-mobile":["Geist"],"display-hero":["Geist"],"label-pill":["JetBrains Mono"],"display-hero-mobile":["Geist"],"body-lg":["Geist"],"body-md":["Geist"],"headline-md":["Geist"],"body-sm":["Geist"],"headline-lg":["Geist"],"label-code":["JetBrains Mono"]},fontSize:{"label-meta":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"headline-sm":["18px",{"lineHeight":"26px","fontWeight":"500"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"display-hero":["48px",{"lineHeight":"56px","letterSpacing":"-0.03em","fontWeight":"600"}],"label-pill":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"500"}],"display-hero-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.015em","fontWeight":"500"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"600"}],"label-code":["13px",{"lineHeight":"18px","fontWeight":"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased min-h-screen flex flex-col" data-__gcrweb-annotatedpagecontent-processed="0B0F50A13E6026FE7502ABF79E43F854"><header class="fixed top-0 w-full z-50 bg-surface-canvas/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.45)]"><div class="h-16 max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><img alt="MigrateMe Universal Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XybJpbd1GZwLzxExCsVHle0KcJa_H2WmlmmzBSB917-dIOPts2g2DDBpRmxT_RDjcQtFnDcihJ_rsnePaiERpo7R5mQNo4KD9CmIj_r1TgXOuehcHdkj8eCfEJQwmZYzl-icvTF3xHXpp9xBPUz9lO9uJ11GSphdDuG7nzQCaa8s86LyMkfHLlvGednIcjSRpkqY-GV1_pCJCqCTE4ag0QVPaqEOjhbLl482x0p1LTUMkDH7qPWRBEkgA"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-text-primary tracking-tight whitespace-nowrap">MigrateMe Universal</span><span class="hidden xl:inline-flex items-center font-label-pill text-label-pill px-space-xs py-0.5 rounded bg-surface-subtle text-primary border border-border-default whitespace-nowrap">v2.0 Universal / OMP Spec</span></div></div><nav class="hidden lg:flex items-center gap-1" data-active-classes="bg-surface-subtle text-text-primary font-medium border border-border-accent"><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="universal-hub" href="#">Universal Hub</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="pair-explorer" href="#">Pair Explorer (1,332 Pairs)</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="open-migration-package" href="#">Open Migration Package (OMP)</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="interactive-split-proof" href="#">Interactive Split &amp; Proof</a><a class="px-space-sm py-1.5 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container font-body-sm text-body-sm transition-colors whitespace-nowrap" data-path="documentation" href="#">Documentation / llms.txt</a></nav><div class="flex items-center gap-space-sm"><a class="inline-flex items-center gap-1.5 px-space-md h-[38px] rounded bg-surface-card hover:bg-primary-container text-text-primary hover:text-surface-canvas font-body-sm text-body-sm border border-border-accent transition-colors shadow-sm font-medium" data-path="start-dry-run" href="#"><span class="material-symbols-outlined text-[18px]">play_arrow</span><span class="">Start Dry Run</span></a><a aria-label="GitHub Repository" class="p-2 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-subtle transition-colors flex items-center justify-center" href="https://github.com" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[20px]">code</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface-canvas flex-1"><div class="flex flex-col w-full">
+<!-- Subtle Header Backing Glow -->
+<div class="relative w-full overflow-hidden">
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[72rem] h-64 bg-gradient-to-b from-primary/10 via-transparent to-transparent blur-3xl pointer-events-none"></div>
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter pt-space-lg pb-space-xl">
+<!-- Breadcrumb & Spec Identity -->
+<nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 mb-space-md">
+<a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="universal-hub" href="#">Universal Hub</a>
+<span class="text-text-muted font-body-sm text-body-sm">/</span>
+<a class="font-body-sm text-body-sm text-text-muted hover:text-text-primary transition-colors" data-path="pair-explorer" href="#">Pair Explorer (1,332 Pairs)</a>
+<span class="text-text-muted font-body-sm text-body-sm">/</span>
+<span class="font-label-pill text-label-pill text-state-info bg-surface-subtle px-2 py-0.5 rounded">wordpress.to.markdown.migrateme.tech</span>
+</nav>
+<!-- Status Pill Row -->
+<div class="flex flex-wrap items-center gap-space-xs mb-space-md">
+<span class="inline-flex items-center gap-1.5 font-label-pill text-label-pill px-2.5 py-1 rounded bg-surface-subtle text-text-primary">
+<span class="w-2 h-2 rounded-full bg-state-success animate-pulse"></span>
+          RFC-PAIR-001
+        </span>
+<span class="font-label-pill text-label-pill px-2.5 py-1 rounded bg-surface-card text-state-success">
+          Canonical Lossless Route
+        </span>
+<span class="font-label-pill text-label-pill px-2.5 py-1 rounded bg-surface-card text-text-muted">
+          Monorepo Spec v2.0-Verified
+        </span>
+<span class="font-label-pill text-label-pill px-2.5 py-1 rounded bg-surface-card text-state-info">
+          RFC 8493 BagIt Compliant
+        </span>
+</div>
+<!-- Main Title Block & Subdomain Routing Anchor -->
+<div class="flex flex-col lg:flex-row lg:items-start justify-between gap-space-lg pb-space-lg">
+<div class="space-y-space-xs max-w-3xl">
+<div class="flex items-center gap-space-sm flex-wrap">
+<h1 class="font-headline-lg text-headline-lg text-text-primary tracking-tight font-semibold">
+              wordpress.to.markdown.migrateme.tech
+            </h1>
+<!-- Interactive Subdomain Utility Chip -->
+<button class="inline-flex items-center gap-1.5 px-space-xs py-1 rounded bg-surface-card hover:bg-surface-subtle text-text-secondary text-body-sm font-label-code transition-all cursor-pointer" id="copySubdomainBtn" onclick="navigator.clipboard.writeText('wordpress.to.markdown.migrateme.tech'); this.querySelector('span.label').innerText = 'Copied!';">
+<span class="material-symbols-outlined text-[16px] text-state-info">content_copy</span>
+<span class="label">Copy URI</span>
+</button>
+</div>
+<p class="font-body-lg text-body-lg text-text-secondary leading-relaxed">
+            Canonical AST Specification &amp; Fidelity Contract: WordPress WXR (Gutenberg/Classic) to Markdown/MDX with Unified Frontmatter and deterministic RFC 8493 BagIt asset graph compilation.
+          </p>
+</div>
+<!-- Primary Action Cluster -->
+<div class="flex flex-wrap lg:flex-col gap-space-xs shrink-0 w-full sm:w-auto">
+<button class="inline-flex items-center justify-center gap-2 px-space-md h-[42px] rounded bg-primary-container text-surface-canvas hover:bg-primary font-headline-sm text-body-md font-semibold transition-all shadow-md" id="runWasmBtn">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+<span class="">Run Local Dry-Run (In-Browser WASM)</span>
+</button>
+<div class="flex items-center gap-space-xs w-full">
+<button class="flex-1 inline-flex items-center justify-center gap-1.5 px-space-sm h-[36px] rounded bg-surface-card hover:bg-surface-subtle text-text-primary font-body-sm text-body-sm transition-colors" onclick="navigator.clipboard.writeText('npx @migrateme/cli run --from wordpress-wxr --to markdown-mdx --dry-run'); alert('CLI command copied to clipboard!');">
+<span class="material-symbols-outlined text-[16px]">terminal</span>
+<span class="">Copy CLI Run</span>
+</button>
+<a class="flex-1 inline-flex items-center justify-center gap-1.5 px-space-sm h-[36px] rounded bg-surface-card hover:bg-surface-subtle text-text-secondary hover:text-text-primary font-body-sm text-body-sm transition-colors" href="#schema-view">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span class="">OMP Fixture</span>
+</a>
+</div>
+</div>
+</div>
+<!-- Live Execution Telemetry Bar (Bento Metrics Strip) -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-space-sm pt-space-xs">
+<div class="p-space-md rounded bg-surface-card shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-text-muted mb-1">
+<span class="font-label-meta text-label-meta uppercase">Canonical Fixtures</span>
+<span class="material-symbols-outlined text-state-success text-[18px]">verified</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-text-primary font-semibold">44 / 44</span>
+<span class="font-label-pill text-label-pill text-state-success">100% Passed</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted mt-1">Multi-site &amp; Gutenberg v19.2</span>
+</div>
+<div class="p-space-md rounded bg-surface-card shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-text-muted mb-1">
+<span class="font-label-meta text-label-meta uppercase">AST Field Map</span>
+<span class="material-symbols-outlined text-state-info text-[18px]">schema</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-text-primary font-semibold">420</span>
+<span class="font-label-pill text-label-pill text-state-info">287 Auto / 133 SMT</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted mt-1">Unified Zod Strict Schema</span>
+</div>
+<div class="p-space-md rounded bg-surface-card shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-text-muted mb-1">
+<span class="font-label-meta text-label-meta uppercase">Privacy Guarantee</span>
+<span class="material-symbols-outlined text-state-success text-[18px]">shield</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-text-primary font-semibold">0 Bytes</span>
+<span class="font-label-pill text-label-pill text-state-success">Local-First</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted mt-1">Zero exfiltration WASM sandbox</span>
+</div>
+<div class="p-space-md rounded bg-surface-card shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between text-text-muted mb-1">
+<span class="font-label-meta text-label-meta uppercase">BagIt Media Parity</span>
+<span class="material-symbols-outlined text-state-success text-[18px]">inventory_2</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-text-primary font-semibold">100%</span>
+<span class="font-label-pill text-label-pill text-state-success">SHA-256</span>
+</div>
+<span class="font-body-sm text-body-sm text-text-muted mt-1">Self-contained manifest index</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION: Invariant & Fidelity Contract Summary ("Honest by Construction") -->
+<!-- Mode Selection Bar -->
+<div class="w-full bg-surface-subtle/50 border-y border-border-muted py-space-sm">
+  <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+    <div class="flex items-center gap-space-xs">
+      <span class="font-label-meta text-label-meta text-text-muted uppercase tracking-wider">Viewing Mode:</span>
+      <div class="inline-flex p-1 rounded-full bg-surface-canvas border border-border-default shadow-inner" id="modeToggleGroup">
+        <button type="button" id="btnModeEasy" onclick="setPairMode('easy')" class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full text-body-sm font-medium bg-primary text-surface-canvas shadow-sm transition-all">
+          <span class="">🌱 Easy Mode</span>
+        </button>
+        <button type="button" id="btnModeAdvanced" onclick="setPairMode('advanced')" class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full text-body-sm font-medium text-text-muted hover:text-text-primary transition-all">
+          <span class="">⚡ Advanced (RFC Spec)</span>
+        </button>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 text-text-muted font-body-sm text-body-sm">
+      <span class="w-2 h-2 rounded-full bg-state-success"></span>
+      <span id="modeSubtitle" class="">Streamlined walkthrough &amp; plain-English answers</span>
+    </div>
+  </div>
+</div>
+
+<!-- EASY MODE CONTAINER -->
+<div id="easyModeContainer" class="w-full transition-all">
+  <!-- Easy Hero / Action Banner -->
+  <section class="w-full py-space-lg bg-surface-container-lowest border-b border-border-muted">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="p-space-lg rounded bg-surface-card border border-border-default shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+        <div class="space-y-space-xs max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 font-label-pill text-label-pill px-2.5 py-0.5 rounded bg-surface-subtle text-state-success">
+            <span class="w-1.5 h-1.5 rounded-full bg-state-success"></span>
+            Zero-Risk Migration Preview
+          </div>
+          <h2 class="font-headline-md text-headline-md text-text-primary font-semibold">
+            Convert your WordPress site into clean Markdown files in 3 minutes
+          </h2>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Migrate your articles, pages, images, and authors without touching a terminal or risking downtime. Everything runs locally in your browser with zero data sent to external servers.
+          </p>
+        </div>
+        <div class="flex flex-col items-center sm:items-end gap-1.5 shrink-0 w-full md:w-auto">
+          <button type="button" onclick="document.getElementById('runWasmBtn').click();" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-space-lg h-[42px] rounded bg-primary text-surface-canvas hover:bg-primary-container font-headline-sm text-body-md font-semibold transition-all shadow-md cursor-pointer">
+            <span class="material-symbols-outlined text-[20px]">play_circle</span>
+            <span class="">Start 3-Minute Migration (Dry Run)</span>
+          </button>
+          <span class="font-label-meta text-label-meta text-text-muted flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-state-success">verified_user</span>
+            No files changed • 100% in-browser dry run
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-Step Visual Summary Cards -->
+  <section class="w-full py-space-xl bg-surface-canvas">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="text-center max-w-xl mx-auto mb-space-lg">
+        <span class="font-label-meta text-label-meta uppercase text-primary tracking-wider">Plain-English Summary</span>
+        <h3 class="font-headline-lg text-headline-lg text-text-primary font-semibold mt-1">
+          What happens to your content?
+        </h3>
+        <p class="font-body-sm text-body-sm text-text-muted mt-space-xs">
+          Here is the straightforward breakdown of how your WordPress data is translated into modern static format.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+        <!-- Card 1: What moves cleanly -->
+        <div class="p-space-lg rounded bg-surface-card border border-border-default flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-state-success"></div>
+          <div class="space-y-space-sm">
+            <div class="w-10 h-10 rounded bg-surface-subtle flex items-center justify-center text-state-success mb-space-xs">
+              <span class="material-symbols-outlined text-[24px]">check_circle</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-success">100% Preserved</span>
+            <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">What Moves Cleanly</h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              All your actual content and publishing taxonomy moves across exactly as you wrote it:
+            </p>
+            <ul class="space-y-2 font-body-sm text-body-sm text-text-secondary pt-1">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-success">check</span>
+                <span class=""><strong>Posts &amp; Pages:</strong> Titles, slugs, creation dates, &amp; authors</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-success">check</span>
+                <span class=""><strong>Categories &amp; Tags:</strong> Clean frontmatter labels</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-success">check</span>
+                <span class=""><strong>Images &amp; Media:</strong> Downloaded into a local <code class="text-primary font-label-code text-[11px]">/assets</code> folder</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-space-md pt-2 border-t border-border-muted text-text-muted font-label-meta text-label-meta flex items-center justify-between">
+            <span class="">Lossless guarantee</span>
+            <span class="text-state-success font-medium">0 Content Lost</span>
+          </div>
+        </div>
+
+        <!-- Card 2: What gets reformatted -->
+        <div class="p-space-lg rounded bg-surface-card border border-border-default flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-state-warning"></div>
+          <div class="space-y-space-sm">
+            <div class="w-10 h-10 rounded bg-surface-subtle flex items-center justify-center text-state-warning mb-space-xs">
+              <span class="material-symbols-outlined text-[24px]">transform</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-warning">Reformatted</span>
+            <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">What Gets Reformatted</h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              WordPress-specific syntax is converted into clean, universally readable Markdown:
+            </p>
+            <ul class="space-y-2 font-body-sm text-body-sm text-text-secondary pt-1">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-warning">sync_alt</span>
+                <span class=""><strong>Gutenberg Blocks:</strong> Clean paragraphs, headings &amp; lists</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-warning">sync_alt</span>
+                <span class=""><strong>Shortcodes:</strong> Transformed to modern React/JSX components</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-warning">sync_alt</span>
+                <span class=""><strong>Links:</strong> Internal domain links updated to local paths</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-space-md pt-2 border-t border-border-muted text-text-muted font-label-meta text-label-meta flex items-center justify-between">
+            <span class="">Format conversion</span>
+            <span class="text-state-warning font-medium">Clean Markdown</span>
+          </div>
+        </div>
+
+        <!-- Card 3: What gets cleaned up -->
+        <div class="p-space-lg rounded bg-surface-card border border-border-default flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-state-info"></div>
+          <div class="space-y-space-sm">
+            <div class="w-10 h-10 rounded bg-surface-subtle flex items-center justify-center text-state-info mb-space-xs">
+              <span class="material-symbols-outlined text-[24px]">cleaning_services</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-info">Safe Cleanup</span>
+            <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">What Gets Dropped</h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              Legacy bloat, security hazards, and temporary session files are safely removed:
+            </p>
+            <ul class="space-y-2 font-body-sm text-body-sm text-text-secondary pt-1">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-text-muted">remove_circle_outline</span>
+                <span class=""><strong>Database Transients:</strong> Expired cache and query logs</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-text-muted">remove_circle_outline</span>
+                <span class=""><strong>Legacy Passwords:</strong> Outdated phpass hashes purged</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-text-muted">remove_circle_outline</span>
+                <span class=""><strong>Plugin Cruft:</strong> Analytics cookies and auto-drafts</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-space-md pt-2 border-t border-border-muted text-text-muted font-label-meta text-label-meta flex items-center justify-between">
+            <span class="">Health &amp; Security</span>
+            <span class="text-state-info font-medium">Zero Clutter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visual Before & After Preview Card -->
+  <section class="w-full py-space-xl bg-surface-container-lowest border-y border-border-muted hidden" id="sectionInvariantMatrix">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-xs">
+        <div>
+          <span class="font-label-meta text-label-meta uppercase text-state-success tracking-wider">Visual Comparison</span>
+          <h3 class="font-headline-lg text-headline-lg text-text-primary font-semibold">
+            Before &amp; After Example
+          </h3>
+        </div>
+        <p class="font-body-sm text-body-sm text-text-muted max-w-md">
+          See how complex WordPress XML database entries become clean, human-readable Markdown files.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+        <!-- Before Column -->
+        <div class="rounded bg-surface-card border border-border-default overflow-hidden">
+          <div class="bg-surface-subtle px-space-md py-2 flex items-center justify-between border-b border-border-muted">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-state-warning">description</span>
+              <span class="font-headline-sm text-body-md text-text-primary font-medium">WordPress XML Source</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface text-text-muted">Messy XML &amp; HTML</span>
+          </div>
+          <div class="p-space-md bg-code-surface">
+            <pre class="font-label-code text-body-sm text-text-secondary leading-relaxed overflow-x-auto"><code>&lt;item&gt;
+  &lt;title&gt;Zero-Downtime Migration Architectures&lt;/title&gt;
+  &lt;wp:post_name&gt;zero-downtime-migration&lt;/wp:post_name&gt;
+  &lt;category nicename="engineering"&gt;Engineering&lt;/category&gt;
+  &lt;content:encoded&gt;
+    &lt;!-- wp:paragraph --&gt;
+    &lt;p&gt;Executing continuous migrations requires deterministic guarantees.&lt;/p&gt;
+    &lt;!-- /wp:paragraph --&gt;
+  &lt;/content:encoded&gt;
+&lt;/item&gt;</code></pre>
+          </div>
+        </div>
+
+        <!-- After Column -->
+        <div class="rounded bg-surface-card border border-border-accent overflow-hidden shadow-md">
+          <div class="bg-surface-subtle px-space-md py-2 flex items-center justify-between border-b border-border-muted">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-state-success">markdown</span>
+              <span class="font-headline-sm text-body-md text-text-primary font-medium">Generated Markdown (.mdx)</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface text-state-success">Clean YAML + Markdown</span>
+          </div>
+          <div class="p-space-md bg-code-surface">
+            <pre class="font-label-code text-body-sm text-text-secondary leading-relaxed overflow-x-auto"><code>--- 
+title: "Zero-Downtime Migration Architectures"
+slug: "zero-downtime-migration"
+categories: ["Engineering"]
+date: "2024-03-18"
+---
+
+Executing continuous migrations requires deterministic guarantees.
+
+![Architecture Diagram](./assets/arch.png)</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plain-English FAQ Cards -->
+  <section class="w-full py-space-xl bg-surface-canvas">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="mb-space-lg text-left">
+        <span class="font-label-meta text-label-meta uppercase text-primary tracking-wider">Got Questions?</span>
+        <h3 class="font-headline-lg text-headline-lg text-text-primary font-semibold mt-1">
+          Frequently Asked Questions
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-state-info">image</span>
+            Will my images break after migration?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            No. All referenced WordPress images and upload attachments are downloaded into a local <code class="text-primary font-label-code text-[11px]">./assets/</code> folder with SHA-256 integrity tags, so image links stay 100% intact.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-state-success">travel_explore</span>
+            Do my Yoast or RankMath SEO tags transfer?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Yes! SEO metadata such as meta titles, descriptions, and canonical links are converted automatically into standard <code class="text-primary font-label-code text-[11px]">meta.seo.*</code> frontmatter fields compatible with Next.js, Astro, and Hugo.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-state-warning">verified</span>
+            Can this modify or break my live WordPress site?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            No. MigrateMe works in dry-run mode by reading your exported XML file in an isolated local browser sandbox. It makes zero live API calls and does not write to your server.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-primary">code_blocks</span>
+            What if I need the full technical RFC or CLI specs?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Simply toggle to <strong>⚡ Advanced (RFC Spec)</strong> at the top of the page at any time to inspect the full AST split-inspector, 420-field dictionary, and MCP agent protocols.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ADVANCED RFC SPEC HEADER BADGE -->
+<div id="advancedSpecHeaderBadge" class="w-full bg-surface-subtle border-y border-border-default py-2 hidden">
+  <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex items-center justify-between text-text-secondary font-label-meta text-label-meta">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-[16px] text-state-info">terminal</span>
+      <span class="">RFC-PAIR-001 Advanced Technical Specification &amp; AST Engine Diagnostics</span>
+    </div>
+    <button type="button" onclick="setPairMode('easy')" class="text-primary hover:text-text-primary transition-colors flex items-center gap-1 cursor-pointer">
+      <span class="">Switch back to 🌱 Easy Mode</span>
+    </button>
+  </div>
+</div><section class="w-full bg-surface-container-lowest py-space-xl hidden" id="sectionInvariantMatrix">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-xs">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-label-meta text-label-meta uppercase text-primary tracking-wider">Fidelity Contract RFC-PAIR-001</span>
+<span class="h-1.5 w-1.5 rounded-full bg-border-accent"></span>
+<span class="font-label-meta text-label-meta text-text-muted">Deterministic Guarantees</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-text-primary font-semibold">
+            "Honest by Construction" Invariant Matrix
+          </h2>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted max-w-md">
+          Every transformed byte is cryptographically cataloged. We make unambiguous commitments on what is lossless, what is converted, and what is dropped.
+        </p>
+</div>
+<!-- 3-Column Architectural Guarantee Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- 1. Preserved Exactly (Lossless) -->
+<div class="p-space-lg rounded bg-surface-card flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-state-success"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="inline-flex items-center gap-1.5 font-label-meta text-label-meta text-state-success uppercase font-semibold">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+                Preserved Exactly
+              </span>
+<span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-success">Lossless (100%)</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary mb-space-xs font-semibold">Deterministic Entities</h3>
+<ul class="space-y-space-xs text-text-secondary font-body-sm text-body-sm">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-state-success shrink-0 mt-0.5">verified_user</span>
+<span class=""><strong>Post, Page &amp; Custom Bodies:</strong> Parsed into canonical unified AST with recursive HTML-to-JSX semantics.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-state-success shrink-0 mt-0.5">verified_user</span>
+<span class=""><strong>Complete Taxonomies:</strong> Categories, Tags, Hierarchical custom terms, and slug path structures.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-state-success shrink-0 mt-0.5">verified_user</span>
+<span class=""><strong>Temporal &amp; Identity Metadata:</strong> ISO-8601 UTC dates (`post_date_gmt`), author ID mapping, status flags.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-state-success shrink-0 mt-0.5">verified_user</span>
+<span class=""><strong>RFC 8493 Media BagIt:</strong> Attachments downloaded with SHA-256 payload integrity into `/bag/data/assets/`.</span>
+</li>
+</ul>
+</div>
+<div class="mt-space-md pt-space-xs bg-surface-subtle/50 -mx-space-lg -mb-space-lg px-space-lg py-space-xs flex items-center justify-between text-text-muted font-label-meta text-label-meta">
+<span class="">Payload Proof: AST Invariant Hash</span>
+<span class="font-label-pill text-label-pill text-state-success">PASS 44/44</span>
+</div>
+</div>
+<!-- 2. Disclosures & Conversions -->
+<div class="p-space-lg rounded bg-surface-card flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-state-warning"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="inline-flex items-center gap-1.5 font-label-meta text-label-meta text-state-warning uppercase font-semibold">
+<span class="material-symbols-outlined text-[18px]">published_with_changes</span>
+                Transformed Semantics
+              </span>
+<span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-warning">Disclosed Shift</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary mb-space-xs font-semibold">AST Normalization</h3>
+<ul class="space-y-space-xs text-text-secondary font-body-sm text-body-sm">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-state-warning shrink-0 mt-0.5">swap_horiz</span>
+<span class=""><strong>Gutenberg Dynamic Blocks:</strong> JSON comments (<code class="text-primary font-label-code text-[11px]">&lt;!-- wp:paragraph --&gt;</code>) synthesized to semantic Markdown or MDX elements.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-state-warning shrink-0 mt-0.5">swap_horiz</span>
+<span class=""><strong>Shortcode Expansion:</strong> Registered shortcodes mapped to JSX components; unknown shortcodes preserved in raw text nodes.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-state-warning shrink-0 mt-0.5">swap_horiz</span>
+<span class=""><strong>Absolute URL Rewriting:</strong> Site origin hostnames rewritten to RFC relative links targeting canonical markdown files.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-state-warning shrink-0 mt-0.5">swap_horiz</span>
+<span class=""><strong>Meta Disambiguation:</strong> Prefix <code class="text-primary font-label-code text-[11px]">_yoast_</code> or <code class="text-primary font-label-code text-[11px]">_rank_math_</code> mapped to unified <code class="text-primary font-label-code text-[11px]">meta.seo.*</code> frontmatter.</span>
+</li>
+</ul>
+</div>
+<div class="mt-space-md pt-space-xs bg-surface-subtle/50 -mx-space-lg -mb-space-lg px-space-lg py-space-xs flex items-center justify-between text-text-muted font-label-meta text-label-meta">
+<span class="">Fidelity Delta Log</span>
+<span class="font-label-pill text-label-pill text-state-warning">0 Syntax Regressions</span>
+</div>
+</div>
+<!-- 3. Intentionally Dropped -->
+<div class="p-space-lg rounded bg-surface-card flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-0 left-0 right-0 h-1 bg-outline-variant"></div>
+<div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="inline-flex items-center gap-1.5 font-label-meta text-label-meta text-text-muted uppercase font-semibold">
+<span class="material-symbols-outlined text-[18px]">do_not_disturb_on</span>
+                Intentionally Dropped
+              </span>
+<span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-text-muted">Out of Scope</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-text-primary mb-space-xs font-semibold">Runtime Ephemera</h3>
+<ul class="space-y-space-xs text-text-secondary font-body-sm text-body-sm">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-text-muted shrink-0 mt-0.5">delete_sweep</span>
+<span class=""><strong>Database Transients:</strong> Expired cache keys (<code class="font-label-code text-[11px]">_transient_*</code>) are discarded at parse time.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-text-muted shrink-0 mt-0.5">delete_sweep</span>
+<span class=""><strong>Security Credential Hashes:</strong> WordPress user phpass hashes are dropped to avoid storing legacy vulnerabilities.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-text-muted shrink-0 mt-0.5">delete_sweep</span>
+<span class=""><strong>Plugin Ephemeral Logs:</strong> Debug queries, analytics tracking cookies, and session state are purged.</span>
+</li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-text-muted shrink-0 mt-0.5">delete_sweep</span>
+<span class=""><strong>Internal Post Revisions:</strong> Auto-draft revisions pruned unless flag <code class="font-label-code text-[11px]">--include-revisions</code> is declared.</span>
+</li>
+</ul>
+</div>
+<div class="mt-space-md pt-space-xs bg-surface-subtle/50 -mx-space-lg -mb-space-lg px-space-lg py-space-xs flex items-center justify-between text-text-muted font-label-meta text-label-meta">
+<span class="">Security Posture</span>
+<span class="font-label-pill text-label-pill text-state-success">ZERO SEC SECRETS</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: Interactive AST & Schema Mapping Inspector -->
+<section class="w-full py-space-xl hidden" id="schema-view">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-space-md gap-space-xs">
+<div>
+<span class="font-label-meta text-label-meta uppercase text-state-info tracking-wider">OMP AST Transformation Pipeline</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary font-semibold">
+            Executable Schema &amp; AST Split-Inspector
+          </h2>
+</div>
+<!-- Live WASM Status Indicator -->
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1.5 font-label-pill text-label-pill px-space-xs py-1 rounded bg-surface-card text-text-secondary">
+<span class="w-2 h-2 rounded-full bg-state-success"></span>
+            WASM AST Engine Ready (v2.0-core)
+          </span>
+</div>
+</div>
+<!-- Split Workbench Container -->
+<div class="rounded bg-surface-card overflow-hidden shadow-xl">
+<!-- Pipeline Navigation Tab Bar -->
+<div class="bg-surface-subtle px-space-md py-space-xs flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs font-label-code text-body-sm">
+<span class="text-text-muted font-medium">Pipeline:</span>
+<span class="px-2 py-0.5 rounded bg-surface text-primary">WXR SAX Stream</span>
+<span class="text-text-muted">➔</span>
+<span class="px-2 py-0.5 rounded bg-surface text-primary">OMP Intermediate AST</span>
+<span class="text-text-muted">➔</span>
+<span class="px-2 py-0.5 rounded bg-surface text-state-success">Unified MDX + BagIt</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-pill text-label-pill text-text-muted">Deterministic Cycle: 4.2ms</span>
+<button class="p-1 rounded text-text-muted hover:text-text-primary hover:bg-surface transition-colors" onclick="navigator.clipboard.writeText(document.getElementById('emittedCodePanel').innerText); alert('Emitted MDX copied!');" title="Copy Output MDX">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+<!-- 3-Column Split Visualizer -->
+<div class="grid grid-cols-1 lg:grid-cols-12 min-h-[460px]">
+<!-- Column 1: Source AST (WordPress WXR XML) -->
+<div class="lg:col-span-5 p-space-md bg-code-surface flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-2 mb-2 text-text-muted">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-text-secondary flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-state-warning">code</span>
+                  Source: WordPress WXR XML
+                </span>
+<span class="font-label-pill text-label-pill text-text-muted">XML / Gutenberg</span>
+</div>
+<pre class="font-label-code text-label-code text-text-secondary leading-snug overflow-x-auto p-2 bg-surface-canvas/60 rounded max-h-[360px]"><code>&lt;item&gt;
+  &lt;title&gt;Zero-Downtime Migration Architectures&lt;/title&gt;
+  &lt;link&gt;https://acme-corp.com/zero-downtime-migration/&lt;/link&gt;
+  &lt;pubDate&gt;Mon, 18 Mar 2024 14:32:00 +0000&lt;/pubDate&gt;
+  &lt;dc:creator&gt;alex_turner&lt;/dc:creator&gt;
+  &lt;wp:post_id&gt;10428&lt;/wp:post_id&gt;
+  &lt;wp:post_date_gmt&gt;2024-03-18 14:32:00&lt;/wp:post_date_gmt&gt;
+  &lt;wp:post_name&gt;zero-downtime-migration&lt;/wp:post_name&gt;
+  &lt;wp:status&gt;publish&lt;/wp:status&gt;
+  &lt;wp:post_type&gt;post&lt;/wp:post_type&gt;
+  &lt;category domain="category" nicename="engineering"&gt;Engineering&lt;/category&gt;
+  &lt;category domain="post_tag" nicename="migration"&gt;Migration&lt;/category&gt;
+  &lt;wp:postmeta&gt;
+    &lt;wp:meta_key&gt;_yoast_wpseo_title&lt;/wp:meta_key&gt;
+    &lt;wp:meta_value&gt;&lt;![CDATA[Zero-Downtime AST Systems]]&gt;&lt;/wp:meta_value&gt;
+  &lt;/wp:postmeta&gt;
+  &lt;content:encoded&gt;&lt;![CDATA[
+&lt;!-- wp:paragraph --&gt;
+&lt;p&gt;Executing continuous migrations requires deterministic guarantees.&lt;/p&gt;
+&lt;!-- /wp:paragraph --&gt;
+&lt;!-- wp:image {"id":902,"sizeSlug":"large"} --&gt;
+&lt;figure class="wp-block-image"&gt;&lt;img src="https://acme-corp.com/wp-content/uploads/2024/03/arch.png" alt="Arch Diagram"/&gt;&lt;/figure&gt;
+&lt;!-- /wp:image --&gt;
+  ]]&gt;&lt;/content:encoded&gt;
+&lt;/item&gt;</code></pre>
+</div>
+<div class="mt-2 text-text-muted font-label-pill text-label-pill flex items-center justify-between">
+<span class="">Encoding: UTF-8 WXR 1.2</span>
+<span class="">17 Nodes Parsed</span>
+</div>
+</div>
+<!-- Column 2: AST Normalizer Pipeline Rules -->
+<div class="lg:col-span-2 p-space-sm bg-surface-card flex flex-col justify-center items-center text-center space-y-space-sm py-space-md">
+<span class="font-label-meta text-label-meta uppercase text-primary font-semibold">Transform Core</span>
+<div class="w-full space-y-2">
+<div class="p-2 rounded bg-surface-subtle font-label-pill text-label-pill text-text-primary text-left">
+<span class="text-state-info block">1. Zod Ingestion</span>
+                Schema conformance check
+              </div>
+<div class="p-2 rounded bg-surface-subtle font-label-pill text-label-pill text-text-primary text-left">
+<span class="text-state-warning block">2. Gutenberg Parser</span>
+                JSON comment AST lift
+              </div>
+<div class="p-2 rounded bg-surface-subtle font-label-pill text-label-pill text-text-primary text-left">
+<span class="text-state-success block">3. BagIt Rewrite</span>
+                Payload hash &amp; relative URLs
+              </div>
+<div class="p-2 rounded bg-surface-subtle font-label-pill text-label-pill text-text-primary text-left">
+<span class="text-primary block">4. MDX Serializer</span>
+                Clean YAML + JSX emission
+              </div>
+</div>
+<div class="flex items-center justify-center text-primary pt-1">
+<span class="material-symbols-outlined text-[24px]">double_arrow</span>
+</div>
+</div>
+<!-- Column 3: Emitted Output (Markdown / MDX & BagIt Schema) -->
+<div class="lg:col-span-5 p-space-md bg-code-surface flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-2 mb-2 text-text-muted">
+<span class="font-label-meta text-label-meta uppercase tracking-wider text-state-success flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px] text-state-success">check_circle</span>
+                  Emitted: Canonical MDX + BagIt
+                </span>
+<span class="font-label-pill text-label-pill text-state-success">RFC 8493 + Frontmatter</span>
+</div>
+<pre class="font-label-code text-label-code text-text-secondary leading-snug overflow-x-auto p-2 bg-surface-canvas/60 rounded max-h-[360px]" id="emittedCodePanel"><code>---
+title: "Zero-Downtime Migration Architectures"
+slug: "zero-downtime-migration"
+date: "2024-03-18T14:32:00.000Z"
+author: "alex_turner"
+status: "publish"
+type: "post"
+categories:
+  - "Engineering"
+tags:
+  - "Migration"
+meta:
+  legacy_id: 10428
+  seo:
+    title: "Zero-Downtime AST Systems"
+assets:
+  - id: 902
+    sha256: "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    target: "./assets/2024-03-arch.png"
+---
+
+Executing continuous migrations requires deterministic guarantees.
+
+<img alt="Arch Diagram" hash="e3b0c442..." height="{630}" src="https://www.gstatic.com/labs-code/stitch/stitch-placeholder-300x300.svg" width="{1200}">
+</code></pre>
+</div>
+<div class="mt-2 text-text-muted font-label-pill text-label-pill flex items-center justify-between">
+<span class="">Target: RFC-MDX-Strict</span>
+<span class="text-state-success">Zero Drift Verified</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: 420 Field Mapping Dictionary (Searchable Sample & AST Ledger) -->
+<!-- Mode Selection Bar -->
+<div class="w-full bg-surface-subtle/50 border-y border-border-muted py-space-sm">
+  <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+    <div class="flex items-center gap-space-xs">
+      <span class="font-label-meta text-label-meta text-text-muted uppercase tracking-wider">Viewing Mode:</span>
+      <div class="inline-flex p-1 rounded-full bg-surface-canvas border border-border-default shadow-inner" id="modeToggleGroup">
+        <button type="button" id="btnModeEasy" onclick="setPairMode('easy')" class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full text-body-sm font-medium bg-primary text-surface-canvas shadow-sm transition-all">
+          <span class="">🌱 Easy Mode</span>
+        </button>
+        <button type="button" id="btnModeAdvanced" onclick="setPairMode('advanced')" class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full text-body-sm font-medium text-text-muted hover:text-text-primary transition-all">
+          <span class="">⚡ Advanced (RFC Spec)</span>
+        </button>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 text-text-muted font-body-sm text-body-sm">
+      <span class="w-2 h-2 rounded-full bg-state-success"></span>
+      <span id="modeSubtitle" class="">Streamlined walkthrough &amp; plain-English answers</span>
+    </div>
+  </div>
+</div>
+
+<!-- EASY MODE CONTAINER -->
+<div id="easyModeContainer" class="w-full transition-all">
+  <!-- Easy Hero / Action Banner -->
+  <section class="w-full py-space-lg bg-surface-container-lowest border-b border-border-muted">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="p-space-lg rounded bg-surface-card border border-border-default shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+        <div class="space-y-space-xs max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 font-label-pill text-label-pill px-2.5 py-0.5 rounded bg-surface-subtle text-state-success">
+            <span class="w-1.5 h-1.5 rounded-full bg-state-success"></span>
+            Zero-Risk Migration Preview
+          </div>
+          <h2 class="font-headline-md text-headline-md text-text-primary font-semibold">
+            Convert your WordPress site into clean Markdown files in 3 minutes
+          </h2>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Migrate your articles, pages, images, and authors without touching a terminal or risking downtime. Everything runs locally in your browser with zero data sent to external servers.
+          </p>
+        </div>
+        <div class="flex flex-col items-center sm:items-end gap-1.5 shrink-0 w-full md:w-auto">
+          <button type="button" onclick="document.getElementById('runWasmBtn').click();" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-space-lg h-[42px] rounded bg-primary text-surface-canvas hover:bg-primary-container font-headline-sm text-body-md font-semibold transition-all shadow-md cursor-pointer">
+            <span class="material-symbols-outlined text-[20px]">play_circle</span>
+            <span class="">Start 3-Minute Migration (Dry Run)</span>
+          </button>
+          <span class="font-label-meta text-label-meta text-text-muted flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-state-success">verified_user</span>
+            No files changed • 100% in-browser dry run
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-Step Visual Summary Cards -->
+  <section class="w-full py-space-xl bg-surface-canvas">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="text-center max-w-xl mx-auto mb-space-lg">
+        <span class="font-label-meta text-label-meta uppercase text-primary tracking-wider">Plain-English Summary</span>
+        <h3 class="font-headline-lg text-headline-lg text-text-primary font-semibold mt-1">
+          What happens to your content?
+        </h3>
+        <p class="font-body-sm text-body-sm text-text-muted mt-space-xs">
+          Here is the straightforward breakdown of how your WordPress data is translated into modern static format.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+        <!-- Card 1: What moves cleanly -->
+        <div class="p-space-lg rounded bg-surface-card border border-border-default flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-state-success"></div>
+          <div class="space-y-space-sm">
+            <div class="w-10 h-10 rounded bg-surface-subtle flex items-center justify-center text-state-success mb-space-xs">
+              <span class="material-symbols-outlined text-[24px]">check_circle</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-success">100% Preserved</span>
+            <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">What Moves Cleanly</h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              All your actual content and publishing taxonomy moves across exactly as you wrote it:
+            </p>
+            <ul class="space-y-2 font-body-sm text-body-sm text-text-secondary pt-1">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-success">check</span>
+                <span class=""><strong>Posts &amp; Pages:</strong> Titles, slugs, creation dates, &amp; authors</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-success">check</span>
+                <span class=""><strong>Categories &amp; Tags:</strong> Clean frontmatter labels</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-success">check</span>
+                <span class=""><strong>Images &amp; Media:</strong> Downloaded into a local <code class="text-primary font-label-code text-[11px]">/assets</code> folder</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-space-md pt-2 border-t border-border-muted text-text-muted font-label-meta text-label-meta flex items-center justify-between">
+            <span class="">Lossless guarantee</span>
+            <span class="text-state-success font-medium">0 Content Lost</span>
+          </div>
+        </div>
+
+        <!-- Card 2: What gets reformatted -->
+        <div class="p-space-lg rounded bg-surface-card border border-border-default flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-state-warning"></div>
+          <div class="space-y-space-sm">
+            <div class="w-10 h-10 rounded bg-surface-subtle flex items-center justify-center text-state-warning mb-space-xs">
+              <span class="material-symbols-outlined text-[24px]">transform</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-warning">Reformatted</span>
+            <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">What Gets Reformatted</h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              WordPress-specific syntax is converted into clean, universally readable Markdown:
+            </p>
+            <ul class="space-y-2 font-body-sm text-body-sm text-text-secondary pt-1">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-warning">sync_alt</span>
+                <span class=""><strong>Gutenberg Blocks:</strong> Clean paragraphs, headings &amp; lists</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-warning">sync_alt</span>
+                <span class=""><strong>Shortcodes:</strong> Transformed to modern React/JSX components</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-warning">sync_alt</span>
+                <span class=""><strong>Links:</strong> Internal domain links updated to local paths</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-space-md pt-2 border-t border-border-muted text-text-muted font-label-meta text-label-meta flex items-center justify-between">
+            <span class="">Format conversion</span>
+            <span class="text-state-warning font-medium">Clean Markdown</span>
+          </div>
+        </div>
+
+        <!-- Card 3: What gets cleaned up -->
+        <div class="p-space-lg rounded bg-surface-card border border-border-default flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-state-info"></div>
+          <div class="space-y-space-sm">
+            <div class="w-10 h-10 rounded bg-surface-subtle flex items-center justify-center text-state-info mb-space-xs">
+              <span class="material-symbols-outlined text-[24px]">cleaning_services</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-info">Safe Cleanup</span>
+            <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">What Gets Dropped</h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              Legacy bloat, security hazards, and temporary session files are safely removed:
+            </p>
+            <ul class="space-y-2 font-body-sm text-body-sm text-text-secondary pt-1">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-text-muted">remove_circle_outline</span>
+                <span class=""><strong>Database Transients:</strong> Expired cache and query logs</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-text-muted">remove_circle_outline</span>
+                <span class=""><strong>Legacy Passwords:</strong> Outdated phpass hashes purged</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-text-muted">remove_circle_outline</span>
+                <span class=""><strong>Plugin Cruft:</strong> Analytics cookies and auto-drafts</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-space-md pt-2 border-t border-border-muted text-text-muted font-label-meta text-label-meta flex items-center justify-between">
+            <span class="">Health &amp; Security</span>
+            <span class="text-state-info font-medium">Zero Clutter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visual Before & After Preview Card -->
+  <section class="w-full py-space-xl bg-surface-container-lowest border-y border-border-muted hidden" id="sectionInvariantMatrix">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-xs">
+        <div>
+          <span class="font-label-meta text-label-meta uppercase text-state-success tracking-wider">Visual Comparison</span>
+          <h3 class="font-headline-lg text-headline-lg text-text-primary font-semibold">
+            Before &amp; After Example
+          </h3>
+        </div>
+        <p class="font-body-sm text-body-sm text-text-muted max-w-md">
+          See how complex WordPress XML database entries become clean, human-readable Markdown files.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+        <!-- Before Column -->
+        <div class="rounded bg-surface-card border border-border-default overflow-hidden">
+          <div class="bg-surface-subtle px-space-md py-2 flex items-center justify-between border-b border-border-muted">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-state-warning">description</span>
+              <span class="font-headline-sm text-body-md text-text-primary font-medium">WordPress XML Source</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface text-text-muted">Messy XML &amp; HTML</span>
+          </div>
+          <div class="p-space-md bg-code-surface">
+            <pre class="font-label-code text-body-sm text-text-secondary leading-relaxed overflow-x-auto"><code>&lt;item&gt;
+  &lt;title&gt;Zero-Downtime Migration Architectures&lt;/title&gt;
+  &lt;wp:post_name&gt;zero-downtime-migration&lt;/wp:post_name&gt;
+  &lt;category nicename="engineering"&gt;Engineering&lt;/category&gt;
+  &lt;content:encoded&gt;
+    &lt;!-- wp:paragraph --&gt;
+    &lt;p&gt;Executing continuous migrations requires deterministic guarantees.&lt;/p&gt;
+    &lt;!-- /wp:paragraph --&gt;
+  &lt;/content:encoded&gt;
+&lt;/item&gt;</code></pre>
+          </div>
+        </div>
+
+        <!-- After Column -->
+        <div class="rounded bg-surface-card border border-border-accent overflow-hidden shadow-md">
+          <div class="bg-surface-subtle px-space-md py-2 flex items-center justify-between border-b border-border-muted">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-state-success">markdown</span>
+              <span class="font-headline-sm text-body-md text-text-primary font-medium">Generated Markdown (.mdx)</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface text-state-success">Clean YAML + Markdown</span>
+          </div>
+          <div class="p-space-md bg-code-surface">
+            <pre class="font-label-code text-body-sm text-text-secondary leading-relaxed overflow-x-auto"><code>--- 
+title: "Zero-Downtime Migration Architectures"
+slug: "zero-downtime-migration"
+categories: ["Engineering"]
+date: "2024-03-18"
+---
+
+Executing continuous migrations requires deterministic guarantees.
+
+![Architecture Diagram](./assets/arch.png)</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plain-English FAQ Cards -->
+  <section class="w-full py-space-xl bg-surface-canvas">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="mb-space-lg text-left">
+        <span class="font-label-meta text-label-meta uppercase text-primary tracking-wider">Got Questions?</span>
+        <h3 class="font-headline-lg text-headline-lg text-text-primary font-semibold mt-1">
+          Frequently Asked Questions
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-state-info">image</span>
+            Will my images break after migration?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            No. All referenced WordPress images and upload attachments are downloaded into a local <code class="text-primary font-label-code text-[11px]">./assets/</code> folder with SHA-256 integrity tags, so image links stay 100% intact.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-state-success">travel_explore</span>
+            Do my Yoast or RankMath SEO tags transfer?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Yes! SEO metadata such as meta titles, descriptions, and canonical links are converted automatically into standard <code class="text-primary font-label-code text-[11px]">meta.seo.*</code> frontmatter fields compatible with Next.js, Astro, and Hugo.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-state-warning">verified</span>
+            Can this modify or break my live WordPress site?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            No. MigrateMe works in dry-run mode by reading your exported XML file in an isolated local browser sandbox. It makes zero live API calls and does not write to your server.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-primary">code_blocks</span>
+            What if I need the full technical RFC or CLI specs?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Simply toggle to <strong>⚡ Advanced (RFC Spec)</strong> at the top of the page at any time to inspect the full AST split-inspector, 420-field dictionary, and MCP agent protocols.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ADVANCED RFC SPEC HEADER BADGE -->
+<div id="advancedSpecHeaderBadge" class="w-full bg-surface-subtle border-y border-border-default py-2 hidden">
+  <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex items-center justify-between text-text-secondary font-label-meta text-label-meta">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-[16px] text-state-info">terminal</span>
+      <span class="">RFC-PAIR-001 Advanced Technical Specification &amp; AST Engine Diagnostics</span>
+    </div>
+    <button type="button" onclick="setPairMode('easy')" class="text-primary hover:text-text-primary transition-colors flex items-center gap-1 cursor-pointer">
+      <span class="">Switch back to 🌱 Easy Mode</span>
+    </button>
+  </div>
+</div><section class="w-full bg-surface-container-lowest py-space-xl hidden" id="sectionFieldDictionary">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<!-- Dictionary Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-md gap-space-xs">
+<div>
+<span class="font-label-meta text-label-meta uppercase text-primary tracking-wider">Formal Dictionary &amp; AST Registry</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary font-semibold">
+            Field Mapping Specification (420 Total Mapped)
+          </h2>
+</div>
+<!-- Table Search and Category Filter -->
+<div class="flex items-center gap-space-xs">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-text-muted text-[16px]">search</span>
+<input class="bg-code-surface text-text-primary font-label-code text-body-sm pl-8 pr-3 py-1.5 rounded focus:outline-none focus:ring-1 focus:ring-border-accent w-64" id="fieldSearchInput" placeholder="Filter fields (e.g. date, seo, bagit)..." type="text" __gcruniqueid="1">
+</div>
+<span class="font-label-pill text-label-pill px-2.5 py-1.5 rounded bg-surface-card text-text-muted">
+            Displaying Canonical Core Sample
+          </span>
+</div>
+</div>
+<!-- Data Table Card -->
+<div class="rounded bg-surface-card overflow-hidden shadow-sm">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse" id="fieldsTable">
+<thead>
+<tr class="bg-surface-subtle font-label-meta text-label-meta text-text-muted uppercase tracking-wider">
+<th class="py-space-sm px-space-md">Source Field (WordPress WXR)</th>
+<th class="py-space-sm px-space-md">Target Key (Markdown Frontmatter / AST)</th>
+<th class="py-space-sm px-space-md">Deterministic Transformation Rule</th>
+<th class="py-space-sm px-space-md text-right">Fidelity Verification</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-muted font-label-code text-body-sm text-text-secondary">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-space-sm px-space-md text-text-primary font-medium">
+<code>post_title</code>
+</td>
+<td class="py-space-sm px-space-md text-primary">
+<code>title</code>
+</td>
+<td class="py-space-sm px-space-md font-body-sm text-body-sm text-text-secondary">
+                  HTML entity decode, Unicode NFC normalization, <code class="text-primary font-label-code text-[11px]">String.trim()</code>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-success">
+<span class="w-1.5 h-1.5 rounded-full bg-state-success"></span>
+                    Deterministic 100%
+                  </span>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-space-sm px-space-md text-text-primary font-medium">
+<code>post_name</code>
+</td>
+<td class="py-space-sm px-space-md text-primary">
+<code>slug</code>
+</td>
+<td class="py-space-sm px-space-md font-body-sm text-body-sm text-text-secondary">
+                  Sanitized URI component; fallback to <code class="text-primary font-label-code text-[11px]">slugify(post_title)</code> if empty
+                </td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-success">
+<span class="w-1.5 h-1.5 rounded-full bg-state-success"></span>
+                    Deterministic 100%
+                  </span>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-space-sm px-space-md text-text-primary font-medium">
+<code>post_date_gmt</code>
+</td>
+<td class="py-space-sm px-space-md text-primary">
+<code>date</code>
+</td>
+<td class="py-space-sm px-space-md font-body-sm text-body-sm text-text-secondary">
+                  Parsed as UTC, serialized to ISO-8601 <code class="text-primary font-label-code text-[11px]">YYYY-MM-DDTHH:mm:ss.sssZ</code>
+</td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-success">
+<span class="w-1.5 h-1.5 rounded-full bg-state-success"></span>
+                    Deterministic 100%
+                  </span>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-space-sm px-space-md text-text-primary font-medium">
+<code>content:encoded</code>
+</td>
+<td class="py-space-sm px-space-md text-primary">
+<code>body (MDX AST)</code>
+</td>
+<td class="py-space-sm px-space-md font-body-sm text-body-sm text-text-secondary">
+                  Gutenberg block AST normalization; HTML tables preserved; Shortcodes to JSX components
+                </td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-info">
+<span class="w-1.5 h-1.5 rounded-full bg-state-info"></span>
+                    Lossless AST
+                  </span>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-space-sm px-space-md text-text-primary font-medium">
+<code>_thumbnail_id</code>
+</td>
+<td class="py-space-sm px-space-md text-primary">
+<code>featured_image</code>
+</td>
+<td class="py-space-sm px-space-md font-body-sm text-body-sm text-text-secondary">
+                  Resolves attachment ID to BagIt relative path (<code class="text-primary font-label-code text-[11px]">./assets/hash.png</code>) + dimensions
+                </td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-success">
+<span class="w-1.5 h-1.5 rounded-full bg-state-success"></span>
+                    Cryptographic SHA-256
+                  </span>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-space-sm px-space-md text-text-primary font-medium">
+<code>_yoast_wpseo_title</code>
+</td>
+<td class="py-space-sm px-space-md text-primary">
+<code>meta.seo.title</code>
+</td>
+<td class="py-space-sm px-space-md font-body-sm text-body-sm text-text-secondary">
+                  Strip legacy template variable tokens (e.g. <code class="text-primary font-label-code text-[11px]">%%title%%</code> replaced with target title)
+                </td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-success">
+<span class="w-1.5 h-1.5 rounded-full bg-state-success"></span>
+                    Deterministic
+                  </span>
+</td>
+</tr>
+<!-- Row 7 -->
+<tr class="hover:bg-surface-subtle/50 transition-colors">
+<td class="py-space-sm px-space-md text-text-primary font-medium">
+<code>wp:comment</code>
+</td>
+<td class="py-space-sm px-space-md text-primary">
+<code>comments.ndjson</code>
+</td>
+<td class="py-space-sm px-space-md font-body-sm text-body-sm text-text-secondary">
+                  Extracted to discrete BagIt line-delimited JSON stream with intact threaded parent hierarchies
+                </td>
+<td class="py-space-sm px-space-md text-right">
+<span class="inline-flex items-center gap-1 font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-info">
+<span class="w-1.5 h-1.5 rounded-full bg-state-info"></span>
+                    Extracted Stream
+                  </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="px-space-md py-space-sm bg-surface-subtle flex flex-col sm:flex-row items-center justify-between gap-space-xs font-label-meta text-label-meta text-text-muted">
+<span class="">Showing 7 core canonical primitives of 420 mapped field bindings</span>
+<button class="text-primary hover:text-text-primary transition-colors flex items-center gap-1">
+<span class="">Download complete 420-field JSON Schema dictionary</span>
+<span class="material-symbols-outlined text-[16px]">file_download</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: Execution & Agent Integration (CLI & MCP Server) -->
+<section class="w-full py-space-xl hidden" id="sectionExecutionProtocols">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-md gap-space-xs">
+<div>
+<span class="font-label-meta text-label-meta uppercase text-state-info tracking-wider">Runtime &amp; Autonomous Agent Protocols</span>
+<h2 class="font-headline-lg text-headline-lg text-text-primary font-semibold">
+            Execute This Directed Pair Route
+          </h2>
+</div>
+<p class="font-body-sm text-body-sm text-text-muted max-w-md">
+          Integrate natively in developer terminal workflows or provide LLM agents with deterministic execution boundaries via Model Context Protocol (MCP).
+        </p>
+</div>
+<!-- Execution Tabs Container -->
+<div class="rounded bg-surface-card overflow-hidden shadow-lg">
+<!-- Tab Headers -->
+<div class="bg-surface-subtle px-space-md py-2 flex items-center gap-space-sm border-b border-border-muted">
+<button class="px-space-sm py-1.5 rounded bg-surface-card text-text-primary font-body-sm text-body-sm font-medium transition-colors flex items-center gap-1.5" id="tabBtnCli" onclick="switchExecutionTab('cli')">
+<span class="material-symbols-outlined text-[16px] text-state-info">terminal</span>
+<span class="">Developer CLI</span>
+</button>
+<button class="px-space-sm py-1.5 rounded text-text-muted hover:text-text-primary font-body-sm text-body-sm transition-colors flex items-center gap-1.5" id="tabBtnMcp" onclick="switchExecutionTab('mcp')">
+<span class="material-symbols-outlined text-[16px] text-state-success">smart_toy</span>
+<span class="">MCP Server Config (Cursor / Windsurf / Claude)</span>
+</button>
+<button class="px-space-sm py-1.5 rounded text-text-muted hover:text-text-primary font-body-sm text-body-sm transition-colors flex items-center gap-1.5" id="tabBtnLlms" onclick="switchExecutionTab('llms')">
+<span class="material-symbols-outlined text-[16px] text-primary">description</span>
+<span class="">llms.txt Context Dump</span>
+</button>
+</div>
+<!-- Tab 1: CLI Execution -->
+<div class="p-space-lg bg-code-surface" id="tabContentCli">
+<div class="flex items-center justify-between pb-2 mb-2 text-text-muted">
+<span class="font-label-meta text-label-meta text-text-secondary uppercase">Local-First Zero Configuration Shell Invocation</span>
+<button class="flex items-center gap-1 font-label-pill text-label-pill text-state-info hover:text-text-primary transition-colors" onclick="navigator.clipboard.writeText('npx @migrateme/cli run --from wordpress-wxr --to markdown-mdx --source ./export.xml --out ./content --bagit --dry-run'); alert('Command copied!');">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span class="">Copy</span>
+</button>
+</div>
+<pre class="font-label-code text-label-code text-text-primary leading-relaxed overflow-x-auto p-space-sm bg-surface-canvas rounded"><code><span class="text-text-muted"># Execute deterministic dry-run transformation with local BagIt manifest verification</span>
+<span class="text-state-info">npx</span> @migrateme/cli run \
+  <span class="text-state-warning">--from</span> wordpress-wxr \
+  <span class="text-state-warning">--to</span> markdown-mdx \
+  <span class="text-state-warning">--source</span> ./export.xml \
+  <span class="text-state-warning">--out</span> ./content-export \
+  <span class="text-state-warning">--bagit</span> \
+  <span class="text-state-warning">--verify-sha256</span> \
+  <span class="text-state-success">--dry-run</span></code></pre>
+<div class="mt-space-md grid grid-cols-1 sm:grid-cols-3 gap-space-sm font-body-sm text-body-sm text-text-muted">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-state-success"></span>
+<span class="">Zero external network calls</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-state-info"></span>
+<span class="">Auto-detects Gutenberg v1.0 through v19.x</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+<span class="">Emits RFC 8493 BagIt manifest</span>
+</div>
+</div>
+</div>
+<!-- Tab 2: MCP Server Configuration -->
+<div class="p-space-lg bg-code-surface hidden" id="tabContentMcp">
+<div class="flex items-center justify-between pb-2 mb-2 text-text-muted">
+<span class="font-label-meta text-label-meta text-text-secondary uppercase">Claude Desktop / Windsurf / Cursor Model Context Protocol Config</span>
+<button class="flex items-center gap-1 font-label-pill text-label-pill text-state-info hover:text-text-primary transition-colors" onclick="navigator.clipboard.writeText(document.getElementById('mcpJsonContent').innerText); alert('MCP JSON configuration copied!');">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span class="">Copy</span>
+</button>
+</div>
+<pre class="font-label-code text-label-code text-text-primary leading-relaxed overflow-x-auto p-space-sm bg-surface-canvas rounded" id="mcpJsonContent"><code>{
+  "mcpServers": {
+    "migrateme-universal": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@migrateme/mcp@latest",
+        "serve",
+        "--enable-route",
+        "wordpress.to.markdown"
+      ],
+      "env": {
+        "MIGRATEME_STRICT_INVARIANTS": "true",
+        "MIGRATEME_LOCAL_ONLY": "true"
+      }
+    }
+  }
+}</code></pre>
+<p class="font-body-sm text-body-sm text-text-muted mt-space-sm">
+            Enables your AI agents to query <code class="text-primary font-label-code text-[11px]">migrateme://validate-pair</code> and run deterministic AST transforms directly from inside agentic workflows without hallucinations.
+          </p>
+</div>
+<!-- Tab 3: llms.txt Context Dump -->
+<div class="p-space-lg bg-code-surface hidden" id="tabContentLlms">
+<div class="flex items-center justify-between pb-2 mb-2 text-text-muted">
+<span class="font-label-meta text-label-meta text-text-secondary uppercase">Deterministic Prompt Context for Autonomous Orchestration</span>
+<button class="flex items-center gap-1 font-label-pill text-label-pill text-state-info hover:text-text-primary transition-colors" onclick="navigator.clipboard.writeText(document.getElementById('llmsTxtContent').innerText); alert('llms.txt context copied!');">
+<span class="material-symbols-outlined text-[16px]">content_copy</span>
+<span class="">Copy</span>
+</button>
+</div>
+<pre class="font-label-code text-label-code text-text-primary leading-relaxed overflow-x-auto p-space-sm bg-surface-canvas rounded" id="llmsTxtContent"><code># PAIR CONTRACT: wordpress.to.markdown.migrateme.tech
+# SPEC VERSION: RFC-PAIR-001 (Universal Hub Monorepo v2.0)
+INVARIANTS:
+  - SOURCE: WordPress WXR (XML 1.2 dialect with Gutenberg block comments)
+  - TARGET: Canonical Markdown / MDX with YAML Frontmatter + BagIt RFC 8493
+  - LOSSLESS_KEYS: [post_title, post_name, post_date_gmt, post_type, categories, tags]
+  - NORMALIZATIONS: [<!-- wp:* --> to JSX/semantic markdown, shortcodes to AST nodes]
+  - FORBIDDEN_EXFILTRATION: Local WASM runtime strictly isolated; zero cloud sync.
+PROMPT_RULE: When converting, ensure all attachments are mapped to ./assets/{sha256}.{ext}
+</code></pre>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION: Related Pairs & Catalog Navigation Strip -->
+<!-- Mode Selection Bar -->
+<div class="w-full bg-surface-subtle/50 border-y border-border-muted py-space-sm">
+  <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+    <div class="flex items-center gap-space-xs">
+      <span class="font-label-meta text-label-meta text-text-muted uppercase tracking-wider">Viewing Mode:</span>
+      <div class="inline-flex p-1 rounded-full bg-surface-canvas border border-border-default shadow-inner" id="modeToggleGroup">
+        <button type="button" id="btnModeEasy" onclick="setPairMode('easy')" class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full text-body-sm font-medium bg-primary text-surface-canvas shadow-sm transition-all">
+          <span class="">🌱 Easy Mode</span>
+        </button>
+        <button type="button" id="btnModeAdvanced" onclick="setPairMode('advanced')" class="inline-flex items-center gap-1.5 px-space-md py-1 rounded-full text-body-sm font-medium text-text-muted hover:text-text-primary transition-all">
+          <span class="">⚡ Advanced (RFC Spec)</span>
+        </button>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 text-text-muted font-body-sm text-body-sm">
+      <span class="w-2 h-2 rounded-full bg-state-success"></span>
+      <span id="modeSubtitle" class="">Streamlined walkthrough &amp; plain-English answers</span>
+    </div>
+  </div>
+</div>
+
+<!-- EASY MODE CONTAINER -->
+<div id="easyModeContainer" class="w-full transition-all">
+  <!-- Easy Hero / Action Banner -->
+  <section class="w-full py-space-lg bg-surface-container-lowest border-b border-border-muted">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="p-space-lg rounded bg-surface-card border border-border-default shadow-sm flex flex-col md:flex-row items-center justify-between gap-space-md">
+        <div class="space-y-space-xs max-w-2xl">
+          <div class="inline-flex items-center gap-1.5 font-label-pill text-label-pill px-2.5 py-0.5 rounded bg-surface-subtle text-state-success">
+            <span class="w-1.5 h-1.5 rounded-full bg-state-success"></span>
+            Zero-Risk Migration Preview
+          </div>
+          <h2 class="font-headline-md text-headline-md text-text-primary font-semibold">
+            Convert your WordPress site into clean Markdown files in 3 minutes
+          </h2>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Migrate your articles, pages, images, and authors without touching a terminal or risking downtime. Everything runs locally in your browser with zero data sent to external servers.
+          </p>
+        </div>
+        <div class="flex flex-col items-center sm:items-end gap-1.5 shrink-0 w-full md:w-auto">
+          <button type="button" onclick="document.getElementById('runWasmBtn').click();" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-space-lg h-[42px] rounded bg-primary text-surface-canvas hover:bg-primary-container font-headline-sm text-body-md font-semibold transition-all shadow-md cursor-pointer">
+            <span class="material-symbols-outlined text-[20px]">play_circle</span>
+            <span class="">Start 3-Minute Migration (Dry Run)</span>
+          </button>
+          <span class="font-label-meta text-label-meta text-text-muted flex items-center gap-1">
+            <span class="material-symbols-outlined text-[14px] text-state-success">verified_user</span>
+            No files changed • 100% in-browser dry run
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3-Step Visual Summary Cards -->
+  <section class="w-full py-space-xl bg-surface-canvas">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="text-center max-w-xl mx-auto mb-space-lg">
+        <span class="font-label-meta text-label-meta uppercase text-primary tracking-wider">Plain-English Summary</span>
+        <h3 class="font-headline-lg text-headline-lg text-text-primary font-semibold mt-1">
+          What happens to your content?
+        </h3>
+        <p class="font-body-sm text-body-sm text-text-muted mt-space-xs">
+          Here is the straightforward breakdown of how your WordPress data is translated into modern static format.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+        <!-- Card 1: What moves cleanly -->
+        <div class="p-space-lg rounded bg-surface-card border border-border-default flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-state-success"></div>
+          <div class="space-y-space-sm">
+            <div class="w-10 h-10 rounded bg-surface-subtle flex items-center justify-center text-state-success mb-space-xs">
+              <span class="material-symbols-outlined text-[24px]">check_circle</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-success">100% Preserved</span>
+            <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">What Moves Cleanly</h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              All your actual content and publishing taxonomy moves across exactly as you wrote it:
+            </p>
+            <ul class="space-y-2 font-body-sm text-body-sm text-text-secondary pt-1">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-success">check</span>
+                <span class=""><strong>Posts &amp; Pages:</strong> Titles, slugs, creation dates, &amp; authors</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-success">check</span>
+                <span class=""><strong>Categories &amp; Tags:</strong> Clean frontmatter labels</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-success">check</span>
+                <span class=""><strong>Images &amp; Media:</strong> Downloaded into a local <code class="text-primary font-label-code text-[11px]">/assets</code> folder</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-space-md pt-2 border-t border-border-muted text-text-muted font-label-meta text-label-meta flex items-center justify-between">
+            <span class="">Lossless guarantee</span>
+            <span class="text-state-success font-medium">0 Content Lost</span>
+          </div>
+        </div>
+
+        <!-- Card 2: What gets reformatted -->
+        <div class="p-space-lg rounded bg-surface-card border border-border-default flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-state-warning"></div>
+          <div class="space-y-space-sm">
+            <div class="w-10 h-10 rounded bg-surface-subtle flex items-center justify-center text-state-warning mb-space-xs">
+              <span class="material-symbols-outlined text-[24px]">transform</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-warning">Reformatted</span>
+            <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">What Gets Reformatted</h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              WordPress-specific syntax is converted into clean, universally readable Markdown:
+            </p>
+            <ul class="space-y-2 font-body-sm text-body-sm text-text-secondary pt-1">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-warning">sync_alt</span>
+                <span class=""><strong>Gutenberg Blocks:</strong> Clean paragraphs, headings &amp; lists</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-warning">sync_alt</span>
+                <span class=""><strong>Shortcodes:</strong> Transformed to modern React/JSX components</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-state-warning">sync_alt</span>
+                <span class=""><strong>Links:</strong> Internal domain links updated to local paths</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-space-md pt-2 border-t border-border-muted text-text-muted font-label-meta text-label-meta flex items-center justify-between">
+            <span class="">Format conversion</span>
+            <span class="text-state-warning font-medium">Clean Markdown</span>
+          </div>
+        </div>
+
+        <!-- Card 3: What gets cleaned up -->
+        <div class="p-space-lg rounded bg-surface-card border border-border-default flex flex-col justify-between relative overflow-hidden">
+          <div class="absolute top-0 left-0 right-0 h-1 bg-state-info"></div>
+          <div class="space-y-space-sm">
+            <div class="w-10 h-10 rounded bg-surface-subtle flex items-center justify-center text-state-info mb-space-xs">
+              <span class="material-symbols-outlined text-[24px]">cleaning_services</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-state-info">Safe Cleanup</span>
+            <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold">What Gets Dropped</h4>
+            <p class="font-body-sm text-body-sm text-text-secondary">
+              Legacy bloat, security hazards, and temporary session files are safely removed:
+            </p>
+            <ul class="space-y-2 font-body-sm text-body-sm text-text-secondary pt-1">
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-text-muted">remove_circle_outline</span>
+                <span class=""><strong>Database Transients:</strong> Expired cache and query logs</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-text-muted">remove_circle_outline</span>
+                <span class=""><strong>Legacy Passwords:</strong> Outdated phpass hashes purged</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-[16px] text-text-muted">remove_circle_outline</span>
+                <span class=""><strong>Plugin Cruft:</strong> Analytics cookies and auto-drafts</span>
+              </li>
+            </ul>
+          </div>
+          <div class="mt-space-md pt-2 border-t border-border-muted text-text-muted font-label-meta text-label-meta flex items-center justify-between">
+            <span class="">Health &amp; Security</span>
+            <span class="text-state-info font-medium">Zero Clutter</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visual Before & After Preview Card -->
+  <section class="w-full py-space-xl bg-surface-container-lowest border-y border-border-muted hidden" id="sectionInvariantMatrix">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-xs">
+        <div>
+          <span class="font-label-meta text-label-meta uppercase text-state-success tracking-wider">Visual Comparison</span>
+          <h3 class="font-headline-lg text-headline-lg text-text-primary font-semibold">
+            Before &amp; After Example
+          </h3>
+        </div>
+        <p class="font-body-sm text-body-sm text-text-muted max-w-md">
+          See how complex WordPress XML database entries become clean, human-readable Markdown files.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+        <!-- Before Column -->
+        <div class="rounded bg-surface-card border border-border-default overflow-hidden">
+          <div class="bg-surface-subtle px-space-md py-2 flex items-center justify-between border-b border-border-muted">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-state-warning">description</span>
+              <span class="font-headline-sm text-body-md text-text-primary font-medium">WordPress XML Source</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface text-text-muted">Messy XML &amp; HTML</span>
+          </div>
+          <div class="p-space-md bg-code-surface">
+            <pre class="font-label-code text-body-sm text-text-secondary leading-relaxed overflow-x-auto"><code>&lt;item&gt;
+  &lt;title&gt;Zero-Downtime Migration Architectures&lt;/title&gt;
+  &lt;wp:post_name&gt;zero-downtime-migration&lt;/wp:post_name&gt;
+  &lt;category nicename="engineering"&gt;Engineering&lt;/category&gt;
+  &lt;content:encoded&gt;
+    &lt;!-- wp:paragraph --&gt;
+    &lt;p&gt;Executing continuous migrations requires deterministic guarantees.&lt;/p&gt;
+    &lt;!-- /wp:paragraph --&gt;
+  &lt;/content:encoded&gt;
+&lt;/item&gt;</code></pre>
+          </div>
+        </div>
+
+        <!-- After Column -->
+        <div class="rounded bg-surface-card border border-border-accent overflow-hidden shadow-md">
+          <div class="bg-surface-subtle px-space-md py-2 flex items-center justify-between border-b border-border-muted">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[18px] text-state-success">markdown</span>
+              <span class="font-headline-sm text-body-md text-text-primary font-medium">Generated Markdown (.mdx)</span>
+            </div>
+            <span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface text-state-success">Clean YAML + Markdown</span>
+          </div>
+          <div class="p-space-md bg-code-surface">
+            <pre class="font-label-code text-body-sm text-text-secondary leading-relaxed overflow-x-auto"><code>--- 
+title: "Zero-Downtime Migration Architectures"
+slug: "zero-downtime-migration"
+categories: ["Engineering"]
+date: "2024-03-18"
+---
+
+Executing continuous migrations requires deterministic guarantees.
+
+![Architecture Diagram](./assets/arch.png)</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plain-English FAQ Cards -->
+  <section class="w-full py-space-xl bg-surface-canvas">
+    <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+      <div class="mb-space-lg text-left">
+        <span class="font-label-meta text-label-meta uppercase text-primary tracking-wider">Got Questions?</span>
+        <h3 class="font-headline-lg text-headline-lg text-text-primary font-semibold mt-1">
+          Frequently Asked Questions
+        </h3>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-state-info">image</span>
+            Will my images break after migration?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            No. All referenced WordPress images and upload attachments are downloaded into a local <code class="text-primary font-label-code text-[11px]">./assets/</code> folder with SHA-256 integrity tags, so image links stay 100% intact.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-state-success">travel_explore</span>
+            Do my Yoast or RankMath SEO tags transfer?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Yes! SEO metadata such as meta titles, descriptions, and canonical links are converted automatically into standard <code class="text-primary font-label-code text-[11px]">meta.seo.*</code> frontmatter fields compatible with Next.js, Astro, and Hugo.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-state-warning">verified</span>
+            Can this modify or break my live WordPress site?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            No. MigrateMe works in dry-run mode by reading your exported XML file in an isolated local browser sandbox. It makes zero live API calls and does not write to your server.
+          </p>
+        </div>
+
+        <div class="p-space-md rounded bg-surface-card border border-border-default">
+          <h4 class="font-headline-sm text-headline-sm text-text-primary font-semibold flex items-center gap-2 mb-space-xs">
+            <span class="material-symbols-outlined text-[20px] text-primary">code_blocks</span>
+            What if I need the full technical RFC or CLI specs?
+          </h4>
+          <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+            Simply toggle to <strong>⚡ Advanced (RFC Spec)</strong> at the top of the page at any time to inspect the full AST split-inspector, 420-field dictionary, and MCP agent protocols.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ADVANCED RFC SPEC HEADER BADGE -->
+<div id="advancedSpecHeaderBadge" class="w-full bg-surface-subtle border-y border-border-default py-2 hidden">
+  <div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter flex items-center justify-between text-text-secondary font-label-meta text-label-meta">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-[16px] text-state-info">terminal</span>
+      <span class="">RFC-PAIR-001 Advanced Technical Specification &amp; AST Engine Diagnostics</span>
+    </div>
+    <button type="button" onclick="setPairMode('easy')" class="text-primary hover:text-text-primary transition-colors flex items-center gap-1 cursor-pointer">
+      <span class="">Switch back to 🌱 Easy Mode</span>
+    </button>
+  </div>
+</div><section class="w-full bg-surface-container-lowest py-space-xl border-t border-border-muted hidden" id="sectionInvariantMatrix">
+<div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between mb-space-lg gap-space-xs">
+<div>
+<span class="font-label-meta text-label-meta uppercase text-text-muted tracking-wider">Topology Graph Neighbors</span>
+<h3 class="font-headline-md text-headline-md text-text-primary font-semibold">
+            Related WordPress Source Migration Routes
+          </h3>
+</div>
+<a class="inline-flex items-center gap-1.5 px-space-md py-1.5 rounded bg-surface-card hover:bg-surface-subtle text-text-primary font-body-sm text-body-sm transition-colors border border-border-default" data-path="pair-explorer" href="#">
+<span class="material-symbols-outlined text-[18px]">hub</span>
+<span class="">Explore All 1,332 Canonical Pairs</span>
+</a>
+</div>
+<!-- Related Pair Tiles Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Pair 1: Ghost -->
+<div class="p-space-md rounded bg-surface-card hover:bg-surface-subtle/70 transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-text-primary">RFC-PAIR-004</span>
+<span class="font-label-pill text-label-pill text-state-success">Lossless (100%)</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary mb-1 font-semibold">wordpress.to.ghost</h4>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Transforms WXR content into Ghost Mobiledoc v4 AST schema with member subscription tier mapping.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-label-code text-body-sm text-text-secondary">380 Mapped Fields</span>
+<span class="material-symbols-outlined text-state-info text-[18px]">arrow_forward</span>
+</div>
+</div>
+<!-- Pair 2: Static HTML -->
+<div class="p-space-md rounded bg-surface-card hover:bg-surface-subtle/70 transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-text-primary">RFC-PAIR-009</span>
+<span class="font-label-pill text-label-pill text-state-success">Lossless (100%)</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary mb-1 font-semibold">wordpress.to.static-html</h4>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Pure deterministic static bundle generation with relative hyperlinked path rewrites and asset tree freeze.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-label-code text-body-sm text-text-secondary">295 Mapped Fields</span>
+<span class="material-symbols-outlined text-state-info text-[18px]">arrow_forward</span>
+</div>
+</div>
+<!-- Pair 3: Sanity CMS -->
+<div class="p-space-md rounded bg-surface-card hover:bg-surface-subtle/70 transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-pill text-label-pill px-2 py-0.5 rounded bg-surface-subtle text-text-primary">RFC-PAIR-022</span>
+<span class="font-label-pill text-label-pill text-state-warning">Disclosed Transform</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-text-primary mb-1 font-semibold">wordpress.to.sanity</h4>
+<p class="font-body-sm text-body-sm text-text-muted">
+              Portable Text JSON array generation with automated asset upload orchestration via Sanity Mutation API.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-label-code text-body-sm text-text-secondary">412 Mapped Fields</span>
+<span class="material-symbols-outlined text-state-info text-[18px]">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript Engine -->
+<script>
+    // Tab Switcher for Execution Panel
+    function switchExecutionTab(tabId) {
+      const tabs = ['cli', 'mcp', 'llms'];
+      tabs.forEach(t => {
+        const btn = document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1));
+        const content = document.getElementById('tabContent' + t.charAt(0).toUpperCase() + t.slice(1));
+        if (t === tabId) {
+          btn.classList.add('bg-surface-card', 'text-text-primary');
+          btn.classList.remove('text-text-muted');
+          content.classList.remove('hidden');
+        } else {
+          btn.classList.remove('bg-surface-card', 'text-text-primary');
+          btn.classList.add('text-text-muted');
+          content.classList.add('hidden');
+        }
+      });
+    }
+
+    // Instant Search Filter for 420-Field Dictionary
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('fieldSearchInput');
+      const table = document.getElementById('fieldsTable');
+      if (searchInput && table) {
+        searchInput.addEventListener('input', (e) => {
+          const val = e.target.value.toLowerCase();
+          const rows = table.querySelectorAll('tbody tr');
+          rows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(val) ? '' : 'none';
+          });
+        });
+      }
+
+      // WASM Interactive Dry-Run Trigger Simulation
+      const wasmBtn = document.getElementById('runWasmBtn');
+      if (wasmBtn) {
+        wasmBtn.addEventListener('click', () => {
+          wasmBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Compiling WASM Pipeline...</span>';
+          setTimeout(() => {
+            wasmBtn.innerHTML = '<span class="material-symbols-outlined text-[18px] text-state-success">check_circle</span><span>WASM AST Verified: 0 Errors (4.1ms)</span>';
+            wasmBtn.classList.remove('bg-primary-container');
+            wasmBtn.classList.add('bg-surface-card', 'text-state-success');
+          }, 800);
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-card shadow-[0_-1px_0_0_rgba(48,54,61,0.5)] py-space-xl mt-auto"><div class="max-w-[72rem] mx-auto px-margin-mobile md:px-gutter"><div class="grid grid-cols-1 md:grid-cols-4 gap-space-lg mb-space-xl"><div class="space-y-space-xs md:col-span-1"><div class="flex items-center gap-space-xs"><span class="font-headline-sm text-headline-sm text-text-primary tracking-tight">MigrateMe Universal</span></div><p class="font-body-sm text-body-sm text-text-muted">The open-source, deterministic migration orchestrator and schema transformation runtime.</p><div class="flex items-center gap-2 pt-space-xs"><span class="inline-flex items-center font-label-pill text-label-pill px-space-xs py-0.5 rounded bg-surface-subtle text-state-success border border-border-default"><span class="w-1.5 h-1.5 rounded-full bg-state-success mr-1.5"></span>Local-First Guaranteed</span></div></div><div class="space-y-space-xs"><span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted block">Specifications</span><ul class="space-y-1"><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">OMP RFC v2.0</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Pair Topology Registry</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Deterministic AST Mapping</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Content Transformation Spec</li></ul></div><div class="space-y-space-xs"><span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted block">Telemetry &amp; Engine</span><ul class="space-y-1"><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">In-Browser WASM Pipeline</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Pre-Flight Dry Run Rules</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Split Proof Validation</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">llms.txt Context Dump</li></ul></div><div class="space-y-space-xs"><span class="font-label-meta text-label-meta uppercase tracking-wider text-text-muted block">Community Commons</span><ul class="space-y-1"><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Open Source GitHub</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Contribution Guide</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Discussions &amp; RFCs</li><li class="font-body-sm text-body-sm text-text-secondary hover:text-primary transition-colors cursor-pointer">Security Advisory</li></ul></div></div><div class="pt-space-md border-t border-border-muted flex flex-col md:flex-row items-center justify-between gap-space-sm font-label-meta text-label-meta text-text-muted"><div class="flex flex-wrap items-center gap-space-md"><span class="">MIT Open Source License</span><span class="">•</span><span class="">WCAG 2.2 AA Verified</span><span class="">•</span><span class="">Local-First Zero Cloud Exfiltration</span></div><div class="font-label-pill text-label-pill text-text-muted">OMP-CORE-ENGINE // v2.0-RELEASE</div></div></div></footer>
+
+</body></html>
