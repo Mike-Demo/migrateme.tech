@@ -427,17 +427,47 @@ export default function App() {
                   </button>
                 </li>
                 <li>
-                  <label className="sr-only" htmlFor="theme-select">Color theme</label>
-                  <select
-                    id="theme-select"
-                    value={theme}
-                    onChange={(event) => setTheme(event.target.value as Theme)}
-                    className="rounded-md border border-surface-border bg-surface-raised px-3 py-2 text-sm text-ink-normal focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+                  <a
+                    href="https://github.com/Mike-Demo/migrateme.tech"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="MigrateMe.Tech repository on GitHub"
+                    title="GitHub repository"
+                    className="inline-flex items-center justify-center rounded-md border border-surface-border bg-surface-raised px-3 py-2 text-base text-ink-normal hover:bg-surface-lowered focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
                   >
-                    <option value="auto">Auto</option>
-                    <option value="light">Light</option>
-                    <option value="dark">Dark</option>
-                  </select>
+                    <i className="fa-brands fa-github" aria-hidden="true" />
+                  </a>
+                </li>
+                <li>
+                  <div
+                    role="group"
+                    aria-label="Color theme"
+                    className="flex overflow-hidden rounded-md border border-surface-border"
+                  >
+                    {(
+                      [
+                        ['auto', 'fa-circle-half-stroke', 'Auto (follows your system)'],
+                        ['light', 'fa-sun', 'Light'],
+                        ['dark', 'fa-moon', 'Dark'],
+                      ] as const
+                    ).map(([value, icon, label]) => (
+                      <button
+                        key={value}
+                        type="button"
+                        onClick={() => setTheme(value as Theme)}
+                        aria-pressed={theme === value}
+                        aria-label={`Color theme: ${label}`}
+                        title={`Color theme: ${label}`}
+                        className={`px-3 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-focus ${
+                          theme === value
+                            ? 'bg-brand-fill-quiet text-brand-on-quiet'
+                            : 'bg-surface-raised text-ink-normal hover:bg-surface-lowered'
+                        }`}
+                      >
+                        <i className={`fa-solid ${icon}`} aria-hidden="true" />
+                      </button>
+                    ))}
+                  </div>
                 </li>
               </ul>
             </nav>
@@ -880,6 +910,34 @@ export default function App() {
             the report. Part of the open-source MigrateMe.Tech project (MIT).
           </p>
           <CarbonEstimate />
+          <nav aria-label="Social links" className="mt-4">
+            <ul className="flex flex-wrap gap-2">
+              {(
+                [
+                  ['GitHub', 'fa-github', 'https://github.com/Mike-Demo'],
+                  ['LinkedIn', 'fa-linkedin-in', 'https://www.linkedin.com/in/mikedemopoulos'],
+                  ['X', 'fa-x-twitter', 'https://x.com/Mike_Demo'],
+                  ['Threads', 'fa-threads', 'https://www.threads.com/@mdemop'],
+                  ['Instagram', 'fa-instagram', 'https://www.instagram.com/mdemop'],
+                  ['Bluesky', 'fa-bluesky', 'https://bsky.app/profile/mikedemo.bsky.social'],
+                  ['DEV', 'fa-dev', 'https://dev.to/mpmike'],
+                ] as const
+              ).map(([name, icon, url]) => (
+                <li key={name}>
+                  <a
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Demo on ${name}`}
+                    title={`Demo on ${name}`}
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-surface-border bg-surface text-base text-ink-quiet hover:bg-surface-lowered hover:text-ink-normal focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2"
+                  >
+                    <i className={`fa-brands ${icon}`} aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </footer>
     </div>
