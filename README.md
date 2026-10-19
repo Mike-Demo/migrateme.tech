@@ -16,7 +16,7 @@ Bolt Forge build:
 - `packages/core` gained Manifest v2 (`manifest-v2.ts`): v1 manifests
   upgrade losslessly, so any registered pair can be described.
 - `apps/web/universal` — the Universal web app (standalone Vite app;
-  live at https://migrateme-universal-4zev.bolt.host).
+  live at https://universal.migrateme.tech).
 
 ## Setup
 

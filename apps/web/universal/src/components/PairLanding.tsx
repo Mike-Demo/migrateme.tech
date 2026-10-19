@@ -1,4 +1,6 @@
+import { useEffect } from 'react';
 import type { PairInfo } from '../lib/pairs';
+import { buildPairFaq, pairJsonLd } from '../lib/faq';
 
 const STATUS_LABEL: Record<string, string> = {
   supported: 'Supported',
@@ -31,6 +33,30 @@ export function PairLanding({
   onBack: () => void;
 }) {
   const label = `${pair.sourceName} to ${pair.destName}`;
+  const faq = buildPairFaq(pair);
+
+  useEffect(() => {
+    document.title = `${label} migration — MigrateMe Universal`;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) {
+      meta.setAttribute(
+        'content',
+        `How to migrate from ${pair.sourceName} to ${pair.destName}: what is kept, what is dropped, and the route status (${pair.status}). Free, in-browser conversion with MigrateMe Universal.`,
+      );
+    }
+    let script = document.getElementById('pair-jsonld') as HTMLScriptElement | null;
+    if (!script) {
+      script = document.createElement('script');
+      script.id = 'pair-jsonld';
+      script.type = 'application/ld+json';
+      document.head.appendChild(script);
+    }
+    script.textContent = pairJsonLd(pair);
+    return () => {
+      script?.remove();
+    };
+  }, [pair, label]);
+
   return (
     <section aria-labelledby="pair-title">
       <p className="text-sm text-ink-normal">
@@ -68,6 +94,14 @@ export function PairLanding({
               <li key={i}>{l}</li>
             ))}
           </ul>
+          <p className="mt-2 text-sm text-warning-on-normal">
+            <a
+              className="rounded font-semibold underline focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+              href="https://universal.migrateme.tech/contribute"
+            >
+              Help close these losses
+            </a>
+          </p>
         </div>
       )}
 
@@ -79,7 +113,13 @@ export function PairLanding({
         <p className="mt-4 max-w-3xl text-sm text-ink-normal">
           This pair is planned: there is no working converter for it yet, so the wizard
           cannot run it. The pair page exists so the roadmap is honest — check the
-          conversion matrix for pairs that work today.
+          conversion matrix for pairs that work today.{' '}
+          <a
+            className="rounded font-semibold text-ink-link underline focus:outline-none focus-visible:ring-2 focus-visible:ring-focus"
+            href="https://universal.migrateme.tech/contribute"
+          >
+            Help build this route
+          </a>
         </p>
       ) : (
         <>
@@ -155,6 +195,20 @@ export function PairLanding({
           </button>
         </>
       )}
+
+      <h3 className="mt-8 text-lg font-bold text-ink-normal">
+        Frequently asked questions
+      </h3>
+      <div className="mt-2 max-w-3xl">
+        {faq.map((f) => (
+          <details key={f.question} className="border-b border-surface-border py-3">
+            <summary className="cursor-pointer text-sm font-semibold text-ink-normal focus:outline-none focus-visible:ring-2 focus-visible:ring-focus">
+              {f.question}
+            </summary>
+            <p className="mt-2 text-sm text-ink-normal">{f.answer}</p>
+          </details>
+        ))}
+      </div>
     </section>
   );
 }

@@ -23,9 +23,34 @@
       name="description"
       content="Convert content exports between CMS and static-site formats entirely in your browser. Files never leave your device."
     />
-    <meta property="og:image" content="https://bolt.new/static/og_default.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary">
+    <link rel="canonical" href="https://universal.migrateme.tech/">
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "@id": "https://universal.migrateme.tech/#app",
+            "name": "MigrateMe Universal",
+            "url": "https://universal.migrateme.tech/",
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "Any (web browser)",
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+            "license": "https://opensource.org/licenses/MIT",
+            "description": "Anything-to-anything content migration that runs entirely in your browser. 37 platforms and formats, one canonical hub, and the Open Migration Package (OMP) open standard.",
+            "isPartOf": { "@id": "https://migrateme.tech/#project" }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://universal.migrateme.tech/#site",
+            "name": "MigrateMe Universal",
+            "url": "https://universal.migrateme.tech/",
+            "isPartOf": { "@id": "https://migrateme.tech/#project" }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

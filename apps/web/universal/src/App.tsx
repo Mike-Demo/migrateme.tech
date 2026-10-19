@@ -17,6 +17,7 @@ import { StepNav } from './components/StepNav';
 import { ConfidenceBadge } from './components/StatusBadge';
 import { ErrorAlert, Progress } from './components/Feedback';
 import { StandardPage } from './components/StandardPage';
+import { ContributePage } from './components/ContributePage';
 import { PairLanding } from './components/PairLanding';
 
 interface LoadedPayload {
@@ -86,7 +87,11 @@ export default function App() {
       ? `Started ${boot.source.name} to ${boot.dest.name} conversion (${boot.status === 'lossy' ? 'Lossy' : 'Supported'}).`
       : '',
   );
-  const [page, setPage] = useState<'convert' | 'standard'>('convert');
+  const [page, setPage] = useState<'convert' | 'standard' | 'contribute'>(() =>
+    typeof window !== 'undefined' && window.location.pathname === '/contribute'
+      ? 'contribute'
+      : 'convert',
+  );
   const [pairPathname, setPairPathname] = useState<string | null>(() => {
     if (typeof window === 'undefined') return null;
     if (parsePairPath(window.location.pathname)) return window.location.pathname;
@@ -369,6 +374,20 @@ export default function App() {
                 <li>
                   <button
                     type="button"
+                    onClick={() => setPage('contribute')}
+                    aria-current={page === 'contribute' ? 'page' : undefined}
+                    className={`rounded-md px-4 py-2 text-sm font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-focus focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-fill-loud ${
+                      page === 'contribute'
+                        ? 'bg-surface-raised text-ink-normal'
+                        : 'border border-neutral-on-loud-40 text-neutral-on-loud hover:bg-neutral-on-loud-10'
+                    }`}
+                  >
+                    Contribute
+                  </button>
+                </li>
+                <li>
+                  <button
+                    type="button"
                     onClick={() => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))}
                     aria-pressed={theme === 'dark'}
                     aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -393,6 +412,8 @@ export default function App() {
         </p>
 
         {page === 'standard' && <StandardPage onBack={() => setPage('convert')} />}
+
+        {page === 'contribute' && <ContributePage onBack={() => setPage('convert')} />}
 
         {page === 'convert' && step === 0 && pair && (
           <PairLanding

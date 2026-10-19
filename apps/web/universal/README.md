@@ -1,7 +1,5 @@
 # migrateme-universal
 
-[![Open in Bolt](https://bolt.new/static/open-in-bolt.svg)](https://bolt.new/~/sb1-1hqlrjq4)
-
 ## Fold-in note (2026-10-18)
 
 This is the MigrateMe Universal web app, folded into the migrateme.tech
@@ -14,4 +12,4 @@ server in `apps/web/src` is unchanged and remains what
 identical code — in `packages/connectors/universal`, and the Open
 Migration Package standard it implements lives in `packages/format`
 with the spec at `docs/format/open-migration-package.md`. Live demo:
-https://migrateme-universal-4zev.bolt.host (temporary Bolt URL).
+https://universal.migrateme.tech

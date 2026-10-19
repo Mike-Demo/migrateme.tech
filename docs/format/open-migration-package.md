@@ -9,7 +9,7 @@ platform needs exactly two translators: one to the package, one from it.
 MigrateMe Universal is the reference implementation: it exports `.omp`
 packages, imports them as a source, and validates them against the
 published schema. The live converter is at
-https://migrateme-universal-4zev.bolt.host (temporary Bolt URL), and its
+https://universal.migrateme.tech, and its
 code lives in this repo under `apps/web/universal` with the connector
 modules in `packages/connectors/universal` and this standard in
 `packages/format` (`@migrateme/format`).

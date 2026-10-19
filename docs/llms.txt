@@ -6,6 +6,7 @@
 
 - [Live site](https://migrateme.tech/): project home, including the naming convention and the donation-bundle concept demo
 - [MigrateMe Universal](https://universal.migrateme.tech/): the anything-to-anything converter — runs 100% in the browser, files never leave the device
+- [Contribute](https://universal.migrateme.tech/contribute): help build the Planned (missing) migrations, close the named losses on Lossy routes, or work on the Open Migration Package standard
 - [GitHub repository](https://github.com/Mike-Demo/migrateme.tech): source, MIT licensed; Universal lives in `apps/web/universal` and `packages/connectors/universal`, the OMP format in `packages/format`
 - [Open Migration Package spec](https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/format/open-migration-package.md): manifest envelope, Portable Text bodies, sha256 checksums, JSON Schema, conformance levels (OMP Reader / Writer / Full)
 - [Copilot usage log](https://github.com/Mike-Demo/migrateme.tech/blob/main/docs/copilot-usage.md): how the MVP was planned and built with GitHub Copilot
