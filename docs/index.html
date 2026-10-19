@@ -138,18 +138,6 @@
     </div>
   </header>
   <main>
-  <script>
-    (function () {
-      var lead = document.getElementById('lead');
-      var btn = document.getElementById('vt-btn');
-      btn.addEventListener('click', function () {
-        var classic = lead.classList.toggle('show-classic');
-        lead.classList.toggle('show-universal', !classic);
-        btn.setAttribute('aria-pressed', classic ? 'true' : 'false');
-        btn.textContent = classic ? 'Back to Universal (the new default)' : 'See the original version (v1 story first)';
-      });
-    })();
-  </script>
 <div id="lead" class="show-universal">
 <section id="sec-what"><h2 id="what-it-does"><i class="fa-solid fa-gears" aria-hidden="true"></i>What it does</h2>
   <p>Migrating a site between platforms usually means hand-written scripts, silent data loss, and no way to rehearse. migrateme.tech treats a migration as a pipeline you can inspect: extract, map, rehearse with a full dry-run risk report, approve, execute with checkpoints, then validate with a reconciliation report.</p>
@@ -218,6 +206,18 @@
 
   </section>
 </div>
+  <script>
+    (function () {
+      var lead = document.getElementById('lead');
+      var btn = document.getElementById('vt-btn');
+      btn.addEventListener('click', function () {
+        var classic = lead.classList.toggle('show-classic');
+        lead.classList.toggle('show-universal', !classic);
+        btn.setAttribute('aria-pressed', classic ? 'true' : 'false');
+        btn.textContent = classic ? 'Back to Universal (the new default)' : 'See the original version (v1 story first)';
+      });
+    })();
+  </script>
   <section class="secondary-section">
   <h2 id="paid-for"><i class="fa-solid fa-hand-holding-heart" aria-hidden="true"></i>How it's paid for</h2>
   <p><strong>Freemium, with a donation bundle instead of a paywall.</strong> The toolkit is free and MIT-licensed, and the AI step runs a local open-weight model, so a migration costs nothing to run — that's what makes freemium honest here rather than a trial in disguise.</p>
