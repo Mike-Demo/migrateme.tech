@@ -6,7 +6,7 @@ const DEST_FIELDS: Record<string, string> = {
   title: '<h1> in the page body',
   slug: 'file name (posts/<slug>.html)',
   date: '<time datetime> in the page header',
-  body: 'body markup inside <main>',
+  body: 'escaped source text inside <pre>',
   excerpt: '<p class="excerpt"> in the page header',
   categories: '<p class="categories"> text',
   tags: '<p class="tags"> text',
@@ -55,12 +55,12 @@ function renderItem(item: CanonicalItem, index: number): string {
   const featured = item.featuredImage
     ? `      <img src="${escapeHtml(item.featuredImage)}" alt="${title}">\n`
     : '';
-  // Markdown bodies cannot be rendered by a static page without a converter,
-  // so they are written as preformatted text rather than silently mangled.
+  // Render bodies as source text until a Markdown converter and HTML sanitizer
+  // are available, so imported markup cannot execute in the generated page.
   const body =
     item.bodyFormat === 'markdown'
       ? `      <pre class="markdown-source">${escapeHtml(item.body)}</pre>\n`
-      : `      <div class="content">\n${item.body}\n      </div>\n`;
+      : `      <pre class="html-source">${escapeHtml(item.body)}</pre>\n`;
 
   return `<!DOCTYPE html>
 <html lang="en">
